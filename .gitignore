@@ -1,0 +1,40 @@
+# ── Developer-only (never shipped to a clone or a user-mode export) ──
+# The developer overlay that makes a session a DEVELOPMENT session, the
+# live issue tracker, and the dev tooling. A user who clones the repo
+# sees none of this.
+CLAUDE.local.md
+docs/harness_issues.md
+dev/
+
+# ── Run outputs — regenerated each run, never committed ──
+# Keep the empty results/ directory via its .gitkeep, ignore everything
+# the pipeline writes into it (curation docs, explorers, inventories,
+# the SESSION_STATUS resume mirror).
+results/*
+!results/.gitkeep
+
+# Per-run gene-set configs are run artifacts. Only the template and the
+# shipped worked example are tracked; a generated config/<gene_set>.yaml
+# stays local.
+config/*.yaml
+!config/template.yaml
+!config/caspase_example.yaml
+
+# ── OS / editor cruft ──
+.DS_Store
+**/.DS_Store
+
+# ── Python ──
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+
+# ── Large genome inputs are downloaded, not committed (see GETTING_STARTED.md) ──
+data/annotations/*/*.gff.gz
+data/annotations/*/*.faa.gz
+
+# Cached chromosome-region scans (regenerated from the GFF on demand;
+# see scripts/_config.py:derive_chromosome_mappings)
+data/annotations/*/.*.regions.tsv

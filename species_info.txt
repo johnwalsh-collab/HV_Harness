@@ -1,0 +1,13 @@
+# Target Species for Caspase Family Characterization
+# Core species share the Cs4R allotetraploidization event (~12 MYA)
+
+# Core Species (Allotetraploid)
+Species	Common_Name	NCBI_Assembly	Ploidy	Group
+Cyprinus_carpio	Common carp	GCF_018340385.1	Allotetraploid	Core
+Carassius_auratus	Goldfish	GCF_003368295.1	Allotetraploid	Core
+Carassius_gibelio	Prussian carp	GCF_023724105.1	Allotetraploid	Core
+
+# Outgroup Species (Diploid, pre-Cs4R divergence)
+Danio_rerio	Zebrafish	GCF_049306965.1	Diploid	Outgroup
+Puntigrus_tetrazona	Tiger barb	GCF_018831695.1	Diploid	Outgroup
+Ctenopharyngodon_idella	Grass carp	GCF_019924925.1	Diploid	Outgroup

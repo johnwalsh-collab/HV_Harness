@@ -1,0 +1,207 @@
+# Gene-set configuration template — copy and rename for your gene set.
+#
+# How to use:
+#   1. Copy this file to config/<your_gene_set>.yaml
+#      (e.g. config/tlr.yaml for the toll-like receptor family).
+#   2. Work through the playbook's Checkpoint 1 conversation with an AI
+#      assistant. That conversation produces the values that go in this
+#      file. Save iteratively as the search terms and rules firm up.
+#   3. Run the pipeline:
+#        python scripts/identify_gene_set.py          --config config/<your_gene_set>.yaml
+#        python scripts/extract_sequences.py          --config config/<your_gene_set>.yaml
+#        python scripts/clean_sequences.py            --config config/<your_gene_set>.yaml
+#        → Checkpoint 2: review gene list with user
+#        python scripts/build_gene_inventory.py       --config config/<your_gene_set>.yaml
+#        python scripts/extract_synteny.py            --config config/<your_gene_set>.yaml
+#   4. Curate per the playbook; then build the hierarchy explorer.
+#
+# Reference: config/SCHEMA.md (schema reference) and
+# config/caspase_example.yaml (a fully-worked example).
+#
+# Genome architecture (which species, which chromosome is A1, etc.)
+# lives in data/genome_config.yaml. You usually do not need to touch it.
+
+gene_set:
+  name: <short identifier>        # used in output filenames; lowercase, no spaces
+                                  # e.g. "tlr" → tlr_gene_inventory.tsv
+  display_name: "<human-readable name>"   # used in figure titles, report prose
+                                          # e.g. "Toll-like receptor family"
+
+# ---------------------------------------------------------------------------
+# Stage 2: identify gene-set members
+#
+# Checkpoint 1 in the playbook produces this section. Both BEFORE and
+# AFTER the initial gene list is generated, review for false positives
+# and false negatives.
+#
+# Defaults are deliberately empty: if you don't list a pattern, the
+# script will not silently apply one.
+# ---------------------------------------------------------------------------
+identification:
+  inclusion:
+    # Regex patterns matched against the gene Name field.
+    # Use the right number of escapes for YAML; quote regexes that
+    # contain special characters.
+    name_patterns: []
+      # - '^tlr[0-9]+[a-z]?$'   # tlr1, tlr2a, etc. (example)
+
+    # Substrings matched (case-insensitive) in description or mRNA product
+    # fields. Catches LOC-named genes that have informative descriptions.
+    description_keywords: []
+      # - toll-like receptor
+
+  exclusion:
+    # Specific gene names known to match inclusion but be false positives.
+    gene_names: []
+      # - myd88     # adapter, not a TLR itself (example)
+
+    # Disqualifying substrings in description/product. Case-insensitive.
+    description_patterns: []
+      # - adapter
+      # - interacting
+      # - inhibitor
+
+# ---------------------------------------------------------------------------
+# Stage 3c: classify each gene into a canonical type
+# ---------------------------------------------------------------------------
+classification:
+  # Ordered list of type rules. First match wins.
+  # Each rule: type is the canonical name to assign; matches is a list
+  # of substrings (case-insensitive) checked against
+  # "<gene_name> <description>". Place more specific rules before more
+  # general ones (e.g. tlr22 before tlr2).
+  type_rules: []
+    # - type: tlr22
+    #   matches: [tlr22]
+    # - type: tlr2
+    #   matches: [tlr2, "toll-like receptor 2"]
+
+  # Homeolog pairs where this gene set is found in the carp tetraploids,
+  # taking the diploid comparator (zebrafish, by default) as the
+  # ancestral reference. You will know this set after the first
+  # inventory run; iterate the config to populate it.
+  #
+  # OPTIONAL for the hierarchy explorer: the explorer derives the pairs it
+  # renders from the curation-data JSON itself (the source of truth), so a
+  # blank list here no longer produces a blank explorer. When set, this
+  # list is used only as an ordering hint for the explorer's pair layout
+  # (and to filter inventory rows / figure labels). Populating it to match
+  # the curated pairs is still good practice.
+  homeolog_pairs: []
+    # - 1
+    # - 3
+    # - 6
+
+  # Optional. Per-pair expected type, used only as the default source
+  # for the visualization's pair labels (visualization.pair_labels).
+  # Not an inventory column. Leave empty to label pairs by number.
+  pair_expected: {}
+    # 1: "tlr1/tlr2"
+    # 3: "tlr3"
+
+  # Known confusion patterns surfaced by curation. Optional — leave the
+  # block empty (or omit it) if no such patterns exist for your gene set.
+  #
+  # Each entry's key is a free label you choose. The behaviour is driven
+  # by `confidence_effect`, not the key name:
+  #   low    — force low identity confidence; also blocks the
+  #            high-confidence upgrade for cleanly-named genes at these pairs
+  #   medium — cap confidence at medium
+  #   none   — record the reason only (a legitimate divergence; no
+  #            confidence change)
+  # `pairs` lists the homeolog-pair numbers affected; `affected_types`
+  # lists the gene types the rule applies to; `reason` is shown in the
+  # inventory's confidence_reasons column.
+  confusion_pairs: {}
+    # Example (delete or replace with your own categories):
+    # naming_swap:                 # two genes interchanged in NCBI naming
+    #   pairs: []
+    #   affected_types: []
+    #   confidence_effect: low
+    #   reason: ""
+    # divergence:                  # A/B carry different genes (legitimate)
+    #   pairs: []
+    #   affected_types: []
+    #   confidence_effect: none
+    #   reason: ""
+
+# ---------------------------------------------------------------------------
+# Stage 3c: inventory special cases
+# ---------------------------------------------------------------------------
+# Model-quality flags come from NCBI's own annotation signals (gene_biotype,
+# partial, exception, LOW QUALITY PROTEIN), so there is nothing gene-length
+# to tune here — the column means the same for every gene family.
+inventory:
+  # Special-case inventory entries. Use sparingly: each is a workaround
+  # for an inclusion-pattern miss. Surfaced by Checkpoint 1's after-pass
+  # review. Each entry must specify species, gene_id, gene_name,
+  # chromosome; the inventory fills in the rest.
+  manual_additions: []
+    # - species: Carassius_auratus
+    #   gene_id: LOCxxxxxxxx
+    #   gene_name: LOCxxxxxxxx
+    #   chromosome: NC_039xxx.1
+    #   reason: "..."
+
+# ---------------------------------------------------------------------------
+# Chromosome overrides — unplaced scaffolds placed during curation
+#
+# Optional. Most gene sets need none. If curation reveals that a group
+# member sits on an unplaced scaffold whose homeolog-pair membership is
+# not derivable from the chromosome naming, record it here. Each entry
+# maps an assembly accession to [chromosome_label, subgenome,
+# homeolog_pair]. These are gene-set-specific (they depend on where
+# your members sit), which is why they live here and not in
+# genome_config.yaml. See config/caspase_example.yaml for worked entries.
+# ---------------------------------------------------------------------------
+chromosome_overrides: {}
+  # Cyprinus_carpio:
+  #   NW_0xxxxxxxx.1: ["unplaced", "unplaced", 5]
+  # Carassius_auratus:
+  #   NW_0xxxxxxxx.1: ["unplaced", "B", 23]
+
+# ---------------------------------------------------------------------------
+# Stage 5: visualization parameters
+# ---------------------------------------------------------------------------
+visualization:
+  # Five-category colour scheme. The defaults below are reasonable for
+  # any gene set; override only if you have a reason to.
+  colors:
+    confident: "#2E7D32"
+    worth_reviewing: "#F9A825"
+    annotation_concern: "#D84315"
+    assembly_concern: "#1565C0"
+    missing: "#C62828"
+
+  markers:
+    confident:           {marker: "^", size: 55}
+    worth_reviewing:     {marker: "^", size: 55}
+    annotation_concern:  {marker: "^", size: 55}
+    assembly_concern:    {marker: "s", size: 50}
+    missing:             {marker: "D", size: 45, filled: false, linewidth: 1.5}
+
+  # Display labels per homeolog pair in figures. Defaults to
+  # classification.pair_expected if omitted; specify here if you want
+  # shorter labels.
+  pair_labels: {}
+
+  # Functional categories for the hierarchy explorer (Layer 3).
+  # Each category must match the `category` field used in the
+  # curation-data JSON. Colors default to a built-in palette if
+  # omitted. Add a description to appear under the column heading.
+  categories:
+    - key: category1
+      label: "Category 1"
+      color: "#4a7c59"
+      description: "Description of this functional category."
+    - key: category2
+      label: "Category 2"
+      color: "#4682b4"
+      description: "Description of this functional category."
+
+  # Known missing genes per species, populated from the empty-slots
+  # deep dive (playbook Checkpoint 3). One entry per missing slot.
+  known_missing:
+    Cyprinus_carpio: []
+    Carassius_gibelio: []
+    Carassius_auratus: []

@@ -1,0 +1,12 @@
+# Core runtime — everything needed to regenerate the gene inventory and
+# synteny extraction from local GFF + protein FASTA inputs (Stages 2–3d).
+# This is all a reviewer needs to reproduce the worked example.
+#
+# pandas is pinned to the version verified to reproduce the reported
+# caspase results (the independent reproduction ran on pandas 2.3.3).
+# Confirm against your own environment with:
+#   pip freeze | grep -iE "pandas|pyyaml"
+#
+# For the optional NCBI download fallback, install requirements-full.txt.
+pandas==2.3.3
+pyyaml>=6.0,<7

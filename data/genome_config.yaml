@@ -1,0 +1,144 @@
+# Project-level genome configuration.
+#
+# Describes the carp Cs4R polyploid genomes the tool works on, the
+# diploid comparators, and how to map chromosome accessions to A/B
+# subgenome / homeolog-pair labels. This file is loaded by every
+# pipeline script.
+#
+# This does NOT change between gene-set applications. New users
+# applying the workflow to a different gene family normally do not
+# touch this file; they edit only their `config/<gene_set>.yaml`.
+#
+# To change the species set (e.g. add a new diploid comparator, swap
+# an assembly), edit this file and re-run from Stage 1.
+#
+# Reference: config/SCHEMA.md (section "Project-level genome config").
+
+# ---------------------------------------------------------------------------
+# Species
+# ---------------------------------------------------------------------------
+species:
+  - short_code: Cgib
+    full_name: Carassius_gibelio
+    common_name: "Prussian carp"
+    assembly: GCF_023724105.1
+    assembly_name: carGib1.2-hapl.c   # FTP directory suffix (used to build download URLs)
+    ploidy: tetraploid
+    role: core
+    has_explicit_ab_labels: true       # chromosome names carry A1/B1 etc.
+    chromosome_rule: explicit_ab       # read A1/B1 labels from the annotation
+    taxon_id: 101364                   # NCBI taxon; guards against wrong-folder files
+
+  - short_code: Ccar
+    full_name: Cyprinus_carpio
+    common_name: "Common carp"
+    assembly: GCF_018340385.1
+    assembly_name: ASM1834038v1
+    ploidy: tetraploid
+    role: core
+    has_explicit_ab_labels: true
+    chromosome_rule: explicit_ab
+    taxon_id: 7962
+
+  - short_code: Caur
+    full_name: Carassius_auratus
+    common_name: "Goldfish"
+    assembly: GCF_003368295.1
+    assembly_name: ASM336829v1
+    ploidy: tetraploid
+    role: core
+    has_explicit_ab_labels: false      # chromosomes numbered 1-50; no A/B
+    chromosome_rule: from_lookup_file  # A/B not in annotation; use the lookup
+    taxon_id: 7957
+    # Lookup file produced by scripts/build_subgenome_lookup.py
+    subgenome_lookup: config/goldfish_subgenome_lookup.tsv
+
+  - short_code: Drer
+    full_name: Danio_rerio
+    common_name: "Zebrafish"
+    assembly: GCF_049306965.1
+    assembly_name: GRCz12tu
+    ploidy: diploid
+    role: primary_comparator           # ancestral-state proxy
+    chromosome_rule: diploid           # each numbered chromosome is its own pair
+    taxon_id: 7955
+
+  - short_code: Ptet
+    full_name: Puntigrus_tetrazona
+    common_name: "Tiger barb"
+    assembly: GCF_018831695.1
+    assembly_name: null                # fill in to enable download (e.g. from the NCBI assembly page)
+    ploidy: diploid
+    role: secondary_comparator         # consulted only on demand
+    chromosome_rule: diploid
+    taxon_id: null                     # fill in to enable the wrong-folder guard
+
+  - short_code: Cide
+    full_name: Ctenopharyngodon_idella
+    common_name: "Grass carp"
+    assembly: GCF_019924925.1
+    assembly_name: null                # fill in to enable download (e.g. from the NCBI assembly page)
+    ploidy: diploid
+    role: secondary_comparator
+    chromosome_rule: diploid
+    taxon_id: null
+
+# ---------------------------------------------------------------------------
+# Anchor species
+#
+# The species whose curation is built first; other carps are compared
+# against it. Choice is based on assembly quality (see
+# results/identification/genome_assembly_comparison.tsv). Can be
+# changed if a stronger assembly becomes available.
+# ---------------------------------------------------------------------------
+anchor: Cgib
+
+# ---------------------------------------------------------------------------
+# Chromosome accession → (label, subgenome, homeolog_pair)
+#
+# The mapping is read from each species' annotation, NOT from a
+# hand-maintained accession table here. Every NCBI GFF declares, on each
+# chromosome's `region` feature, a `chromosome=` attribute (e.g.
+# `chromosome=A1`, `chromosome=12`). The per-species `chromosome_rule`
+# above says how to interpret it:
+#
+#   explicit_ab      A1/B1-style names -> (label, A|B, pair number)
+#                    (Cyprinus_carpio, Carassius_gibelio)
+#   diploid          numbered chromosomes, each its own pair
+#                    (Danio_rerio and any added comparator)
+#   from_lookup_file annotation lacks A/B labels; map via the
+#                    subgenome_lookup TSV (Carassius_auratus)
+#
+# Because the labels come from the file, a new assembly *version* of any
+# species works with no edit here — drop its GFF into
+# data/annotations/<species>/ and re-run. The scan is cached next to the
+# GFF and rebuilds automatically when the file changes. See
+# scripts/_config.py:derive_chromosome_mappings and config/SCHEMA.md.
+#
+# A small `overrides` table handles unplaced scaffolds with known
+# locus assignments (typically discovered during curation).
+# ---------------------------------------------------------------------------
+chromosome_mappings:
+  # Genome-level chromosome overrides (rare). Use this only for
+  # corrections that hold for the assembly regardless of which gene
+  # set is being studied. Each entry would map an accession to
+  # (chromosome_label, subgenome, homeolog_pair).
+  #
+  # Unplaced-scaffold assignments *discovered during a curation* are
+  # specific to where one gene set's members sit, so they belong in
+  # that gene set's config under `chromosome_overrides` — not here.
+  # See config/SCHEMA.md and the worked example in
+  # config/caspase_example.yaml.
+  overrides: {}
+
+# ---------------------------------------------------------------------------
+# Subgenome lookup (conditional procedure, Stage 3a)
+#
+# Used by scripts/build_subgenome_lookup.py when a tetraploid species
+# lacks A/B labels (currently: Caur). The alignment file maps
+# chromosomes in target_species to chromosomes in reference_species.
+# ---------------------------------------------------------------------------
+subgenome_lookup:
+  target_species: Carassius_auratus
+  reference_species: Carassius_gibelio
+  alignment_file: data/alignments/genome_to_genome/GCF_003368295.1-GCF_023724105.1.gff

@@ -1,0 +1,256 @@
+# Caspase worked example — gene-set configuration.
+#
+# This is the actual config that drives the caspase analysis. It is
+# both the source of truth for reproducing the worked example and a
+# reference for new users adapting `template.yaml` to their own gene
+# set.
+#
+# Schema: see config/SCHEMA.md
+# Genome architecture (species, chromosome mappings): see
+#   data/genome_config.yaml
+
+gene_set:
+  name: caspase
+  display_name: "Caspase family"
+
+# ---------------------------------------------------------------------------
+# Stage 2: identify gene-set members from GFF annotations
+# ---------------------------------------------------------------------------
+identification:
+  inclusion:
+    # Match against the gene Name field (e.g. "casp3", "casp6b.1")
+    name_patterns:
+      - '^casp[0-9]+[a-z]?(?:\.[0-9]+)?$'      # casp3, casp3a, casp6b.1
+      - '^casp[0-9]+l[0-9]+$'                  # casp8l1 (caspase-like)
+      - '^casp[a-z]+$'                         # caspa, caspb, caspbl
+    # Match against description / mRNA product fields (catches LOC genes
+    # whose name doesn't contain "casp" but whose product does)
+    description_keywords:
+      - caspase
+
+  exclusion:
+    # If a gene matches inclusion but its name is in this list, exclude.
+    gene_names:
+      - casp8ap2    # caspase-8-associated protein 2; CARD-domain protein
+      - caap1       # caspase-activated protein 1; substrate, not a caspase
+
+    # If a gene matches inclusion but its description matches any of these
+    # substrings (case-insensitive), exclude.
+    description_patterns:
+      - recruitment domain     # CARD-domain proteins (CARD9 etc.)
+      - associated             # caspase-associated proteins
+      - interacting            # caspase-interacting proteins
+      - paracaspase            # MALT1 etc.
+      - inhibitor              # caspase inhibitors
+      - caspase-activated      # e.g. dffb (caspase-activated DNase)
+      - activated by caspase   # caspase substrates
+
+# ---------------------------------------------------------------------------
+# Stage 3c: classify each gene into a canonical type
+# ---------------------------------------------------------------------------
+classification:
+  # Ordered list. First match wins. Each rule checks whether any of
+  # its `matches` strings appears (case-insensitive) in
+  # "<gene_name> <description>".
+  #
+  # Order is significant: more specific types must come before more
+  # general types (e.g. casp22 before casp2; casp8l1 before casp8).
+  type_rules:
+    - type: casp22
+      matches: [casp22]
+    - type: casp23
+      matches: [casp23]
+    - type: casp21
+      matches: [casp21]
+    - type: casp20
+      matches: [casp20]
+    - type: casp17
+      matches: [casp17]
+    - type: casp10
+      matches: [casp10]
+    - type: casp9
+      matches: [casp9, "caspase-9", "caspase 9"]
+    - type: casp8l1
+      matches:
+        - casp8l1
+        - "caspase 8, apoptosis-related cysteine peptidase, like 1"
+    - type: casp8
+      matches: [casp8, "caspase-8", "caspase 8"]
+    - type: casp7
+      matches: [casp7, "caspase-7", "caspase 7"]
+    - type: casp6
+      matches: [casp6, "caspase-6", "caspase 6"]
+    - type: casp3b
+      matches: [casp3b]
+    - type: casp3a
+      matches: [casp3a]
+    - type: casp3
+      matches: [casp3, "caspase-3", "caspase 3"]
+    - type: casp2
+      matches: [casp2, "caspase-2", "caspase 2"]
+    # In fish nomenclature, casp1 = caspa. Carp annotations sometimes
+    # use casp1; map it to caspa here (early, before the caspb rules,
+    # to avoid the substring "caspa" matching "caspase b").
+    - type: caspa
+      matches: [casp1, "caspase-1", "caspase 1"]
+    - type: caspbl
+      matches: [caspbl]
+    - type: caspb
+      matches: [caspb, "caspase b", "caspase-b"]
+    # Second caspa rule: matches the "caspa" / "caspase a" forms.
+    # Must come AFTER caspbl/caspb because "caspa" is a substring of
+    # "caspase b" (both start with c-a-s-p-a-).
+    - type: caspa
+      matches: [caspa, "caspase a", "caspase-a"]
+
+  # Homeolog pairs where this gene set is found (from the zebrafish
+  # comparator). Used to filter inventory rows and drive the
+  # visualization's per-pair layout.
+  homeolog_pairs: [1, 3, 5, 6, 7, 9, 10, 12, 14, 16, 21, 23]
+
+  # Expected type at each pair, per zebrafish. Used only as the default
+  # source for the visualization's per-pair labels. (No longer an
+  # inventory column — removed 2026-06-11; see docs/harness_issues.md §G.)
+  pair_expected:
+    1:  "casp3a/caspb"
+    3:  "casp6"
+    5:  "casp22"
+    6:  "casp8"
+    7:  "casp23/caspa"
+    9:  "casp10"
+    10: "casp3/casp7 (exec cluster)"
+    12: "casp7"
+    14: "casp3b"
+    16: "caspa/casp2"
+    21: "casp21"
+    23: "casp9"
+
+  # Known confusion patterns surfaced by curation. Used to set
+  # annotation-confidence flags and to flag inventory rows. Each entry's
+  # `confidence_effect` (low | medium | none) controls how a matching
+  # gene's identity confidence is set: `low` forces low confidence and
+  # blocks the high-confidence upgrade for cleanly-named genes; `medium`
+  # caps confidence at medium; `none` records the reason without lowering
+  # confidence (a legitimate divergence). The entry key names are free
+  # labels — the behaviour comes from `confidence_effect`, not the name.
+  confusion_pairs:
+    executioner:
+      pairs: [10, 14, 21]
+      affected_types: [casp3, casp7, casp3b]
+      confidence_effect: low
+      reason: "exec caspase confusion locus (casp3/casp7 interchangeable)"
+    cross_species:
+      pairs: [9]
+      affected_types: [casp8, casp10]
+      confidence_effect: medium
+      reason: "casp8/casp10 cross-species annotation inconsistency"
+    subfunctionalization:
+      pairs: [7]
+      affected_types: [casp23, caspa]
+      confidence_effect: none
+      reason: "pair 7: conserved A=casp23/B=caspa divergence (likely subfunctionalization)"
+
+# ---------------------------------------------------------------------------
+# Stage 3c: inventory special cases
+# ---------------------------------------------------------------------------
+# Note: model-quality flags are read from NCBI's own annotation signals
+# (gene_biotype, partial, exception, LOW QUALITY PROTEIN) — there is no
+# length-threshold tuning. (The former length_thresholds field was removed
+# 2026-06-12; see docs/harness_issues.md §G.)
+inventory:
+  # Special-case entries to add to the inventory beyond what the
+  # inclusion patterns find. Surfaced by Checkpoint 1's after-pass
+  # review (false-negative check). See template.yaml / SCHEMA.md for the
+  # field syntax.
+  #
+  # Empty for caspase: the one entry this example used to carry (goldfish
+  # LOC113053832) is a pseudogene, and since pseudogene features are now
+  # collected (2026-06-12) it is found directly by the inclusion patterns
+  # — a manual addition would only duplicate it.
+  manual_additions: []
+
+# ---------------------------------------------------------------------------
+# Chromosome overrides — unplaced scaffolds placed during curation
+#
+# Each entry maps an assembly accession to [chromosome_label,
+# subgenome, homeolog_pair]. These were discovered while curating the
+# caspase family: caspase genes sit on these unplaced scaffolds, whose
+# homeolog-pair membership is not derivable from the chromosome
+# naming. They live here (not in genome_config.yaml) because they are
+# specific to this gene set's members. Append new cases as curation
+# surfaces them.
+# ---------------------------------------------------------------------------
+chromosome_overrides:
+  Cyprinus_carpio:
+    NW_024879254.1: ["unplaced", "unplaced", 5]   # casp22
+  Carassius_auratus:
+    NW_020523286.1: ["unplaced", "B", 23]         # casp9
+    NW_020525115.1: ["unplaced", "A", 12]         # casp7 (LOC113076928)
+
+# ---------------------------------------------------------------------------
+# Stage 5: visualization parameters
+# ---------------------------------------------------------------------------
+visualization:
+  # 5-category colour scheme. Same scheme is reasonable for any gene set
+  # but is exposed here in case a user wants different colours.
+  colors:
+    confident: "#2E7D32"           # dark green
+    worth_reviewing: "#F9A825"     # amber
+    annotation_concern: "#D84315"  # red-orange
+    assembly_concern: "#1565C0"    # steel blue
+    missing: "#C62828"             # red (outline marker)
+
+  # Marker styles per category. Triangle for genes, square for assembly
+  # concern, open diamond for missing.
+  markers:
+    confident:           {marker: "^", size: 55}
+    worth_reviewing:     {marker: "^", size: 55}
+    annotation_concern:  {marker: "^", size: 55}
+    assembly_concern:    {marker: "s", size: 50}
+    missing:             {marker: "D", size: 45, filled: false, linewidth: 1.5}
+
+  # Per-pair display labels for figures. If omitted, defaults to
+  # classification.pair_expected.
+  pair_labels:
+    1:  "casp3a / caspb"
+    3:  "casp6"
+    5:  "casp22"
+    6:  "casp8"
+    7:  "casp23 / caspa"
+    9:  "casp10"
+    10: "casp3 / casp7"
+    12: "casp7"
+    14: "casp3b"
+    16: "caspa / casp2"
+    21: "casp21"
+    23: "casp9"
+
+  # Functional categories for the hierarchy explorer Layer 3.
+  categories:
+    - key: executioner
+      label: Executioner
+      color: "#4a7c59"
+      description: "Caspases that cleave structural proteins during apoptosis (casp3, casp6, casp7)."
+    - key: initiator
+      label: Initiator
+      color: "#4682b4"
+      description: "Upstream apoptosis activators with long prodomains (casp2, casp8, casp9, casp10)."
+    - key: inflammatory
+      label: Inflammatory
+      color: "#b5651d"
+      description: "Innate-immunity caspases including fish-specific lineages (caspa, casp21, casp22, casp23, caspb)."
+
+  # Post-curation known missing genes, per species. Drawn as red outline
+  # diamonds at the expected position. Populated from the empty-slots
+  # deep dive (playbook Checkpoint 3 surfaces these).
+  known_missing:
+    Cyprinus_carpio:
+      - {subgenome: A, pair: 5, label: "casp22 (absent)"}
+    Carassius_gibelio:
+      - {subgenome: A, pair: 5,  label: "casp22 (absent)"}
+      - {subgenome: A, pair: 9,  label: "no caspase found"}
+      - {subgenome: B, pair: 21, label: "casp21 (absent)"}
+    Carassius_auratus:
+      - {subgenome: A, pair: 5,  label: "casp22 (absent)"}
+      - {subgenome: A, pair: 14, label: "no caspase found"}
+      - {subgenome: B, pair: 21, label: "casp21 (absent)"}

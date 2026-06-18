@@ -1,0 +1,8 @@
+# Full environment = core + optional extras. Install with:
+#   pip install -r requirements-full.txt
+-r requirements.txt
+
+# NCBI download fallback (scripts/download_sequences.py) — only needed if
+# the preferred local protein-FASTA path (extract_sequences.py) is not used.
+biopython>=1.80
+requests>=2.28.0

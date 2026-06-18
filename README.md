@@ -1,0 +1,80 @@
+# HV_Harness
+
+A human-AI workflow for exploring gene annotation files in allopolyploid genomes.
+
+## What this is
+
+HV_Harness is a structured collaboration protocol — a playbook plus supporting scripts — that lets a biology-literate researcher work with an AI assistant to produce a synteny-grounded inventory and visualization of any group of genes in the cyprinid Cs4R allopolyploid genomes (common carp, Prussian carp, goldfish), using only publicly available annotation files.
+
+The researcher supplies domain expertise at specific decision points. The AI handles the mechanical operations: parsing GFF annotation files, extracting flanking-gene neighbourhoods, matching protein motifs, and generating outputs. The result is a per-pair curation document and an interactive hierarchy explorer that organizes the gene inventory by homoeologous slot.
+
+The workflow was developed and validated on the caspase gene family. See `examples/caspase_in_carp/` for a pointer to the full worked example.
+
+## What you will produce
+
+An **interactive hierarchy explorer** organizing the curated inventory by homoeologous slot. Its first layer is a chromosome map showing all annotated members of your gene group across all four species; deeper layers add per-pair calls and per-gene detail, with confidence and quality annotation throughout.
+
+## Where to start
+
+Read `docs/curation_playbook.md`. It describes the procedure, the governing principles, and the five conversational checkpoints where the researcher's expertise guides the analysis. It is written to be handed to an AI assistant alongside your data inputs.
+
+## Repository structure
+
+```
+HV_Harness/
+├── GETTING_STARTED.md              ← setup + how to fetch the genome inputs
+├── docs/
+│   ├── curation_playbook.md        ← start here (the methodology)
+│   ├── workflow.md                 ← pipeline stage overview
+│   ├── quick_start.md              ← user-session entry script
+│   └── data_provenance.md          ← worked-example provenance
+├── scripts/                        ← generic pipeline scripts
+│   ├── MANIFEST.md                 ← per-script reference
+│   ├── _config.py                  ← shared config + chromosome-mapping loader
+│   ├── check_env.py                ← environment check (run first)
+│   ├── download_genome_files.py    ← Stage 1: GFF + protein FASTA per species
+│   ├── identify_gene_set.py        ← Stage 2: extract genes from GFF
+│   ├── extract_sequences.py        ← Stage 2: protein FASTAs (local, preferred)
+│   ├── download_sequences.py       ← Stage 2: protein FASTAs (NCBI fallback)
+│   ├── clean_sequences.py          ← Stage 2: dedup / QC
+│   ├── build_subgenome_lookup.py   ← conditional: assign A/B by alignment
+│   ├── build_gene_inventory.py     ← Stage 3c: one-row-per-gene inventory
+│   ├── extract_synteny.py          ← Stage 3d: flanking-gene neighbourhoods
+│   └── build_hierarchy_explorer.py  ← Stage 5: interactive HTML explorer
+├── config/
+│   ├── template.yaml               ← annotated template for a new gene set
+│   ├── SCHEMA.md                   ← full config field documentation
+│   ├── caspase_example.yaml        ← the config used for the worked example
+│   └── goldfish_subgenome_lookup.tsv  ← pre-built goldfish A/B labels
+├── data/
+│   ├── genome_config.yaml          ← species list + chromosome-mapping rules
+│   └── annotations/                ← downloaded GFF + protein FASTA (gitignored)
+├── examples/
+│   └── caspase_in_carp/            ← pointer to the full caspase worked example
+├── tests/                          ← fixture tests for pipeline invariants
+├── species_info.txt                ← genome accessions for the four focal species
+└── requirements.txt
+```
+
+## Applying this to a new gene group
+
+First-time setup (once): with **Python 3.10+**, run `pip install -r requirements.txt`, then `python scripts/check_env.py` to confirm the environment. See `GETTING_STARTED.md` for details. Then:
+
+1. Read `docs/curation_playbook.md` section 0 to understand the procedure and its scope.
+2. Copy `config/template.yaml` to `config/<your_gene_set>.yaml` and fill it in (Checkpoint 1 in the playbook walks you through this with an AI assistant).
+3. Run the pipeline stages described in `docs/workflow.md`, using your config.
+4. Follow the playbook's per-pair curation procedure with an AI assistant.
+5. Generate the outputs using `build_hierarchy_explorer.py`.
+
+## Scope
+
+This workflow is designed for:
+- Allopolyploid (Cs4R) cyprinid genomes with chromosome-level assemblies
+- Publicly available NCBI-style annotations (GFF + protein FASTA)
+- Any group of genes a researcher wants to organize and visualize — formal gene families, functional categories, or custom lists
+
+It is not designed for diploid genomes, scaffold-only assemblies, or automated classification without human curation.
+
+## Worked example
+
+The caspase gene family in *Carassius gibelio* (Prussian carp) is the validation case. Outputs and the full curation record are in the companion project `Caspase-Char/`. See `examples/caspase_in_carp/README.md` for a guide to those files.
