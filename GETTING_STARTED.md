@@ -5,6 +5,10 @@ annotated allotetraploid carp genomes. You work alongside an AI
 assistant — it handles the mechanical steps while you apply domain
 judgment at structured decision points.
 
+For what the project is and what you'll produce, see `README.md`. This
+guide is the hands-on part: setting up the tools, fetching the genome
+inputs, and starting your first session.
+
 ---
 
 ## What you need before starting

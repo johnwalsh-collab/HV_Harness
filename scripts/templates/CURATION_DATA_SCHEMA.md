@@ -100,7 +100,6 @@ any `status` outside this set and any `A_loss`/`B_loss` outside
 so a mistyped or unsupported value fails the build instead of silently
 miscounting (the Run F3 / audit-#4 failure mode). Earlier drafts listed
 `check` / `suspect`; those are **not** accepted — use `candidate_nonfunctional`.
-(See `docs/harness_issues.md` Run F3 and §I follow-ups.)
 
 ## How this is produced
 

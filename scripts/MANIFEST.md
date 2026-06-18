@@ -58,13 +58,3 @@ Not always run; invoked when the genome architecture requires.
 - **`templates/CURATION_DATA_SCHEMA.md`** — the schema for the JSON
   consumed by `build_hierarchy_explorer.py`.
 
-## archive/
-
-Earlier-stage scripts kept for reference but not part of the current
-pipeline. Their outputs are superseded by the canonical artefacts
-above.
-
-- `analyze_subgenomes.py`
-- `organize_by_chromosome.py`
-- `visualize_carp_vs_zebrafish.py`
-- `visualize_subgenomes.py`

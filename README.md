@@ -6,17 +6,19 @@ A human-AI workflow for exploring gene annotation files in allopolyploid genomes
 
 HV_Harness is a structured collaboration protocol — a playbook plus supporting scripts — that lets a biology-literate researcher work with an AI assistant to produce a synteny-grounded inventory and visualization of any group of genes in the cyprinid Cs4R allopolyploid genomes (common carp, Prussian carp, goldfish), using only publicly available annotation files.
 
-The researcher supplies domain expertise at specific decision points. The AI handles the mechanical operations: parsing GFF annotation files, extracting flanking-gene neighbourhoods, matching protein motifs, and generating outputs. The result is a per-pair curation document and an interactive hierarchy explorer that organizes the gene inventory by homoeologous slot.
+The researcher supplies domain expertise at specific decision points. The AI handles the mechanical operations: parsing GFF annotation files, extracting flanking-gene neighbourhoods, matching protein motifs, and generating outputs. The result is a per-pair curation document and an interactive hierarchy explorer that organizes the gene inventory by homeologous slot.
 
 The workflow was developed and validated on the caspase gene family. See `examples/caspase_in_carp/` for a pointer to the full worked example.
 
 ## What you will produce
 
-An **interactive hierarchy explorer** organizing the curated inventory by homoeologous slot. Its first layer is a chromosome map showing all annotated members of your gene group across all four species; deeper layers add per-pair calls and per-gene detail, with confidence and quality annotation throughout.
+An **interactive hierarchy explorer** organizing the curated inventory by homeologous slot. Its first layer is a chromosome map showing all annotated members of your gene group across all four species; deeper layers add per-pair calls and per-gene detail, with confidence and quality annotation throughout.
 
 ## Where to start
 
-Read `docs/curation_playbook.md`. It describes the procedure, the governing principles, and the five conversational checkpoints where the researcher's expertise guides the analysis. It is written to be handed to an AI assistant alongside your data inputs.
+New here? Use `GETTING_STARTED.md` first — it covers installing the tools and fetching the genome inputs. For the methodology, read `docs/curation_playbook.md`: the procedure, the governing principles, and the five conversational checkpoints where the researcher's expertise guides the analysis. When you begin a working session, your AI assistant follows `docs/quick_start.md`, the session entry script.
+
+In short: this README is orientation, `GETTING_STARTED.md` is the practical setup-and-first-run guide, the playbook is the methodology, and `quick_start.md` is what the assistant runs each session.
 
 ## Repository structure
 

@@ -122,8 +122,7 @@ classification:
 
   # Expected type at each homeolog pair, per the diploid comparator.
   # Used as the default source for visualization pair labels (figure
-  # legends). No longer feeds an inventory column (removed 2026-06-11;
-  # see docs/harness_issues.md §G).
+  # legends). No longer feeds an inventory column (removed 2026-06-11).
   pair_expected:
     1:  "casp3a/caspb"
     3:  "casp6"
@@ -176,7 +175,7 @@ Model-quality flags are read from NCBI's own annotation signals
 (`gene_biotype`, `partial`, `exception`, and the protein FASTA's
 `LOW QUALITY PROTEIN` prefix), so there are no per-family length
 thresholds to set. (The former `length_thresholds` field was removed
-2026-06-12; see `docs/harness_issues.md` §G.)
+2026-06-12.)
 
 ```yaml
 inventory:
@@ -386,7 +385,7 @@ mapping raises a clear error rather than silently labelling every gene
    `classification.pair_expected` now serves only as the default source
    for `visualization.pair_labels` (figure legends). With the labels as
    its only consumer, the two could be consolidated into a single
-   `pair_labels` field; kept separate for now. See harness_issues.md §G.
+   `pair_labels` field; kept separate for now.
 5. **YAML format vs JSON or TOML?** YAML is the most readable for the
    kinds of nested structure here. The cost is one Python dependency
    (`pyyaml`) added to `requirements.txt`. JSON has no extra

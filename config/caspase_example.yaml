@@ -110,7 +110,7 @@ classification:
 
   # Expected type at each pair, per zebrafish. Used only as the default
   # source for the visualization's per-pair labels. (No longer an
-  # inventory column — removed 2026-06-11; see docs/harness_issues.md §G.)
+  # inventory column — removed 2026-06-11.)
   pair_expected:
     1:  "casp3a/caspb"
     3:  "casp6"
@@ -156,7 +156,7 @@ classification:
 # Note: model-quality flags are read from NCBI's own annotation signals
 # (gene_biotype, partial, exception, LOW QUALITY PROTEIN) — there is no
 # length-threshold tuning. (The former length_thresholds field was removed
-# 2026-06-12; see docs/harness_issues.md §G.)
+# 2026-06-12.)
 inventory:
   # Special-case entries to add to the inventory beyond what the
   # inclusion patterns find. Surfaced by Checkpoint 1's after-pass
