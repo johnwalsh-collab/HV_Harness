@@ -133,6 +133,19 @@ classification:
   # caps confidence at medium; `none` records the reason without lowering
   # confidence (a legitimate divergence). The entry key names are free
   # labels — the behaviour comes from `confidence_effect`, not the name.
+  #
+  # PROVENANCE — these entries are curator-supplied PRIORS, not agent
+  # findings. They encode naming/identity confusions learned over prior
+  # study of the caspase family (the Caspase-Char curation) and are handed
+  # to the agent before the run, so the harness applies them consistently.
+  # The resulting identity-confidence flags (e.g. the executioner cluster's
+  # `low`) are therefore an *applied prior*, NOT something the agent
+  # independently derived — and are distinct from the synteny-driven
+  # ambiguity flag at the same cluster (playbook §5.4.3), which any gene set
+  # surfaces with no encoded knowledge. A fresh gene set ships with
+  # `confusion_pairs: {}` (see template.yaml) and gets none of this until a
+  # curator encodes its own. Recorded in docs/data_provenance.md under
+  # "Encoded priors".
   confusion_pairs:
     executioner:
       pairs: [10, 14, 21]

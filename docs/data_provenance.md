@@ -1,10 +1,11 @@
 # Data provenance — worked example
 
 This file records the genome data used for the caspase worked example:
-which assemblies were used, how subgenome identity was assigned, and
-how the inputs were obtained. It exists so the worked example is
-reproducible and so the paper's Methods can cite a single source of
-truth.
+which assemblies were used, how subgenome identity was assigned, how
+the inputs were obtained, and which curatorial priors were encoded into
+the config (so the paper can separate what the harness *derived* from
+what it was *given*). It exists so the worked example is reproducible
+and so the paper's Methods can cite a single source of truth.
 
 A new user applying the workflow to a different gene group does not
 edit this file for their own provenance — they keep their own record.
@@ -147,3 +148,48 @@ dominant (S 97.7% / D 1.3%), exactly as expected.
 > `data/annotations/Danio_rerio/`, and — unlike GRCz11 — it is current
 > and re-downloadable by accession, so the zebrafish input no longer
 > forces the §D deposit decision.
+
+---
+
+## Encoded priors (curator-supplied config knowledge)
+
+Not everything the worked example reports is derived by the agent during
+the run. Some of it is curator knowledge encoded into
+`config/caspase_example.yaml` *before* the run and then applied
+consistently by the harness. For the worked example to be read correctly —
+and for the manuscript to separate what the harness *derived* from what it
+was *given* — these supplied priors are recorded here.
+
+| Config field | What it encodes | Supplied or derived |
+|---|---|---|
+| inclusion / search terms | Which gene names and patterns define the family | Supplied (Checkpoint 1) |
+| `classification.pair_labels` | Expected ancestral identity per homeolog pair | Supplied |
+| `classification.confusion_pairs` | Known naming/identity confusions and their confidence effect | **Supplied prior** — see below |
+| `chromosome_overrides` | Unplaced-scaffold placements for specific members | Supplied |
+| `manual_additions` | Members missed by the inclusion patterns (currently empty) | Supplied |
+
+The `confusion_pairs` block is the one most easily mistaken for an agent
+finding. It encodes confusions learned over prior study of the caspase
+family (the Caspase-Char curation) — chiefly the executioner cluster,
+where casp3/casp7 naming is effectively interchangeable — and sets the
+identity-confidence flag accordingly: `executioner` → `low` on pairs
+10/14/21; `cross_species` (casp8/casp10) → `medium` on pair 9;
+`subfunctionalization` (casp23/caspa) → `none` on pair 7 (recorded but not
+downgraded). When the worked example shows low identity confidence on the
+executioner cluster, that is an **applied prior**, not an independent agent
+inference.
+
+This is distinct from the *synteny-driven ambiguity flag* at the same
+cluster (1:1 A/B pairing unresolved; playbook §5.4.3), which the harness
+surfaces from cluster structure alone, on any gene set, with no encoded
+knowledge. The two coincide at pair 10 but are different mechanisms: the
+ambiguity flag is emergent and reportable as harness behaviour; the
+confidence downgrade is curator-supplied. The manuscript should attribute
+them accordingly.
+
+A new gene set starts from `template.yaml` with `confusion_pairs: {}` and
+receives none of this until its own curator encodes equivalent knowledge.
+That ability — accumulated curatorial judgment captured in an inspectable,
+reproducible form — is itself a feature of the workflow, not a caspase-only
+special case; it just has to be declared (as here) so supplied priors are
+never read as run-derived findings.
