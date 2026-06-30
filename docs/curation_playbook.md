@@ -414,8 +414,8 @@ common carp corresponds to zebrafish chromosome 7, and so on. This
 makes syntenic comparison straightforward.
 
 The Cs4R event has been studied extensively in the carp lineage
-using zebrafish as the comparison. Treating zebrafish as the
-ancestral reference is the convention in the field.
+using zebrafish as the comparison. Treating zebrafish as a proxy
+for the ancestral state is the convention in the field.
 
 Using zebrafish as comparator is a *pragmatic shortcut*. It is not
 formal phylogenetic reconstruction. The assumption is that
@@ -426,6 +426,10 @@ change at the locus (loss, duplication, relocation). Section 4.2
 and the conversation at Checkpoint 2 (section 5.1) are where the
 curator decides whether to trust the zebrafish state at a
 particular locus or cross-check it.
+
+Zebrafish is a comparator that approximates the ancestral state,
+never an ancestor of the carp genes; section 4.2 states what this
+comparison does and does not claim.
 
 ### 2.3 Secondary diploid cyprinids for cross-check
 
@@ -921,6 +925,17 @@ species). The Checkpoint 2 conversation (section 5.1) is the
 natural place for the curator to flag such cases when reviewing
 the gene list, before per-pair curation begins.
 
+**A note on direction.** Zebrafish is a comparator that
+*approximates* the pre-hybridization state at a locus; it is not an
+ancestor of the carp genes, and the carp homeologs do not descend
+from the zebrafish paralogues. Whether a carp cluster and a
+zebrafish cluster are related by a particular gene-tree topology —
+which carp copy is closest to which zebrafish paralogue — is a
+phylogenetic question this curation does not address and must not
+assert. The zebrafish locus supplies the syntenic *reference
+framework* (which slots to expect, and where); it does not supply a
+line of descent.
+
 ### 4.3 Standard of evidence — annotation-level only
 
 The procedure makes annotation-level claims. It does not run
@@ -1104,8 +1119,8 @@ Second, the focal species for the curation. The inventory spans
 every carp genome present in the repo, but everything from here on
 — the per-pair curation, the empty-slots deep dive, and the
 visualization — is always about **one** focal species: its A and B
-subgenomes curated against the zebrafish ancestral reference, with
-the other carp genomes consulted only as supporting evidence (for
+subgenomes curated against the zebrafish comparator (section 2.2),
+with the other carp genomes consulted only as supporting evidence (for
 example, whether an empty slot is also empty in the other carps).
 This choice belongs to the curator and must be made explicitly
 here. The workflow must not slide silently into whichever genome
@@ -1451,6 +1466,15 @@ the checkpoint applies to each flagged slot; the checkpoint adds the
 collaborative framing, the cross-species reasoning, and the
 comparator-availability gate around it.
 
+**Scope — whole-slot absences only.** A tandem cluster is a single
+slot (5.3.2). This loss assessment, and the Checkpoint 3 deep dive,
+apply to a slot that is empty on A or B — a locus-level absence.
+Differing paralogue counts within a cluster that is *present* on
+both subgenomes are *asymmetric retention* (5.4.3), not loss: the
+procedure cannot say which paralogue is missing, so the curator
+decides how to describe it, and the cluster is not decomposed into
+per-paralogue slots routed to Checkpoint 3.
+
 **Rule.** An empty A or B side at a slot is `absent` by default
 and upgraded only if the curator has actively searched the
 annotation in the syntenic region, established the syntenic
@@ -1656,6 +1680,19 @@ A and B copies sit at the same locus but the cluster has expanded
 differently. It does not apply to single-paralogue slots, which
 section 5.4.1 handles directly.
 
+**What the flag is and isn't for.** The ambiguity flag applies to
+the carp-to-carp homeolog pairing question only: when the A copies
+and the B copies within a cluster cannot be matched 1:1 by synteny.
+(Zebrafish paralogues with distinct names may still serve as
+*positional anchors* within the cluster — that is synteny, and it
+is in scope; protein sequence similarity is at most weak
+corroboration and never the primary basis for a pairing, per 4.1.)
+The flag is *not* for the carp-to-zebrafish question — which carp
+copy is phylogenetically closest to which zebrafish paralogue. That
+is gene-tree topology, always out of scope here (section 8), and it
+is never the basis for an ambiguity flag or a reduced-confidence
+call.
+
 **Procedure.**
 
 1. Confirm the slot type from substep 5.3.2. If the slot is a
@@ -1841,6 +1878,14 @@ syntenic locus?
 
 **Axis 2 — Identity confidence.** Do we know which paralogue
 identity (which ancestral group member) this gene should carry?
+
+This axis is about which named paralogue within a carp cluster the
+gene corresponds to, assessed relative to the other carp copies at
+the same locus and the zebrafish-defined slot framework. It is
+*not* about the phylogenetic relationship between the carp cluster
+and the zebrafish reference cluster — which carp copy is closest to
+which zebrafish paralogue is a gene-tree question logged to side
+projects (section 8), and it does not lower this axis.
 
 - *High* — the synteny-derived identity is unambiguous: the
   zebrafish locus carries one well-defined gene, the slot is a
@@ -2330,6 +2375,7 @@ Beyond the checkpoints, the AI should:
 - **Pace the curation.** At Checkpoint 2, agree on a sequencing plan. Work one or two homeolog pairs at a time. Moving through the full inventory in a single session produces a polished but un-interrogated document.
 - **Carry the baton — never stop silently.** Every turn that completes work ends with an explicit hand-off: what was just produced, what the next action is, and whose turn it is. The AI does not finish a turn by trailing off after an output and waiting to be prodded. This is the same principle as the checkpoint-initiation rule (7.1), generalised to *every* transition, not just the five checkpoints. The operational form is the hand-off banner (section 7.3); the underlying rule is that a produced output is a baton to be passed, visibly, not set down.
 - **Park tangents, don't chase them.** When the conversation drifts to a side topic, capture it in one line on the banner's **Parked** list, resolve or defer it, then return to the stated next action. A digression about an output must not become the silent end of the work.
+- **A cluster is one slot.** A tandem cluster occupies a single slot (5.3.2). Within-cluster paralogue absence is asymmetric retention for the curator to decide (5.4.3), not an empty slot — do not give an individual missing within-cluster paralogue a Checkpoint 3 loss flag. Checkpoint 3 is for locus-level (whole-slot) absences.
 
 ### 7.3 Hand-off and session state
 
