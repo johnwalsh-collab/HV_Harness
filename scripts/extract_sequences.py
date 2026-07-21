@@ -143,14 +143,14 @@ def main() -> None:
     add_unattended_arg(parser)
     args = parser.parse_args()
 
-    dirs = resolve_output_dirs(args.output_dir)
-    results_dir = dirs["identification"]
-    SEQUENCES_DIR = dirs["sequences"]
-    SEQUENCES_DIR.mkdir(parents=True, exist_ok=True)
-
     gs_cfg, genome_cfg, _ = load_configs(args.config)
     gene_set = gs_cfg["gene_set"]["name"]
     display_name = gs_cfg["gene_set"].get("display_name", gene_set)
+
+    dirs = resolve_output_dirs(args.output_dir, gene_set)
+    results_dir = dirs["identification"]
+    SEQUENCES_DIR = dirs["sequences"]
+    SEQUENCES_DIR.mkdir(parents=True, exist_ok=True)
 
     print("=" * 70)
     print(f"Extracting {display_name} protein sequences from local FASTAs")

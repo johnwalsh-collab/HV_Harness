@@ -21,11 +21,11 @@ To build an explorer for a gene set you need:
 Usage:
     python build_hierarchy_explorer.py \
         --species <Genus_species> \
-        --curation-data results/identification/<short>_<gene_set>_curation_data.json \
+        --curation-data results/<gene_set>/identification/<short>_<gene_set>_curation_data.json \
         [--config config/<gene_set>.yaml]
 
 Output:
-    results/explorers/<species_short>_<gene_set>_hierarchy.html
+    results/<gene_set>/explorers/<species_short>_<gene_set>_hierarchy.html
 """
 
 from __future__ import annotations
@@ -163,17 +163,17 @@ def main() -> None:
                         help="Path to the curation-data JSON file.")
     parser.add_argument("--output", default=None,
                         help="Optional output path (default: "
-                             "results/explorers/<short>_<gene_set>_hierarchy.html).")
+                             "results/<gene_set>/explorers/<short>_<gene_set>_hierarchy.html).")
     add_unattended_arg(parser)
     args = parser.parse_args()
 
     global EXPLORERS_DIR
-    dirs = resolve_output_dirs(args.output_dir)
-    EXPLORERS_DIR = dirs["explorers"]
-
     gs_cfg, genome_cfg, _ = load_configs(args.config)
     gene_set = gs_cfg["gene_set"]["name"]
     display_name = gs_cfg["gene_set"].get("display_name", gene_set)
+
+    dirs = resolve_output_dirs(args.output_dir, gene_set)
+    EXPLORERS_DIR = dirs["explorers"]
     homeolog_pairs = list(gs_cfg.get("classification", {}).get("homeolog_pairs") or [])
 
     species_meta = {s["full_name"]: s for s in iter_species(genome_cfg)}

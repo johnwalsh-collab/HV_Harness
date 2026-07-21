@@ -149,5 +149,5 @@ HV_Harness/
 ├── examples/
 │   └── caspase_in_carp/       ← the caspase worked example
 ├── tests/                     ← dependency-free invariant tests
-└── results/                   ← run outputs (generated)
+└── results/<gene_set>/        ← run outputs (generated, namespaced per gene set)
 ```

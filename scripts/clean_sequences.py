@@ -56,12 +56,12 @@ def main() -> None:
     add_unattended_arg(parser)
     args = parser.parse_args()
 
-    dirs = resolve_output_dirs(args.output_dir)
-    RESULTS_DIR   = dirs["identification"]
-    SEQUENCES_DIR = dirs["sequences"]
-
     gs_cfg, genome_cfg, _ = load_configs(args.config)
     gene_set = gs_cfg["gene_set"]["name"]
+
+    dirs = resolve_output_dirs(args.output_dir, gene_set)
+    RESULTS_DIR   = dirs["identification"]
+    SEQUENCES_DIR = dirs["sequences"]
     type_rules = gs_cfg.get("classification", {}).get("type_rules", []) or []
     sp_short = short_code_map(genome_cfg)
 

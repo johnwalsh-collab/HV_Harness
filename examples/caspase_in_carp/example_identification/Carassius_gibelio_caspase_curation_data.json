@@ -1,0 +1,519 @@
+{
+  "1": {
+    "zf_chr": 1,
+    "zf_locus": "casp3a, caspb, caspbl",
+    "note": "Three slots. casp3a and caspb are clean A/B homeolog pairs; caspbl is a truncated, motif-less pseudogene on both subgenomes (independent degradation).",
+    "slots": [
+      {
+        "label": "casp3a",
+        "category": "executioner",
+        "A": [
+          {
+            "id": "casp3a",
+            "role": "casp3a",
+            "aa": 282,
+            "ncbi": "casp3a",
+            "category": "executioner",
+            "confidence": "high",
+            "status": "ok"
+          }
+        ],
+        "B": [
+          {
+            "id": "LOC127949347",
+            "role": "casp3a (B)",
+            "aa": 276,
+            "ncbi": "caspase-3",
+            "category": "executioner",
+            "confidence": "high",
+            "status": "ok"
+          }
+        ]
+      },
+      {
+        "label": "caspb",
+        "category": "inflammatory",
+        "A": [
+          {
+            "id": "LOC128029032",
+            "role": "caspb (A)",
+            "aa": 384,
+            "ncbi": "caspase b",
+            "category": "inflammatory",
+            "confidence": "high",
+            "status": "ok"
+          }
+        ],
+        "B": [
+          {
+            "id": "LOC127949502",
+            "role": "caspb (B)",
+            "aa": 381,
+            "ncbi": "caspase b",
+            "category": "inflammatory",
+            "confidence": "high",
+            "status": "ok"
+          }
+        ]
+      },
+      {
+        "label": "caspbl",
+        "sub": "pseudogene (both)",
+        "category": "inflammatory",
+        "badge": "non-functional",
+        "A": [
+          {
+            "id": "LOC127935548",
+            "role": "caspbl pseudogene",
+            "aa": 143,
+            "ncbi": "caspase b",
+            "category": "inflammatory",
+            "confidence": "low",
+            "status": "candidate_nonfunctional"
+          }
+        ],
+        "B": [
+          {
+            "id": "LOC127949561",
+            "role": "caspbl pseudogene",
+            "aa": 93,
+            "ncbi": "caspase b-like",
+            "category": "inflammatory",
+            "confidence": "low",
+            "status": "candidate_nonfunctional"
+          }
+        ]
+      }
+    ]
+  },
+  "3": {
+    "zf_chr": 3,
+    "zf_locus": "casp6 (zf has casp6a/6b.1/6b.2 expansion)",
+    "note": "Single clean casp6 homeolog pair. Zebrafish casp6 triplication is likely zf-lineage-specific (no secondary comparator to confirm).",
+    "slots": [
+      {
+        "label": "casp6",
+        "category": "executioner",
+        "A": [
+          {
+            "id": "LOC127950387",
+            "role": "casp6 (A)",
+            "aa": 297,
+            "ncbi": "caspase-6",
+            "category": "executioner",
+            "confidence": "medium",
+            "status": "ok"
+          }
+        ],
+        "B": [
+          {
+            "id": "LOC127952414",
+            "role": "casp6 (B)",
+            "aa": 298,
+            "ncbi": "caspase-6",
+            "category": "executioner",
+            "confidence": "medium",
+            "status": "ok"
+          }
+        ]
+      }
+    ]
+  },
+  "5": {
+    "zf_chr": 5,
+    "zf_locus": "casp22",
+    "note": "B5 retains a clean casp22; A5 is a candidate loss (annotation-level) \u2014 block clear, only card9 (separate gene) in region.",
+    "slots": [
+      {
+        "label": "casp22",
+        "category": "inflammatory",
+        "A": [],
+        "A_loss": "searched",
+        "B": [
+          {
+            "id": "casp22",
+            "role": "casp22",
+            "aa": 376,
+            "ncbi": "casp22",
+            "category": "inflammatory",
+            "confidence": "high",
+            "status": "ok"
+          }
+        ]
+      }
+    ]
+  },
+  "6": {
+    "zf_chr": 6,
+    "zf_locus": "casp8, casp8l1, casp20",
+    "note": "casp8 is a clean A/B pair (QACQG, 9 exons). The smaller casp8l1/casp20 copies form an ambiguous group slot \u2014 casp8l1-vs-casp20 assignment unresolved at annotation level.",
+    "slots": [
+      {
+        "label": "casp8",
+        "category": "initiator",
+        "A": [
+          {
+            "id": "LOC128015385",
+            "role": "casp8 (A)",
+            "aa": 474,
+            "ncbi": "caspase-8",
+            "category": "initiator",
+            "confidence": "high",
+            "status": "ok"
+          }
+        ],
+        "B": [
+          {
+            "id": "casp8",
+            "role": "casp8",
+            "aa": 476,
+            "ncbi": "casp8",
+            "category": "initiator",
+            "confidence": "high",
+            "status": "ok"
+          }
+        ]
+      },
+      {
+        "label": "casp8l1 / casp20",
+        "sub": "small caspase-8 subfamily",
+        "category": "initiator",
+        "ambiguous": true,
+        "badge": "casp8l1 vs casp20 unresolved",
+        "A": [
+          {
+            "id": "LOC128015387",
+            "role": "casp8l1/casp20 (A)",
+            "aa": 345,
+            "ncbi": "caspase-8-like",
+            "category": "initiator",
+            "confidence": "low",
+            "status": "ok"
+          }
+        ],
+        "B": [
+          {
+            "id": "casp8l1",
+            "role": "casp8l1",
+            "aa": 330,
+            "ncbi": "casp8l1",
+            "category": "initiator",
+            "confidence": "medium",
+            "status": "ok"
+          },
+          {
+            "id": "LOC127959693",
+            "role": "casp8l1/casp20 (B)",
+            "aa": 352,
+            "ncbi": "caspase-8-like",
+            "category": "initiator",
+            "confidence": "low",
+            "status": "ok"
+          }
+        ]
+      }
+    ]
+  },
+  "7": {
+    "zf_chr": 7,
+    "zf_locus": "casp23",
+    "note": "Textbook synteny-over-naming override: B7 LOC127961949 is NCBI 'caspase a' but is a casp23 homeolog by syntenic position (caspa proper is on chr16). A7 carries a QSCRG active-site variant.",
+    "slots": [
+      {
+        "label": "casp23",
+        "category": "inflammatory",
+        "A": [
+          {
+            "id": "casp23",
+            "role": "casp23 (QSCRG variant)",
+            "aa": 446,
+            "ncbi": "casp23",
+            "category": "inflammatory",
+            "confidence": "high",
+            "status": "ok"
+          }
+        ],
+        "B": [
+          {
+            "id": "LOC127961949",
+            "role": "casp23 (B) \u2014 NCBI override",
+            "aa": 452,
+            "ncbi": "caspase a \u2192 casp23",
+            "category": "inflammatory",
+            "confidence": "high",
+            "status": "ok"
+          }
+        ]
+      }
+    ]
+  },
+  "9": {
+    "zf_chr": 9,
+    "zf_locus": "casp10",
+    "note": "B9 retains a clean casp10; A9 is a candidate loss. The A9 cflar is a separate DED-domain gene (its own A9/B9 homeolog pair, coexists with casp10 on B9), not a casp10.",
+    "slots": [
+      {
+        "label": "casp10",
+        "category": "initiator",
+        "A": [],
+        "A_loss": "searched",
+        "B": [
+          {
+            "id": "casp10",
+            "role": "casp10",
+            "aa": 520,
+            "ncbi": "casp10",
+            "category": "initiator",
+            "confidence": "high",
+            "status": "ok"
+          }
+        ]
+      }
+    ]
+  },
+  "10": {
+    "zf_chr": 10,
+    "zf_locus": "executioner tandem cluster (casp3/casp7)",
+    "note": "Ambiguous tandem-cluster slot; within-cluster casp3-vs-casp7 identity unresolved (awaits phylogeny). Asymmetric retention, not loss. B10 subtelomeric LOC127966001 is an assembly artefact (excluded).",
+    "slots": [
+      {
+        "label": "executioner cluster",
+        "sub": "casp3 / casp7 tandem array",
+        "category": "executioner",
+        "ambiguous": true,
+        "badge": "identity unresolved",
+        "A": [
+          {
+            "id": "LOC128020717",
+            "role": "exec cluster (A)",
+            "aa": 266,
+            "ncbi": "casp3/7-like",
+            "category": "executioner",
+            "confidence": "low",
+            "status": "ok"
+          },
+          {
+            "id": "LOC128020716",
+            "role": "exec cluster (A)",
+            "aa": 267,
+            "ncbi": "casp3/7-like",
+            "category": "executioner",
+            "confidence": "low",
+            "status": "ok"
+          },
+          {
+            "id": "LOC128020855",
+            "role": "exec cluster (A, divergent)",
+            "aa": 240,
+            "ncbi": "casp3/7-like",
+            "category": "executioner",
+            "confidence": "low",
+            "status": "ok"
+          }
+        ],
+        "B": [
+          {
+            "id": "LOC127966004",
+            "role": "exec cluster (B)",
+            "aa": 274,
+            "ncbi": "casp3/7-like",
+            "category": "executioner",
+            "confidence": "low",
+            "status": "ok"
+          },
+          {
+            "id": "LOC127966003",
+            "role": "exec cluster (B)",
+            "aa": 318,
+            "ncbi": "casp3/7-like",
+            "category": "executioner",
+            "confidence": "low",
+            "status": "ok"
+          },
+          {
+            "id": "LOC127966001",
+            "role": "subtelomeric duplicate",
+            "aa": 273,
+            "ncbi": "casp3/7-like",
+            "category": "executioner",
+            "confidence": "low",
+            "status": "artefact"
+          }
+        ]
+      }
+    ]
+  },
+  "12": {
+    "zf_chr": 12,
+    "zf_locus": "casp7",
+    "note": "casp7 A/B pair. NOTE: the named B12 casp7 returned no QACxG catalytic motif (A12 has a clean one) \u2014 flagged for sequence-level review of the active-site exon.",
+    "slots": [
+      {
+        "label": "casp7",
+        "category": "executioner",
+        "A": [
+          {
+            "id": "LOC128025366",
+            "role": "casp7 (A)",
+            "aa": 312,
+            "ncbi": "caspase-7",
+            "category": "executioner",
+            "confidence": "medium",
+            "status": "ok"
+          }
+        ],
+        "B": [
+          {
+            "id": "casp7",
+            "role": "casp7 (motif not detected)",
+            "aa": 381,
+            "ncbi": "casp7",
+            "category": "executioner",
+            "confidence": "medium",
+            "status": "ok"
+          }
+        ]
+      }
+    ]
+  },
+  "14": {
+    "zf_chr": 14,
+    "zf_locus": "casp3b",
+    "note": "Clean casp3b A/B pair; identity confidence low by the executioner naming-confusion prior. Block present on both subgenomes (unlike the common-carp A14 syntenic-position-loss).",
+    "slots": [
+      {
+        "label": "casp3b",
+        "category": "executioner",
+        "A": [
+          {
+            "id": "LOC128027693",
+            "role": "casp3b (A)",
+            "aa": 282,
+            "ncbi": "casp3-like",
+            "category": "executioner",
+            "confidence": "low",
+            "status": "ok"
+          }
+        ],
+        "B": [
+          {
+            "id": "LOC127970959",
+            "role": "casp3b (B)",
+            "aa": 275,
+            "ncbi": "casp3-like",
+            "category": "executioner",
+            "confidence": "low",
+            "status": "ok"
+          }
+        ]
+      }
+    ]
+  },
+  "16": {
+    "zf_chr": 16,
+    "zf_locus": "caspa, casp2",
+    "note": "caspa is a clean A/B pair. casp2 retained on B16; A16 is a candidate loss (hedged \u2014 block only partially recovered; casp2 is single-copy across carps, absent entirely in common carp).",
+    "slots": [
+      {
+        "label": "caspa",
+        "category": "inflammatory",
+        "A": [
+          {
+            "id": "LOC128030415",
+            "role": "caspa (A)",
+            "aa": 394,
+            "ncbi": "caspase a",
+            "category": "inflammatory",
+            "confidence": "high",
+            "status": "ok"
+          }
+        ],
+        "B": [
+          {
+            "id": "LOC127975488",
+            "role": "caspa (B)",
+            "aa": 393,
+            "ncbi": "caspase a",
+            "category": "inflammatory",
+            "confidence": "high",
+            "status": "ok"
+          }
+        ]
+      },
+      {
+        "label": "casp2",
+        "category": "initiator",
+        "A": [],
+        "A_loss": "searched",
+        "B": [
+          {
+            "id": "casp2",
+            "role": "casp2",
+            "aa": 435,
+            "ncbi": "casp2",
+            "category": "initiator",
+            "confidence": "high",
+            "status": "ok"
+          }
+        ]
+      }
+    ]
+  },
+  "21": {
+    "zf_chr": 21,
+    "zf_locus": "casp21",
+    "note": "A21 retains a clean casp21; B21 is a candidate loss. Nearby nlrc3l1/NLR-CARD genes are separate genes present on both subgenomes, not casp21.",
+    "slots": [
+      {
+        "label": "casp21",
+        "category": "inflammatory",
+        "A": [
+          {
+            "id": "casp21",
+            "role": "casp21",
+            "aa": 266,
+            "ncbi": "casp21",
+            "category": "inflammatory",
+            "confidence": "high",
+            "status": "ok"
+          }
+        ],
+        "B": [],
+        "B_loss": "searched"
+      }
+    ]
+  },
+  "23": {
+    "zf_chr": 23,
+    "zf_locus": "casp9",
+    "note": "Clean casp9 A/B pair, both with the casp9-typical QACGG active site.",
+    "slots": [
+      {
+        "label": "casp9",
+        "category": "initiator",
+        "A": [
+          {
+            "id": "LOC127944670",
+            "role": "casp9 (A)",
+            "aa": 421,
+            "ncbi": "caspase-9",
+            "category": "initiator",
+            "confidence": "high",
+            "status": "ok"
+          }
+        ],
+        "B": [
+          {
+            "id": "casp9",
+            "role": "casp9",
+            "aa": 436,
+            "ncbi": "casp9",
+            "category": "initiator",
+            "confidence": "high",
+            "status": "ok"
+          }
+        ]
+      }
+    ]
+  }
+}

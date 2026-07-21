@@ -515,9 +515,8 @@ versions are recorded in `docs/data_provenance.md`.
 |---|---|---|
 | Per-species GFF annotations | RefSeq GFF for each target species and the diploid comparator | `data/annotations/<species>/*.gff.gz` |
 | Per-species protein FASTAs | All annotated proteins for the user's group, deduplicated | `data/sequences/<gene_set>_proteins_<species>_dedup.fasta` |
-| Gene-level inventory | One row per group member across all species, with chromosome, subgenome, homeolog pair number, expected vs annotated identity, and gene-model quality flags | `results/identification/<gene_set>_gene_inventory.tsv` |
-| Homeolog pair summary | Cross-species table of the homeologous chromosome pairs that carry group members, with copy-number per subgenome and naming-consistency flags | `results/identification/<gene_set>_homeolog_summary.tsv` |
-| Synteny extracts | Flanking-gene neighbourhoods (~12 genes each side, configurable) for every region the group occupies, per species | `results/identification/<gene_set>_synteny_extraction_all_pairs.txt` |
+| Gene-level inventory | One row per group member across all species, with chromosome, subgenome, homeolog pair number, expected vs annotated identity, and gene-model quality flags. No separate homeolog-pair summary table is produced — the inventory's `homeolog_pair`/`subgenome` columns are the cross-species pair record. | `results/<gene_set>/identification/<gene_set>_gene_inventory.tsv` |
+| Synteny extracts | Flanking-gene neighbourhoods (~12 genes each side, configurable) for every region the group occupies, per species | `results/<gene_set>/identification/<gene_set>_synteny_extraction_all_pairs.txt` |
 | Subgenome assignment table | For every chromosome in every allopolyploid species, which subgenome it belongs to — derived from chromosome names where labels exist (common carp, Prussian carp) and from an assembly-to-assembly alignment for goldfish | `config/goldfish_subgenome_lookup.tsv` (ships pre-built; goldfish only — the other two species need no lookup) |
 | Outgroup reference list | A short list of the group members in zebrafish — gene names, chromosome locations, protein lengths — used as the ancestral-state reference framework for every pair | a small TSV or list at the top of the curation document |
 
@@ -1951,7 +1950,7 @@ them down-weight any of the three confidence axes.
 
 The template below is the structure each per-pair section uses.
 It is taken from the caspase worked example
-(`Caspase-Char/results/identification/Cgib_caspase_curation.md`) and
+(`examples/caspase_in_carp/example_identification/Cgib_caspase_curation.md`) and
 has been tested across all twelve pairs that carry caspases. The structure
 keeps per-pair sections comparable across pairs while leaving
 enough room to absorb the real variation pairs surface.
@@ -2128,7 +2127,7 @@ The substance — *what counts as a loss claim, what synteny is
 allowed to override* — is the part that should not be diluted.
 For verbatim model text, the caspase worked example carries
 both openers at the top of
-`Caspase-Char/results/identification/Cgib_caspase_curation.md`.
+`examples/caspase_in_carp/example_identification/Cgib_caspase_curation.md`.
 
 ### 5.7 Summary section
 
@@ -2321,11 +2320,11 @@ The JSON schema is documented in `scripts/templates/CURATION_DATA_SCHEMA.md`.
 ```bash
 python scripts/build_hierarchy_explorer.py \
     --species <Species_name> \
-    --curation-data results/identification/<species>_<gene_set>_curation_data.json \
+    --curation-data results/<gene_set>/identification/<species>_<gene_set>_curation_data.json \
     --config config/<gene_set>.yaml
 ```
 
-Output: `results/explorers/<species_short>_<gene_set>_hierarchy.html`
+Output: `results/<gene_set>/explorers/<species_short>_<gene_set>_hierarchy.html`
 
 ---
 

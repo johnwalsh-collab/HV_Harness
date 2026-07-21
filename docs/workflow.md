@@ -19,9 +19,10 @@ For the full project description, see the top-level `README.md`.
 The workflow has six stages plus one conditional procedure. Stages
 1–3d are mechanical (scripts); Stage 3a runs only when the anchor
 assembly lacks A/B subgenome labels; Stage 3e is interpretive (the
-playbook); Stage 5 is mostly mechanical; Stage 4 is
-preliminary work that lives in `side_projects/` and is not part of
-the core deliverable.
+playbook); Stage 5 is mostly mechanical; Stage 4 (sequence-level
+follow-up such as alignment or tree-building) is explicitly out of
+scope for this repo — it is logged to a side-projects list during
+curation (playbook §5.4.2, §6.1) rather than run by any script here.
 
 The scripts are generic and config-driven; gene-family-specific
 behaviour lives in `config/<gene_set>.yaml`. A new application is
@@ -32,14 +33,14 @@ source. The caspase worked example runs from
 | Stage | What it produces | Driver | Output location |
 |---|---|---|---|
 | 1 — Acquire genome files | Per-species RefSeq GFF + protein FASTA (bulk reference files) | `scripts/download_genome_files.py` | `data/annotations/<species>/<species>_genomic.gff.gz` and `<species>_protein.faa.gz` |
-| 2 — Identify gene-set members | Raw gene list per species + protein FASTAs | `scripts/identify_gene_set.py`, then `scripts/extract_sequences.py` (primary) or `scripts/download_sequences.py` (fallback), then `scripts/clean_sequences.py` | `results/identification/<gene_set>_genes_all_species*.tsv`; `data/sequences/<gene_set>_proteins_<species>*.fasta` |
-| 3a — Subgenome assignment *(conditional; pre-built for goldfish)* | A/B label per chromosome, when the assembly lacks explicit labels. Ships pre-built in the repo; only run to regenerate it or to build one for a new unlabelled tetraploid. | `scripts/build_subgenome_lookup.py` (uses an NCBI assembly-to-assembly alignment at `data/alignments/genome_to_genome/`) | `config/goldfish_subgenome_lookup.tsv` |
-| 3c — Gene-level inventory | One row per gene, all species, with subgenome and homeolog-pair assignment, annotation confidence, gene-model quality, and assembly-artefact flags. **Note:** the TSV has 15 `#`-prefixed comment lines before the column header; pandas users need `comment='#'` when reading it (e.g. `pd.read_csv(..., sep='\t', comment='#')`). | `scripts/build_gene_inventory.py` | `results/identification/<gene_set>_gene_inventory.tsv` |
-| 3d — Synteny extraction | Flanking-gene neighbourhoods (~12 genes on each side, configurable) for every gene-set-bearing region | `scripts/extract_synteny.py` | `results/identification/<gene_set>_synteny_extraction_all_pairs.txt` |
-| 3e — Per-pair curation | Curation document with one section per homeologous pair; empty A/B slots are flagged only | **`docs/curation_playbook.md` — interpretive, AI-assisted** | `results/identification/<species>_<family>_curation.md` |
-| 3f — Empty-slots deep dive (Checkpoint 3) | The flagged empty slots resolved into explicit loss calls via the in-region sweep + cross-species reasoning; updates the curation document and its "Empty slots — assessed" table | **`docs/curation_playbook.md` §6.1 — interpretive, AI-assisted** | updates `results/identification/<species>_<family>_curation.md` |
-| 4 — Phylogenetics *(side project; preliminary)* | Gene-tree alignments and IQ-TREE output | `side_projects/phylogenetic_analysis/scripts/*.py` | `side_projects/phylogenetic_analysis/` (flagged preliminary; see its MANIFEST) |
-| 5 — Hierarchy explorer | Interactive HTML visualization of the curated inventory, organised by homeolog slots | `scripts/build_hierarchy_explorer.py` (consumes a curation-data JSON; see `scripts/templates/CURATION_DATA_SCHEMA.md`) | `results/explorers/<species_short>_<gene_set>_hierarchy.html` |
+| 2 — Identify gene-set members | Raw gene list per species + protein FASTAs | `scripts/identify_gene_set.py`, then `scripts/extract_sequences.py` (primary) or `scripts/download_sequences.py` (fallback), then `scripts/clean_sequences.py` | `results/<gene_set>/identification/<gene_set>_genes_all_species*.tsv`; `data/sequences/<gene_set>_proteins_<species>*.fasta` |
+| 3a — Subgenome assignment *(conditional; pre-built for goldfish)* | A/B label per chromosome, when the assembly lacks explicit labels. Ships pre-built in the repo; only run to regenerate it or to build one for a new unlabelled tetraploid. | `scripts/build_subgenome_lookup.py` (consumes an NCBI assembly-to-assembly alignment GFF, path set by `data/genome_config.yaml`'s `subgenome_lookup.alignment_file`; not shipped — fetch from NCBI if regenerating) | `config/goldfish_subgenome_lookup.tsv` |
+| 3c — Gene-level inventory | One row per gene, all species, with subgenome and homeolog-pair assignment, annotation confidence, gene-model quality, and assembly-artefact flags. **Note:** the TSV has 15 `#`-prefixed comment lines before the column header; pandas users need `comment='#'` when reading it (e.g. `pd.read_csv(..., sep='\t', comment='#')`). | `scripts/build_gene_inventory.py` | `results/<gene_set>/identification/<gene_set>_gene_inventory.tsv` |
+| 3d — Synteny extraction | Flanking-gene neighbourhoods (~12 genes on each side, configurable) for every gene-set-bearing region | `scripts/extract_synteny.py` | `results/<gene_set>/identification/<gene_set>_synteny_extraction_all_pairs.txt` |
+| 3e — Per-pair curation | Curation document with one section per homeologous pair; empty A/B slots are flagged only | **`docs/curation_playbook.md` — interpretive, AI-assisted** | `results/<gene_set>/identification/<species>_<family>_curation.md` |
+| 3f — Empty-slots deep dive (Checkpoint 3) | The flagged empty slots resolved into explicit loss calls via the in-region sweep + cross-species reasoning; updates the curation document and its "Empty slots — assessed" table | **`docs/curation_playbook.md` §6.1 — interpretive, AI-assisted** | updates `results/<gene_set>/identification/<species>_<family>_curation.md` |
+| 4 — Phylogenetics *(side project; out of scope for this repo)* | Sequence-level follow-up work (alignment, tree-building) logged from the curation's side-projects list | not part of this pipeline — see "Annotation-level evidence only" in `CLAUDE.md` | wherever the researcher's own project keeps it |
+| 5 — Hierarchy explorer | Interactive HTML visualization of the curated inventory, organised by homeolog slots | `scripts/build_hierarchy_explorer.py` (consumes a curation-data JSON; see `scripts/templates/CURATION_DATA_SCHEMA.md`) | `results/<gene_set>/explorers/<species_short>_<gene_set>_hierarchy.html` |
 
 **Note on Stage 3b.** An earlier version of this document listed a
 separate Stage 3b — a manually-produced cross-species homeolog pair
@@ -125,25 +126,20 @@ The project's standard layout (see top-level `README.md` for full
 description):
 
 ```
-data/annotations/<species>/                 GFF inputs, gzipped (six species)
-data/alignments/genome_to_genome/           goldfish↔gibelio alignment for Stage 3a
+data/annotations/<species>/                 GFF + protein FASTA inputs (gitignored; see GETTING_STARTED.md)
 data/sequences/                             extracted protein FASTAs
-scripts/                                    mechanical pipeline (Stages 1–3d, 5)
-scripts/archive/                            earlier-stage exploratory scripts
-config/                                     gene-set configs
-results/identification/                     curated TSVs + curation MD
-results/identification/archive/             part2 exploration, etc.
-results/synteny/                            synteny tables + plain-language methods
-results/explorers/                          hierarchy explorer HTML (primary output)
+scripts/                                    mechanical pipeline (Stages 1–3f, 5)
+scripts/templates/                          hierarchy-explorer HTML template + curation-data schema
+config/                                     gene-set configs (template.yaml, caspase_example.yaml)
+results/<gene_set>/identification/          curated TSVs + curation MD (namespaced per gene set)
+results/<gene_set>/explorers/               hierarchy explorer HTML (primary output)
 results/SESSION_STATUS.md                   live hand-off / resume state (scratch, gitignored)
-side_projects/phylogenetic_analysis/        preliminary Stage 4 work
-docs/                                       this file + the curation playbook + data provenance
-docs/archive/                               historical docs
-tools/                                      local MAFFT and IQ-TREE binaries (gitignored)
+examples/caspase_in_carp/                   the finished, signed-off caspase worked example
+docs/                                       this file + the curation playbook + quick_start + data provenance
+tests/                                      dependency-free invariant tests
 ```
 
-Each results subfolder has a `MANIFEST.md` describing what's
-canonical vs intermediate.
+`scripts/MANIFEST.md` describes what each script produces and consumes.
 
 ---
 
@@ -186,7 +182,7 @@ end to end:
     → Checkpoint 2: review the built inventory as the baseline; agree a curation plan
 7.  python scripts/extract_synteny.py
 8.  Curate per-pair using docs/curation_playbook.md
-    → produces results/identification/<species>_<family>_curation.md
+    → produces results/<gene_set>/identification/<species>_<family>_curation.md
 9.  python scripts/build_hierarchy_explorer.py
 ```
 

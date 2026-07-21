@@ -504,34 +504,48 @@ def add_config_arg(parser: argparse.ArgumentParser) -> None:
     )
 
 
-def resolve_output_dirs(output_dir: "str | Path | None") -> dict:
+def resolve_output_dirs(output_dir: "str | Path | None",
+                        gene_set: "str | None" = None) -> dict:
     """Return resolved output directory paths for each script stage.
 
     If output_dir is provided, all outputs are rooted there:
-        <output_dir>/results/identification/
-        <output_dir>/results/explorers/
+        <output_dir>/results/<gene_set>/identification/
+        <output_dir>/results/<gene_set>/explorers/
         <output_dir>/sequences/
 
     If omitted, defaults to the standard HV_Harness project layout
-    (PROJECT_DIR/results/..., PROJECT_DIR/data/sequences/).
+    (PROJECT_DIR/results/<gene_set>/..., PROJECT_DIR/data/sequences/).
 
-    Usage in each script's main():
-        dirs = resolve_output_dirs(args.output_dir)
+    `gene_set` namespaces identification/ and explorers/ under a
+    per-gene-set folder (e.g. results/caspase/identification/), so a
+    second gene set run against the same repo lands in its own folder
+    instead of sharing results/identification/ with every other gene
+    set (namespaced only by filename prefix, previously). If omitted,
+    identification/explorers fall back to the un-namespaced
+    results/identification, results/explorers layout — callers that
+    haven't loaded a gene-set config yet (rare) still work. A re-run of
+    the same gene set overwrites its own folder in place; nothing is
+    timestamped.
+
+    Usage in each script's main() — load the gene-set config first so
+    its name is available:
+        gs_cfg, genome_cfg, _ = load_configs(args.config)
+        gene_set = gs_cfg["gene_set"]["name"]
+        dirs = resolve_output_dirs(args.output_dir, gene_set)
         global RESULTS_DIR, SEQUENCES_DIR   # (whichever apply)
         RESULTS_DIR   = dirs["identification"]
         SEQUENCES_DIR = dirs["sequences"]
     """
-    if output_dir:
-        base = Path(output_dir).resolve()
-        return {
-            "identification": base / "results" / "identification",
-            "explorers":      base / "results" / "explorers",
-            "sequences":      base / "sequences",
-        }
+    base = Path(output_dir).resolve() if output_dir else PROJECT_DIR
+    results_root = base / "results"
+    if gene_set:
+        results_root = results_root / gene_set
+    sequences_dir = (base / "sequences") if output_dir \
+        else (PROJECT_DIR / "data" / "sequences")
     return {
-        "identification": PROJECT_DIR / "results" / "identification",
-        "explorers":      PROJECT_DIR / "results" / "explorers",
-        "sequences":      PROJECT_DIR / "data"    / "sequences",
+        "identification": results_root / "identification",
+        "explorers":      results_root / "explorers",
+        "sequences":      sequences_dir,
     }
 
 

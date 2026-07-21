@@ -286,11 +286,11 @@ def main() -> None:
     add_unattended_arg(parser)
     args = parser.parse_args()
 
-    dirs = resolve_output_dirs(args.output_dir)
-    RESULTS_DIR = dirs["identification"]
-
     gs_cfg, genome_cfg, chr_map = load_configs(args.config)
     gene_set = gs_cfg["gene_set"]["name"]
+
+    dirs = resolve_output_dirs(args.output_dir, gene_set)
+    RESULTS_DIR = dirs["identification"]
     cls = gs_cfg.get("classification", {})
     inv = gs_cfg.get("inventory", {})
     type_rules = cls.get("type_rules", []) or []

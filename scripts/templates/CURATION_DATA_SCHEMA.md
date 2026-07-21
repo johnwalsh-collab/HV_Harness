@@ -3,7 +3,7 @@
 `scripts/build_hierarchy_explorer.py` consumes a JSON file describing
 the curated gene set in the structure the hierarchy explorer renders.
 This document is the schema. The file is conventionally named
-`results/identification/<species_short>_<gene_set>_curation_data.json`
+`results/<gene_set>/identification/<species_short>_<gene_set>_curation_data.json`
 and is produced during Stage 3e per-pair curation (see "How this is
 produced" below). The worked example (caspase in *C. gibelio*) is one
 instance of this format.

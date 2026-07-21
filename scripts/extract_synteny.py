@@ -25,7 +25,7 @@ Usage:
     python extract_synteny.py [--config config/<gene_set>.yaml]
 
 Output:
-    results/identification/<gene_set>_synteny_extraction_all_pairs.txt
+    results/<gene_set>/identification/<gene_set>_synteny_extraction_all_pairs.txt
 """
 
 from __future__ import annotations
@@ -206,11 +206,11 @@ def main() -> None:
     args = parser.parse_args()
 
     global RESULTS_DIR
-    dirs = resolve_output_dirs(args.output_dir)
-    RESULTS_DIR = dirs["identification"]
-
     gs_cfg, genome_cfg, chr_map = load_configs(args.config)
     gene_set = gs_cfg["gene_set"]["name"]
+
+    dirs = resolve_output_dirs(args.output_dir, gene_set)
+    RESULTS_DIR = dirs["identification"]
     inv_cfg = gs_cfg.get("inventory", {}) or {}
     synteny_cfg = inv_cfg.get("synteny", {}) or {}
     flanking = args.flanking_genes or synteny_cfg.get("flanking_genes", 12)

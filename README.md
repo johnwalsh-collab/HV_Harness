@@ -8,7 +8,7 @@ HV_Harness is a structured collaboration protocol — a playbook plus supporting
 
 The researcher supplies domain expertise at specific decision points. The AI handles the mechanical operations: parsing GFF annotation files, extracting flanking-gene neighbourhoods, matching protein motifs, and generating outputs. The result is a per-pair curation document and an interactive hierarchy explorer that organizes the gene inventory by homeologous slot.
 
-The workflow was developed and validated on the caspase gene family. See `examples/caspase_in_carp/` for a pointer to the full worked example.
+The workflow was developed and validated on the caspase gene family. The full worked example — curation documents, gene inventory, synteny evidence, and interactive explorers for all three focal carp species — ships in this repo under `examples/caspase_in_carp/`.
 
 ## What you will produce
 
@@ -24,6 +24,8 @@ In short: this README is orientation, `GETTING_STARTED.md` is the practical setu
 
 ```
 HV_Harness/
+├── CLAUDE.md                       ← read this first — project instructions for an AI assistant
+├── AGENTS.md                       ← entry stub for non-Claude agents → CLAUDE.md
 ├── GETTING_STARTED.md              ← setup + how to fetch the genome inputs
 ├── docs/
 │   ├── curation_playbook.md        ← start here (the methodology)
@@ -32,6 +34,7 @@ HV_Harness/
 │   └── data_provenance.md          ← worked-example provenance
 ├── scripts/                        ← generic pipeline scripts
 │   ├── MANIFEST.md                 ← per-script reference
+│   ├── templates/                  ← hierarchy-explorer HTML template + curation-data schema
 │   ├── _config.py                  ← shared config + chromosome-mapping loader
 │   ├── check_env.py                ← environment check (run first)
 │   ├── download_genome_files.py    ← Stage 1: GFF + protein FASTA per species
@@ -52,11 +55,15 @@ HV_Harness/
 │   ├── genome_config.yaml          ← species list + chromosome-mapping rules
 │   └── annotations/                ← downloaded GFF + protein FASTA (gitignored)
 ├── examples/
-│   └── caspase_in_carp/            ← pointer to the full caspase worked example
+│   └── caspase_in_carp/            ← the full, signed-off caspase worked example (all 3 focal species)
 ├── tests/                          ← fixture tests for pipeline invariants
 ├── species_info.txt                ← genome accessions for the four focal species
-└── requirements.txt
+├── requirements.txt                ← core dependencies (pandas, pyyaml)
+└── requirements-full.txt           ← + optional extras (NCBI-download fallback)
 ```
+
+Each run's output lands in `results/<gene_set>/` (gitignored — regenerated
+per run, not shipped).
 
 ## Applying this to a new gene group
 
@@ -79,4 +86,4 @@ It is not designed for diploid genomes, scaffold-only assemblies, or automated c
 
 ## Worked example
 
-The caspase gene family in *Carassius gibelio* (Prussian carp) is the validation case. Outputs and the full curation record are in the companion project `Caspase-Char/`. See `examples/caspase_in_carp/README.md` for a guide to those files.
+The caspase gene family, curated independently in all three focal carp species (*Cyprinus carpio*, *Carassius gibelio*, *Carassius auratus*), is the validation case. The full curation record — per-pair curation documents, curation-data JSON, gene inventory, synteny evidence, and interactive hierarchy explorers — ships in this repo under `examples/caspase_in_carp/`. See `examples/caspase_in_carp/README.md` for a guide to those files.

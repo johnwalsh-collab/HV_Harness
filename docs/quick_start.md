@@ -27,7 +27,7 @@ position; the footer is the hand-off.
   ⬜  Stage 5 · Empty-slots deep dive (CP3)
   ⬜  Stage 6 · Visualization design (CP4 & CP5)
   ───────────────────────────────────────────
-  ✅ Just produced · results/identification/<gene_set>_gene_inventory.tsv
+  ✅ Just produced · results/<gene_set>/identification/<gene_set>_gene_inventory.tsv
   ▶  Next          · Review the inventory; choose which species to curate
   ⤷  Your move     · confirm the inventory, then name the focal species
   ⏸  Parked        · (none)
@@ -245,7 +245,7 @@ return to Option A and obtain the protein FASTA files manually.
 
 Generate a download manifest from the gene list:
 
-1. Read `results/identification/<gene_set>_genes_all_species.tsv`
+1. Read `results/<gene_set>/identification/<gene_set>_genes_all_species.tsv`
 2. Extract the `ncbi_gene_id` column values
 3. Write them to `data/sequences/<gene_set>_download_manifest.txt`,
    one ID per line, with these instructions at the top:

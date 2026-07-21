@@ -17,7 +17,7 @@ Inputs:
     - data/genome_config.yaml (species list)
 
 Outputs:
-    - results/identification/<gene_set>_genes_all_species.tsv
+    - results/<gene_set>/identification/<gene_set>_genes_all_species.tsv
       (one row per matching gene OR pseudogene; columns: species,
       gene_id, gene_name, chromosome, start, end, strand, description,
       ncbi_gene_id, match_reason, plus the NCBI quality signals
@@ -271,12 +271,12 @@ def main() -> None:
     add_unattended_arg(parser)
     args = parser.parse_args()
 
-    dirs = resolve_output_dirs(args.output_dir)
-    RESULTS_DIR = dirs["identification"]
-
     gs_cfg, genome_cfg, _ = load_configs(args.config)
     gene_set_name = gs_cfg["gene_set"]["name"]
     display_name = gs_cfg["gene_set"].get("display_name", gene_set_name)
+
+    dirs = resolve_output_dirs(args.output_dir, gene_set_name)
+    RESULTS_DIR = dirs["identification"]
     matcher = GeneSetMatcher(gs_cfg.get("identification", {}))
 
     print("=" * 70)

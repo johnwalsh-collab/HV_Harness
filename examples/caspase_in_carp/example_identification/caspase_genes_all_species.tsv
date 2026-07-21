@@ -1,0 +1,132 @@
+species	gene_id	gene_name	chromosome	start	end	strand	description	ncbi_gene_id	match_reason	gene_biotype	feature_type	partial	exception	protein_id
+Carassius_auratus	LOC113115174	LOC113115174	NC_039243.1	2954218	2964218	+	caspase-1-B	113115174	description match	protein_coding	gene			XP_026138383.1
+Carassius_auratus	LOC113105596	LOC113105596	NC_039243.1	25295651	25299700	-	caspase-3	113105596	description match	protein_coding	gene			XP_026122541.1
+Carassius_auratus	LOC113045385	LOC113045385	NC_039245.1	6990700	6995372	+	caspase-6	113045385	description match	protein_coding	gene			XP_026061548.1
+Carassius_auratus	LOC113093418	LOC113093418	NC_039248.1	7335200	7341261	+	caspase-8-like	113093418	description match	protein_coding	gene			XP_026115004.1;XP_026115005.1
+Carassius_auratus	casp8l1	casp8l1	NC_039248.1	7342451	7350018	+	caspase 8, apoptosis-related cysteine peptidase, like 1	113093474	name match	protein_coding	gene			XP_026115010.1;XP_026115009.1
+Carassius_auratus	LOC113088368	LOC113088368	NC_039248.1	7357876	7361593	-	caspase-8-like	113088368	description match	protein_coding	gene			XP_026111544.1
+Carassius_auratus	LOC113105593	LOC113105593	NC_039249.1	4712495	4716314	+	caspase-1-like	113105593	description match	protein_coding	gene			XP_026122530.1;XP_026122531.1
+Carassius_auratus	casp10	casp10	NC_039251.1	27515157	27528646	-	caspase 10, apoptosis-related cysteine peptidase	113108941	name match	protein_coding	gene			XP_026128161.1
+Carassius_auratus	LOC113110248	LOC113110248	NC_039252.1	20302987	20305447	-	caspase-3	113110248	description match	protein_coding	gene			XP_026130118.1
+Carassius_auratus	LOC113110500	LOC113110500	NC_039252.1	20307359	20309474	-	caspase-3-like	113110500	description match	protein_coding	gene			XP_026130449.1
+Carassius_auratus	LOC113111581	LOC113111581	NC_039254.1	5033612	5040719	-	caspase-7-like	113111581	description match	protein_coding	gene			XP_026132244.1;XP_026132245.1
+Carassius_auratus	LOC113113788	LOC113113788	NC_039256.1	15552274	15557019	+	caspase-7-like	113113788	description match	protein_coding	gene			XP_026136056.1;XP_026136055.1
+Carassius_auratus	LOC113113799	LOC113113799	NC_039256.1	15961452	15966054	-	caspase-7	113113799	description match	protein_coding	gene			XP_026136068.1
+Carassius_auratus	LOC113115897	LOC113115897	NC_039258.1	5729305	5731728	+	caspase-1	113115897	description match	protein_coding	gene			XP_026139402.1
+Carassius_auratus	casp2	casp2	NC_039258.1	14482842	14496238	+	caspase 2, apoptosis-related cysteine peptidase	113116229	name match	protein_coding	gene			XP_026140032.1;XP_026140033.1;XP_026140034.1
+Carassius_auratus	casp3a	casp3a	NC_039268.1	6388159	6395621	+	caspase 3, apoptosis-related cysteine peptidase a	113044167	name match	protein_coding	gene			XP_026059640.1
+Carassius_auratus	LOC113047172	LOC113047172	NC_039270.1	22080847	22085866	-	caspase-6-like	113047172	description match	protein_coding	gene			XP_026064254.1
+Carassius_auratus	casp22	casp22	NC_039272.1	2158596	2166870	+	caspase 22, apoptosis-related cysteine peptidase	113048839	name match	protein_coding	gene			XP_026066522.1
+Carassius_auratus	LOC113050791	LOC113050791	NC_039273.1	20742152	20745676	+	caspase-8	113050791	description match	protein_coding	gene			XP_026069878.1
+Carassius_auratus	LOC113050793	LOC113050793	NC_039273.1	20748842	20757867	-	caspase-8-like	113050793	description match	protein_coding	gene			XP_026069881.1
+Carassius_auratus	casp23	casp23	NC_039274.1	33500758	33504827	-	caspase 23, apoptosis-related cysteine peptidase	113052249	name match	protein_coding	gene			XP_026072441.1;XP_026072440.1
+Carassius_auratus	LOC113053832	LOC113053832	NC_039276.1	20321025	20322120	+	caspase-8-like	113053832	description match	pseudogene	pseudogene			
+Carassius_auratus	LOC113054569	LOC113054569	NC_039277.1	15282801	15289842	+	caspase-3-like	113054569	description match	protein_coding	gene			XP_026075988.1
+Carassius_auratus	LOC113054568	LOC113054568	NC_039277.1	15287102	15289556	+	caspase-3-like	113054568	description match	protein_coding	gene			XP_026075985.1;XP_026075987.1
+Carassius_auratus	LOC113054872	LOC113054872	NC_039277.1	18142658	18150995	-	caspase-3-like	113054872	description match	protein_coding	gene			XP_026076435.1
+Carassius_auratus	LOC113059546	LOC113059546	NC_039283.1	2079026	2082643	-	caspase-1-like	113059546	description match	protein_coding	gene			XP_026083885.1
+Carassius_auratus	LOC113060139	LOC113060139	NC_039283.1	13940236	13947548	+	caspase-2-like	113060139	description match	protein_coding	gene		unclassified transcription discrepancy; unclassified translation discrepancy	XP_026084780.1
+Carassius_auratus	casp21	casp21	NC_039288.1	16285923	16287965	+	caspase 21, apoptosis-related cysteine peptidase	113063759	name match	protein_coding	gene			XP_026089867.1
+Carassius_auratus	LOC113065546	LOC113065546	NC_039290.1	3709436	3715604	+	caspase-9-like	113065546	description match	protein_coding	gene			XP_026092664.1;XP_026092665.1
+Carassius_auratus	casp9	casp9	NW_020523286.1	2263138	2269399	+	caspase 9, apoptosis-related cysteine peptidase	113068938	name match	protein_coding	gene			XP_026097677.1
+Carassius_auratus	LOC113074243	LOC113074243	NW_020524475.1	35358	37700	+	caspase-1-A-like	113074243	description match	protein_coding	gene			XP_026102787.1
+Carassius_auratus	LOC113074955	LOC113074955	NW_020524628.1	134093	135168	-	caspase-3-like	113074955	description match	protein_coding	gene			XP_026103448.1
+Carassius_auratus	LOC113074954	LOC113074954	NW_020524628.1	135922	144592	-	caspase-3-like	113074954	description match	protein_coding	gene			XP_026103446.1;XP_026103445.1
+Carassius_auratus	LOC113076928	LOC113076928	NW_020525115.1	132869	147718	+	caspase-7	113076928	description match	protein_coding	gene			XP_026105329.1;XP_026105330.1
+Carassius_auratus	LOC113082415	LOC113082415	NW_020526282.1	99453	103104	-	caspase-1-A-like	113082415	description match	protein_coding	gene			XP_026109862.1
+Carassius_auratus	LOC113102528	LOC113102528	NW_020529216.1	60845	66479	-	caspase-3-like	113102528	description match	protein_coding	gene			XP_026121608.1
+Carassius_auratus	LOC113102983	LOC113102983	NW_020529245.1	135266	136631	-	caspase-1-like	113102983	description match	pseudogene	pseudogene			
+Carassius_gibelio	casp3a	casp3a	NC_068371.1	5379220	5383273	-	caspase 3, apoptosis-related cysteine peptidase a	127966708	name match	protein_coding	gene			XP_052423897.1
+Carassius_gibelio	LOC127935548	LOC127935548	NC_068371.1	31961443	31964397	-	caspase b	127935548	description match	protein_coding	gene			XP_052389520.1
+Carassius_gibelio	LOC128029032	LOC128029032	NC_068371.1	32020195	32028772	-	caspase b	128029032	description match	protein_coding	gene			XP_052472492.1
+Carassius_gibelio	LOC127950387	LOC127950387	NC_068373.1	17859652	17864104	-	caspase-6-like	127950387	description match	protein_coding	gene			XP_052403359.1
+Carassius_gibelio	LOC128015385	LOC128015385	NC_068376.1	8292025	8300009	+	caspase-8-like	128015385	description match	protein_coding	gene			XP_052455151.1
+Carassius_gibelio	LOC128015387	LOC128015387	NC_068376.1	8304208	8307680	-	caspase-8	128015387	description match	protein_coding	gene			XP_052455152.1
+Carassius_gibelio	casp23	casp23	NC_068377.1	31916721	31920736	-	caspase 23, apoptosis-related cysteine peptidase	128017247	name match	protein_coding	gene			XP_052458500.1
+Carassius_gibelio	LOC128020717	LOC128020717	NC_068380.1	809074	811338	+	caspase-3-like	128020717	description match	protein_coding	gene			XP_052463305.1;XP_052463306.1
+Carassius_gibelio	LOC128020716	LOC128020716	NC_068380.1	813113	815777	+	caspase-7-like	128020716	description match	protein_coding	gene			XP_052463302.1;XP_052463303.1;XP_052463304.1
+Carassius_gibelio	LOC128020855	LOC128020855	NC_068380.1	3574905	3586480	-	caspase-3-like	128020855	description match	protein_coding	gene			XP_052463572.1
+Carassius_gibelio	LOC128025366	LOC128025366	NC_068382.1	18157499	18167881	-	caspase-7	128025366	description match	protein_coding	gene			XP_052467611.1;XP_052467612.1
+Carassius_gibelio	LOC128027693	LOC128027693	NC_068384.1	17563500	17572483	+	caspase-3	128027693	description match	protein_coding	gene			XP_052471465.1
+Carassius_gibelio	LOC128030415	LOC128030415	NC_068386.1	5834078	5837521	+	caspase a	128030415	description match	protein_coding	gene			XP_052473990.1
+Carassius_gibelio	casp21	casp21	NC_068391.1	4974762	4976827	+	caspase 21, apoptosis-related cysteine peptidase	127941932	name match	protein_coding	gene			XP_052393383.1
+Carassius_gibelio	LOC127944670	LOC127944670	NC_068393.1	15172977	15179360	+	caspase-9-like	127944670	description match	protein_coding	gene			XP_052396743.1;XP_052396742.1
+Carassius_gibelio	LOC127949347	LOC127949347	NC_068396.1	11497263	11504696	+	caspase-3	127949347	description match	protein_coding	gene			XP_052402410.1;XP_052402409.1
+Carassius_gibelio	LOC127949502	LOC127949502	NC_068396.1	35226655	35230660	+	caspase b	127949502	description match	protein_coding	gene			XP_052402839.1
+Carassius_gibelio	LOC127949561	LOC127949561	NC_068396.1	35244137	35245425	+	caspase b	127949561	description match	protein_coding	gene			XP_052402975.1
+Carassius_gibelio	LOC127952414	LOC127952414	NC_068398.1	19652383	19657473	+	caspase-6	127952414	description match	protein_coding	gene			XP_052406794.1
+Carassius_gibelio	casp22	casp22	NC_068400.1	39018601	39026881	+	caspase 22, apoptosis-related cysteine peptidase	127957571	name match	protein_coding	gene			XP_052412135.1;XP_052412134.1
+Carassius_gibelio	LOC127959693	LOC127959693	NC_068401.1	22617737	22624628	+	caspase-8-like	127959693	description match	protein_coding	gene			XP_052414962.1
+Carassius_gibelio	casp8l1	casp8l1	NC_068401.1	22630674	22639041	-	caspase 8, apoptosis-related cysteine peptidase, like 1	127959455	name match	protein_coding	gene			XP_052414607.1;XP_052414606.1
+Carassius_gibelio	casp8	casp8	NC_068401.1	22640926	22646351	-	caspase 8, apoptosis-related cysteine peptidase	127959451	name match	protein_coding	gene			XP_052414602.1;XP_052414603.1
+Carassius_gibelio	LOC127961949	LOC127961949	NC_068402.1	5941837	5946403	-	caspase a	127961949	description match	protein_coding	gene			XP_052417228.1;XP_052417229.1
+Carassius_gibelio	casp10	casp10	NC_068404.1	4837599	4851319	-	caspase 10, apoptosis-related cysteine peptidase	127965397	name match	protein_coding	gene			XP_052422168.1
+Carassius_gibelio	LOC127966001	LOC127966001	NC_068405.1	27221	33597	+	caspase-7-like	127966001	description match	protein_coding	gene			XP_052422741.1;XP_052422742.1;XP_052422743.1
+Carassius_gibelio	LOC127966004	LOC127966004	NC_068405.1	21093394	21095876	+	caspase-7-like	127966004	description match	protein_coding	gene			XP_052422746.1
+Carassius_gibelio	LOC127966003	LOC127966003	NC_068405.1	21097445	21099606	+	caspase-3-like	127966003	description match	protein_coding	gene			XP_052422745.1
+Carassius_gibelio	casp7	casp7	NC_068407.1	7866468	7873634	+	caspase 7, apoptosis-related cysteine peptidase	127969455	name match	protein_coding	gene			XP_052427414.1
+Carassius_gibelio	LOC127970959	LOC127970959	NC_068409.1	11070178	11074799	-	caspase-7	127970959	description match	protein_coding	gene			XP_052429635.1
+Carassius_gibelio	casp2	casp2	NC_068411.1	12282248	12294991	+	caspase 2, apoptosis-related cysteine peptidase	127975231	name match	protein_coding	gene			XP_052435069.1;XP_052435070.1;XP_052435071.1;XP_052435072.1
+Carassius_gibelio	LOC127975488	LOC127975488	NC_068411.1	25953116	25955542	-	caspase a	127975488	description match	protein_coding	gene			XP_052435585.1
+Carassius_gibelio	casp9	casp9	NC_068418.1	16813390	16819608	+	caspase 9, apoptosis-related cysteine peptidase	128011490	name match	protein_coding	gene			XP_052449917.1
+Cyprinus_carpio	LOC109096543	LOC109096543	NC_056572.1	3919126	3923478	-	caspase-3-like	109096543	product match	protein_coding	gene			XP_042622904.1
+Cyprinus_carpio	LOC109062408	LOC109062408	NC_056572.1	27949750	27958937	+	caspase b-like	109062408	product match	protein_coding	gene		unclassified transcription discrepancy; unclassified translation discrepancy	XP_042616015.1
+Cyprinus_carpio	LOC109062420	LOC109062420	NC_056574.1	22183918	22187876	+	caspase-6-like	109062420	product match	protein_coding	gene			XP_018935061.1
+Cyprinus_carpio	LOC109056418	LOC109056418	NC_056577.1	9368104	9382215	+	caspase-8-like	109056418	product match	protein_coding	gene			XP_042615117.1
+Cyprinus_carpio	LOC109053966	LOC109053966	NC_056577.1	9384089	9387614	-	caspase-8-like	109053966	product match	protein_coding	gene			XP_042613868.1
+Cyprinus_carpio	casp23	casp23	NC_056578.1	11633781	11637502	+	caspase 23, apoptosis-related cysteine peptidase, transcript variant X1	109094019	name match	protein_coding	gene			XP_018963241.1;XP_018963242.1
+Cyprinus_carpio	LOC109064153	LOC109064153	NC_056580.1	3340205	3353176	-	caspase-8-like, transcript variant X3	109064153	product match	protein_coding	gene			XP_018936704.1;XP_018936701.1
+Cyprinus_carpio	LOC122146508	LOC122146508	NC_056581.1	15916306	15917257	+	caspase-7-like	122146508	product match	protein_coding	gene	true		XP_042621653.1
+Cyprinus_carpio	LOC109065583	LOC109065583	NC_056581.1	15920853	15923194	+	caspase-3-like	109065583	product match	protein_coding	gene			XP_042621341.1
+Cyprinus_carpio	LOC109050440	LOC109050440	NC_056581.1	18629055	18631458	-	caspase-3-like	109050440	product match	protein_coding	gene			XP_018923599.2
+Cyprinus_carpio	LOC122147023	LOC122147023	NC_056583.1	15756500	15759650	-	caspase b-like	122147023	product match	protein_coding	gene			XP_042623753.1
+Cyprinus_carpio	LOC109099719	LOC109099719	NC_056583.1	16586167	16594443	-	caspase-7-like	109099719	product match	protein_coding	gene			XP_018968790.1
+Cyprinus_carpio	LOC109089113	LOC109089113	NC_056585.1	12355247	12367001	-	caspase-3-like, transcript variant X1	109089113	product match	protein_coding	gene			XP_042625826.1;XP_042625827.1;XP_042625828.1
+Cyprinus_carpio	LOC109105725	LOC109105725	NC_056587.1	6436870	6445514	-	caspase-2-like, transcript variant X2	109105725	product match	protein_coding	gene			XP_042628189.1;XP_018974541.1;XP_018974540.1;XP_018974543.1;XP_018974542.1
+Cyprinus_carpio	caspa	caspa	NC_056587.1	17422750	17426504	-	caspase a	109059688	name match	protein_coding	gene			XP_042628956.1
+Cyprinus_carpio	LOC109064749	LOC109064749	NC_056592.1	5040519	5043172	+	caspase-3-like	109064749	product match	protein_coding	gene			XP_018937332.1
+Cyprinus_carpio	LOC109103852	LOC109103852	NC_056594.1	12694572	12700117	+	caspase-9-like	109103852	product match	protein_coding	gene			XP_042569148.1
+Cyprinus_carpio	LOC122136065	LOC122136065	NC_056597.1	10556546	10557467	+	caspase a-like	122136065	product match	protein_coding	gene			XP_042573530.1
+Cyprinus_carpio	casp3a	casp3a	NC_056597.1	15093127	15099846	-	caspase 3, apoptosis-related cysteine peptidase a	109096565	name match	protein_coding	gene			XP_018965718.1
+Cyprinus_carpio	LOC109062412	LOC109062412	NC_056597.1	34062948	34070281	-	caspase b-like	109062412	product match	protein_coding	gene			XP_042573169.1
+Cyprinus_carpio	LOC122135952	LOC122135952	NC_056597.1	34073193	34074501	-	caspase b-like	122135952	product match	protein_coding	gene			XP_042573168.1
+Cyprinus_carpio	LOC122136604	LOC122136604	NC_056599.1	38055950	38062742	+	caspase-6-like, transcript variant X2	122136604	product match	protein_coding	gene			XP_042576893.1;XP_042576892.1
+Cyprinus_carpio	casp8	casp8	NC_056602.1	9005313	9011326	+	caspase 8, apoptosis-related cysteine peptidase	109082887	name match	protein_coding	gene			XP_042581513.1
+Cyprinus_carpio	casp8l1	casp8l1	NC_056602.1	9017675	9022138	+	caspase 8, apoptosis-related cysteine peptidase, like 1	109052822	name match	protein_coding	gene			XP_042581516.1
+Cyprinus_carpio	LOC109047269	LOC109047269	NC_056602.1	9032174	9035228	-	caspase-8-like	109047269	product match	protein_coding	gene			XP_018920515.1
+Cyprinus_carpio	LOC109093960	LOC109093960	NC_056603.1	8848648	8853327	-	caspase a-like	109093960	product match	protein_coding	gene			XP_042583014.1
+Cyprinus_carpio	LOC109097220	LOC109097220	NC_056605.1	5122746	5134489	+	caspase-8-like	109097220	product match	protein_coding	gene			XP_042586638.1
+Cyprinus_carpio	LOC122138425	LOC122138425	NC_056605.1	5278047	5281334	+	caspase-8-like	122138425	product match	protein_coding	gene			XP_042586639.1
+Cyprinus_carpio	LOC122138630	LOC122138630	NC_056606.1	19459058	19461031	+	caspase-7-like	122138630	product match	protein_coding	gene			XP_042587973.1
+Cyprinus_carpio	LOC109061445	LOC109061445	NC_056606.1	19469288	19471149	+	caspase-7-like, transcript variant X2	109061445	product match	protein_coding	gene			XP_042589012.1;XP_042589011.1
+Cyprinus_carpio	casp7	casp7	NC_056608.1	16890012	16898941	-	caspase 7, apoptosis-related cysteine peptidase, transcript variant X1	109099653	name match	protein_coding	gene			XP_042591656.1;XP_018968723.1;XP_042591657.1
+Cyprinus_carpio	LOC109071296	LOC109071296	NC_056610.1	9335264	9344442	-	caspase-3-like	109071296	product match	protein_coding	gene			XP_042593911.1
+Cyprinus_carpio	LOC109071297	LOC109071297	NC_056610.1	9346841	9352752	-	caspase-3-like, transcript variant X1	109071297	product match	protein_coding	gene			XP_042593909.1;XP_042593910.1
+Cyprinus_carpio	LOC109068105	LOC109068105	NC_056610.1	9358872	9364072	-	caspase-3-like	109068105	product match	protein_coding	gene			XP_042593657.1
+Cyprinus_carpio	LOC109085235	LOC109085235	NC_056612.1	11803825	11814387	-	caspase-2-like, transcript variant X2	109085235	product match	protein_coding	gene			XP_042596711.1;XP_042596713.1;XP_042596712.1;XP_042596709.1;XP_042596714.1
+Cyprinus_carpio	LOC109079016	LOC109079016	NC_056612.1	22944157	22947364	-	caspase a-like	109079016	product match	protein_coding	gene			XP_042597447.1
+Cyprinus_carpio	LOC109076849	LOC109076849	NC_056617.1	5541881	5544311	+	caspase-7-like	109076849	product match	protein_coding	gene			XP_018948042.1
+Cyprinus_carpio	LOC109088469	LOC109088469	NC_056618.1	17150865	17155673	+	caspase a-like	109088469	product match	protein_coding	gene			XP_042605808.1
+Cyprinus_carpio	LOC109048790	LOC109048790	NC_056619.1	15478311	15483658	+	caspase-9	109048790	product match	protein_coding	gene			XP_042605992.1
+Cyprinus_carpio	casp22	casp22	NW_024879254.1	895352	903745	+	caspase 22, apoptosis-related cysteine peptidase	109083181	name match	protein_coding	gene			XP_018953558.2
+Danio_rerio	casp3a	casp3a	NC_133176.1	19070212	19106941	+	caspase 3, apoptosis-related cysteine peptidase a	140621	name match	protein_coding	gene		annotated by transcript or proteomic data	XP_073807769.1;XP_073807823.1;NP_571952.1
+Danio_rerio	caspb	caspb	NC_133176.1	61327320	61341131	-	caspase b	259303	name match	protein_coding	gene		annotated by transcript or proteomic data	NP_690840.2
+Danio_rerio	caspbl	caspbl	NC_133176.1	61381652	61391830	-	caspase b, like	566185	name match	protein_coding	gene			XP_005160259.1;XP_068076591.1;XP_073804124.1;XP_073804119.1;XP_073804129.1;XP_073804105.1;NP_001139064.1
+Danio_rerio	casp6b.1	casp6b.1	NC_133178.1	31761760	31766094	-	caspase 6b.1, apoptosis-related cysteine peptidase	791531	name match	protein_coding	gene			NP_001005973.2
+Danio_rerio	casp6a	casp6a	NC_133178.1	31767020	31773691	-	caspase 6, apoptosis-related cysteine peptidase a	552927	name match	protein_coding	gene		annotated by transcript or proteomic data	XP_068073028.1;NP_001018333.1
+Danio_rerio	casp6b.2	casp6b.2	NC_133178.1	31777086	31782138	-	caspase 6b.2, apoptosis-related cysteine peptidase	664751	name match	protein_coding	gene			XP_073799613.1;XP_073799612.1;NP_001035069.1
+Danio_rerio	casp22	casp22	NC_133180.1	23275457	23284538	-	caspase 22, apoptosis-related cysteine peptidase	561021	name match	protein_coding	gene			XP_073808219.1
+Danio_rerio	casp8	casp8	NC_133181.1	14006420	14017389	+	caspase 8, apoptosis-related cysteine peptidase	58022	name match	protein_coding	gene		annotated by transcript or proteomic data	XP_073809436.1;NP_571585.2
+Danio_rerio	casp8l1	casp8l1	NC_133181.1	14064981	14069931	+	caspase 8, apoptosis-related cysteine peptidase, like 1	100049706	name match	protein_coding	gene		annotated by transcript or proteomic data	XP_005165879.3;NP_001092089.1
+Danio_rerio	LOC795066	LOC795066	NC_133181.1	14071149	14078317	-	caspase-8	795066	description match	protein_coding	gene			XP_009300531.2;XP_073809876.1
+Danio_rerio	casp20	casp20	NC_133181.1	14079249	14086452	-	caspase 20, apoptosis-related cysteine peptidase	100192215	name match	protein_coding	gene		annotated by transcript or proteomic data	XP_073808554.1;NP_001129724.2
+Danio_rerio	casp23	casp23	NC_133182.1	19592614	19597368	+	caspase 23, apoptosis-related cysteine peptidase	563034	name match	protein_coding	gene		annotated by transcript or proteomic data	NP_001103182.1
+Danio_rerio	casp10	casp10	NC_133184.1	1329789	1348824	+	caspase 10, apoptosis-related cysteine peptidase	557302	name match	protein_coding	gene			XP_685430.4
+Danio_rerio	LOC798445	LOC798445	NC_133185.1	47397808	47405917	+	caspase-3-like	798445	description match	protein_coding	gene			XP_001338890.3
+Danio_rerio	casp17	casp17	NC_133185.1	47412707	47422179	+	caspase 17, apoptosis-related cysteine peptidase	101886133	name match	protein_coding	gene			XP_017213601.1
+Danio_rerio	casp7	casp7	NC_133187.1	32456940	32470989	-	caspase 7, apoptosis-related cysteine peptidase	553634	name match	protein_coding	gene			XP_073773744.1;XP_073773743.1;XP_073773742.1;XP_005156389.1;XP_073773745.1;XP_073773748.1;XP_073773749.1;XP_073773747.1;XP_073773746.1;NP_001018443.2
+Danio_rerio	casp3b	casp3b	NC_133189.1	4620964	4654651	-	caspase 3, apoptosis-related cysteine peptidase b	566604	name match	protein_coding	gene			XP_073777626.1;XP_005173133.1;XP_073777627.1;XP_073777629.1;XP_068069330.1;NP_001041531.2
+Danio_rerio	casp2	casp2	NC_133191.1	17629400	17658797	-	caspase 2, apoptosis-related cysteine peptidase	373118	name match	protein_coding	gene			XP_009290451.1;XP_005157976.1;XP_068070011.1;XP_017206813.1;NP_001036160.1
+Danio_rerio	caspa	caspa	NC_133191.1	46416069	46466469	-	caspase a	57933	name match	protein_coding	gene		annotated by transcript or proteomic data	XP_073781383.1;XP_073781381.1;XP_073781382.1;NP_571580.1
+Danio_rerio	casp21	casp21	NC_133196.1	9889519	9895275	+	caspase 21, apoptosis-related cysteine peptidase	100331324	name match	protein_coding	gene			NP_001373247.1
+Danio_rerio	casp9	casp9	NC_133198.1	27916687	27931580	+	caspase 9, apoptosis-related cysteine peptidase	492763	name match	protein_coding	gene			NP_001007405.2

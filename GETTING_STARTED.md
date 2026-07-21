@@ -186,11 +186,13 @@ above.
 
 ## Where outputs go
 
-All outputs from a session land in `results/` inside this folder:
+All outputs from a session land in `results/<gene_set>/` inside this
+folder, namespaced by the gene set's name (e.g. `results/caspase/`), so a
+second gene set never overwrites the first:
 
-- `results/identification/` — gene lists, inventory, synteny files,
-  curation document
-- `results/explorers/` — interactive HTML visualization
+- `results/<gene_set>/identification/` — gene lists, inventory, synteny
+  files, curation document
+- `results/<gene_set>/explorers/` — interactive HTML visualization
 
 ---
 

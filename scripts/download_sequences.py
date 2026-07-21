@@ -136,13 +136,13 @@ def main():
 
     Entrez.email = args.email
 
-    dirs = resolve_output_dirs(args.output_dir)
-    RESULTS_DIR   = dirs["identification"]
-    SEQUENCES_DIR = dirs["sequences"]
-
     gs_cfg, genome_cfg, _ = load_configs(args.config)
     gene_set = gs_cfg["gene_set"]["name"]
     display_name = gs_cfg["gene_set"].get("display_name", gene_set)
+
+    dirs = resolve_output_dirs(args.output_dir, gene_set)
+    RESULTS_DIR   = dirs["identification"]
+    SEQUENCES_DIR = dirs["sequences"]
     species_short = {s["full_name"]: s["short_code"]
                      for s in iter_species(genome_cfg)}
 
