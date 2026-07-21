@@ -10,19 +10,16 @@ Analyses were performed on the publicly available NCBI RefSeq structural
 annotations (genomic GFF3 and protein FASTA) of the three cyprinid Cs4R
 allotetraploid carps: *Cyprinus carpio* (common carp, GCF_018340385.1),
 *Carassius gibelio* (Prussian carp, GCF_023724105.1), and *Carassius
-auratus* (goldfish, GCF_003368295.1). *Danio rerio* (zebrafish) was used
-as the diploid outgroup that approximates the pre-hybridization ancestral
-state at each locus; because zebrafish diverged from the carp lineage
-before the Cs4R allopolyploidization, a zebrafish chromosome carries a
-single ancestral copy of each locus rather than the paired A/B subgenome
-copies present in the carps, and zebrafish chromosome numbers correspond
-directly to the carp homeolog-pair numbers. Two further diploid cyprinids
-(*Puntigrus tetrazona*, *Ctenopharyngodon idella*) are supported as
-optional secondary comparators for cross-checking putatively
-zebrafish-lineage-specific patterns but were not used here, as their
-annotations were not included in the working dataset; the single-comparator
-caveat (a zebrafish-specific pattern cannot be formally excluded) was
-therefore retained as a standing hedge on loss claims.
+auratus* (goldfish, GCF_003368295.1). *Danio rerio* (zebrafish,
+GCF_049306965.1, GRCz12tu) was used as a diploid outgroup whose lineage
+diverged prior to the Cs4R allopolyploidization event, giving a
+single-copy reference at each locus against which the carps' paired A/B
+subgenome copies could be compared; zebrafish chromosome numbers were
+adopted as the numbering convention for the corresponding carp homeolog
+pairs. Only zebrafish was used as a diploid comparator in this analysis;
+a zebrafish-lineage-specific pattern at any given locus therefore cannot
+be formally excluded, and this caveat is carried as a standing hedge on
+loss claims throughout the curation.
 
 All inferences are **annotation-level**: every claim is supportable from
 the GFF and protein-FASTA inputs alone. No sequence-level analyses
