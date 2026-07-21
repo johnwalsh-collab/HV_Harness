@@ -55,7 +55,8 @@ HV_Harness/
 │   ├── genome_config.yaml          ← species list + chromosome-mapping rules
 │   └── annotations/                ← downloaded GFF + protein FASTA (gitignored)
 ├── examples/
-│   └── caspase_in_carp/            ← the full, signed-off caspase worked example (all 3 focal species)
+│   ├── caspase_in_carp/            ← the full, signed-off caspase worked example (all 3 focal species)
+│   └── granulin_in_carp/           ← second, smaller example (common carp only) — proof of generality
 ├── tests/                          ← fixture tests for pipeline invariants
 ├── species_info.txt                ← genome accessions for the four focal species
 ├── requirements.txt                ← core dependencies (pandas, pyyaml)
@@ -84,6 +85,8 @@ This workflow is designed for:
 
 It is not designed for diploid genomes, scaffold-only assemblies, or automated classification without human curation.
 
-## Worked example
+## Worked examples
 
-The caspase gene family, curated independently in all three focal carp species (*Cyprinus carpio*, *Carassius gibelio*, *Carassius auratus*), is the validation case. The full curation record — per-pair curation documents, curation-data JSON, gene inventory, synteny evidence, and interactive hierarchy explorers — ships in this repo under `examples/caspase_in_carp/`. See `examples/caspase_in_carp/README.md` for a guide to those files.
+The caspase gene family, curated independently in all three focal carp species (*Cyprinus carpio*, *Carassius gibelio*, *Carassius auratus*), is the primary validation case. The full curation record — per-pair curation documents, curation-data JSON, gene inventory, synteny evidence, and interactive hierarchy explorers — ships in this repo under `examples/caspase_in_carp/`. See `examples/caspase_in_carp/README.md` for a guide to those files.
+
+A second, smaller example — the granulin gene family in common carp only — ships under `examples/granulin_in_carp/`. It exists to demonstrate that the harness generalizes beyond caspases, including a run with a different AI agent; it's a deliberately narrower, partial-coverage curation rather than a second comprehensive worked example. See `examples/granulin_in_carp/README.md`.

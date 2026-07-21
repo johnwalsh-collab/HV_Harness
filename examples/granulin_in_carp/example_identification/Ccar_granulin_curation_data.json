@@ -1,0 +1,116 @@
+{
+  "3": {
+    "zf_chr": 3,
+    "zf_locus": "grna / progranulin",
+    "note": "A3 retains a progranulin-like copy at the zebrafish grna syntenic locus; B3 is a CP3-assessed candidate loss with a partially preserved block.",
+    "slots": [
+      {
+        "label": "grna / progranulin",
+        "sub": "multi-repeat precursor locus",
+        "category": "progranulin",
+        "badge": "B3 candidate loss",
+        "A": [
+          {
+            "id": "LOC109064429",
+            "role": "grna / progranulin-like (A3)",
+            "aa": 783,
+            "ncbi": "LOC109064429; progranulin-like",
+            "category": "progranulin",
+            "confidence": "medium",
+            "status": "ok"
+          }
+        ],
+        "B": [],
+        "B_loss": "searched"
+      }
+    ]
+  },
+  "19": {
+    "zf_chr": 19,
+    "zf_locus": "grna.1 / grna.2 small-granulin tandem locus",
+    "note": "A19 and B19 each retain two short progranulin-like copies in the conserved chr19 tandem cluster; 1:1 within-cluster identities are unresolved by synteny alone.",
+    "slots": [
+      {
+        "label": "grna.1 / grna.2",
+        "sub": "small-granulin tandem cluster",
+        "category": "small_granulin",
+        "ambiguous": true,
+        "badge": "identity unresolved",
+        "A": [
+          {
+            "id": "LOC109060267",
+            "role": "pair-19 small granulin (A19 copy 1)",
+            "aa": 188,
+            "ncbi": "LOC109060267; progranulin-like",
+            "category": "small_granulin",
+            "confidence": "low",
+            "status": "ok"
+          },
+          {
+            "id": "LOC109112498",
+            "role": "pair-19 small granulin (A19 copy 2)",
+            "aa": 188,
+            "ncbi": "LOC109112498; progranulin-like",
+            "category": "small_granulin",
+            "confidence": "low",
+            "status": "ok"
+          }
+        ],
+        "B": [
+          {
+            "id": "LOC109051021",
+            "role": "pair-19 small granulin (B19 copy 1)",
+            "aa": 147,
+            "ncbi": "LOC109051021; progranulin-like",
+            "category": "small_granulin",
+            "confidence": "low",
+            "status": "ok"
+          },
+          {
+            "id": "LOC109068459",
+            "role": "pair-19 small granulin (B19 copy 2)",
+            "aa": 154,
+            "ncbi": "LOC109068459; progranulin-like",
+            "category": "small_granulin",
+            "confidence": "low",
+            "status": "ok"
+          }
+        ]
+      }
+    ]
+  },
+  "24": {
+    "zf_chr": 24,
+    "zf_locus": "grnb",
+    "note": "A24 carries a full-length named grnb; B24 carries a syntenic partial progranulin-like model assigned as the B homeolog with low model confidence.",
+    "slots": [
+      {
+        "label": "grnb",
+        "sub": "multi-repeat precursor locus",
+        "category": "progranulin",
+        "A": [
+          {
+            "id": "grnb",
+            "role": "grnb (A24)",
+            "aa": 737,
+            "ncbi": "grnb",
+            "category": "progranulin",
+            "confidence": "high",
+            "status": "ok"
+          }
+        ],
+        "B": [
+          {
+            "id": "LOC109075413",
+            "role": "grnb (B24)",
+            "aa": 516,
+            "ncbi": "LOC109075413; progranulin-like; partial=true",
+            "category": "progranulin",
+            "confidence": "low",
+            "status": "ok"
+          }
+        ]
+      }
+    ]
+  }
+}

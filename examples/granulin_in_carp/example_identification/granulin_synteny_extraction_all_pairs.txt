@@ -1,0 +1,610 @@
+# Synteny extraction for the granulin gene set
+# Source: granulin_gene_inventory.tsv
+# Flanking genes per side: 12; cluster merge gap: 500000 bp
+# Sections: 22
+
+=== P3_Cgib_A3 (25 genes) ===
+    15919633     15934191 + LOC127948922         ras-related C3 botulinum toxin substrate 2
+    15940141     15957364 + LOC127948929         somatostatin receptor type 5-like
+    15973194     15981337 + LOC127948934         eukaryotic translation initiation factor 3 subunit D
+    15983804     15986394 - LOC127948963         amine sulfotransferase
+    15989053     16002941 - LOC127948943         apolipoprotein L4
+    16018252     16085933 + LOC127948971         voltage-dependent calcium channel gamma-2 subunit-like
+    16101294     16105978 - LOC127948978         60S ribosomal protein L3
+    16101504     16101640 - LOC127966373         small nucleolar RNA SNORA54
+    16102431     16102528 - LOC127966383         small nucleolar RNA U83B
+    16106659     16116627 - LOC127948985         probable mitochondrial glutathione transporter SLC25A39
+    16122136     16124406 - LOC127948998         60S ribosomal protein L27
+    16125779     16131931 - LOC127949007         RUN domain-containing protein 1
+    16132752     16140396 - LOC127949015         progranulin
+    16141140     16146142 + LOC127949033         interferon-induced 35 kDa protein homolog
+    16146528     16160791 - LOC127949023         branched-chain-amino-acid aminotransferase, cytosolic-like
+    16161431     16164358 - LOC127949039         17-beta-hydroxysteroid dehydrogenase 14-like
+    16167714     16173945 + LOC127949068         potassium voltage-gated channel subfamily A member 7-like
+    16173980     16177089 - LOC127949088         fibroblast growth factor 21
+    16177240     16200153 - LOC127949054         excitatory amino acid transporter 2-like
+    16209488     16219231 + LOC127949074         uncharacterized LOC127949074
+    16219587     16252802 - ppfia3               PTPRF interacting protein alpha 3
+    16258119     16262839 - LOC127949096         nucleobindin-1
+    16263568     16265915 - LOC127942930         G1/S-specific cyclin-D2-like
+    16272641     16280246 - LOC127949107         TBC1 domain family member 17
+    16283221     16289504 + LOC127949116         uncharacterized LOC127949116
+
+=== P3_Cgib_B3 (25 genes) ===
+    21460525     21470971 + LOC127953678         tripartite motif-containing protein 16-like protein
+    21471716     21477239 - LOC127953665         uncharacterized LOC127953665
+    21478845     21488075 + LOC127953640         TBC1 domain family member 17-like
+    21492330     21495510 + LOC127953670         G1/S-specific cyclin-D2-like
+    21495993     21501942 + LOC127953655         nucleobindin-1
+    21505593     21520760 + LOC127953669         liprin-alpha-3-like
+    21557051     21561080 - LOC127953660         60S ribosomal protein L3
+    21557236     21557370 - LOC127953968         small nucleolar RNA SNORA54
+    21558273     21558368 - LOC127953970         small nucleolar RNA U83B
+    21562353     21572729 - LOC127953663         probable mitochondrial glutathione transporter SLC25A39
+    21576970     21581727 - LOC127953685         60S ribosomal protein L27
+    21582509     21588499 - LOC127953644         RUN domain-containing protein 1
+    21589437     21617448 - grna                 granulin a
+    21618473     21622030 + LOC127953662         interferon-induced 35 kDa protein homolog
+    21622232     21631800 - LOC127953658         branched-chain-amino-acid aminotransferase, cytosolic
+    21633068     21635506 - LOC127953673         17-beta-hydroxysteroid dehydrogenase 14
+    21635469     21645067 + LOC127953649         potassium voltage-gated channel subfamily A member 7-like
+    21645020     21647644 - LOC127953680         fibroblast growth factor 21-like
+    21648665     21671576 - LOC127953639         excitatory amino acid transporter 2-like
+    21681320     21691239 + LOC127953652         uncharacterized LOC127953652
+    21694918     21733858 - LOC127952482         liprin-alpha-3-like
+    21738437     21755555 - LOC127953695         E3 ubiquitin-protein ligase UBR1
+    21757263     21822360 - cacng2a              calcium channel, voltage-dependent, gamma subunit 2a
+    21854923     21857789 - LOC127953004         GTPase IMAP family member 4
+    21854970     21856990 + LOC127953006         uncharacterized LOC127953006
+
+=== P3_Ccar_A3 (25 genes) ===
+    23733764     23742916 + LOC109051797         tripartite motif-containing protein 16-like protein
+    23744084     23749997 - LOC109049308         uncharacterized LOC109049308, transcript variant X1
+    23756825     23772271 + LOC109048949         TBC1 domain family, member 17
+    23777115     23780341 + LOC109049498         G1/S-specific cyclin-D2-like
+    23780957     23789726 + LOC109048950         nucleobindin-2-like, transcript variant X2
+    23795026     23828391 + LOC109048951         liprin-alpha-3-like, transcript variant X1
+    23828663     23841101 - LOC109049309         uncharacterized LOC109049309, transcript variant X1
+    23848319     23869550 + LOC109046693         excitatory amino acid transporter 2-like, transcript variant
+    23871581     23874717 + LOC122137615         fibroblast growth factor 21-like
+    23874740     23881337 - LOC109046685         potassium voltage-gated channel subfamily A member 7-like
+    23882722     23896637 + LOC109066963         branched-chain-amino-acid aminotransferase, cytosolic-like
+    23897002     23902474 - LOC109066980         interferon-induced 35 kDa protein homolog
+    23902732     23911860 + LOC109064429         progranulin-like, transcript variant X2
+    23913395     23919391 + LOC109046700         RUN domain-containing protein 1-like, transcript variant X1
+    23920207     23922590 + LOC109053056         60S ribosomal protein L27
+    23932351     23942846 + LOC109064819         solute carrier family 25 member 39-like, transcript variant 
+    23945121     23949434 + LOC109064818         60S ribosomal protein L3, transcript variant X1
+    23948072     23948169 + LOC122139149         
+    23949103     23949237 + LOC122139147         
+    23954429     23988072 + LOC122137629         
+    23961684     24033499 - LOC109054108         voltage-dependent calcium channel gamma-2 subunit-like
+    24038554     24042857 + LOC122135481         
+    24046395     24050742 + apol                 apolipoprotein L
+    24051333     24057838 + sult3st1             sulfotransferase family 3, cytosolic sulfotransferase 1, tra
+    24058499     24064944 - eif3d                eukaryotic translation initiation factor 3, subunit D
+
+=== P3_Caur_chr3 (25 genes) ===
+      863821       864999 + LOC113042570         uncharacterized LOC113042570
+      894162       898794 - LOC113042578         uncharacterized LOC113042578
+     1029590      1051184 - LOC113042586         E3 ubiquitin-protein ligase RNF216-like
+     1058365      1072454 - LOC113042593         E3 ubiquitin-protein ligase SMURF1-like
+     1090251      1091696 - LOC113042636         CD209 antigen-like protein E
+     1098141      1116566 - LOC113042623         multidrug resistance-associated protein 1-like
+     1134014      1143793 - LOC113042648         monocarboxylate transporter 7-like
+     1148592      1158074 - LOC113042656         WD repeat domain phosphoinositide-interacting protein 1-like
+     1158838      1163168 - LOC113042665         actin-related protein 2/3 complex subunit 1A-like
+     1164302      1171311 + LOC113042675         cAMP-dependent protein kinase type I-alpha regulatory subuni
+     1171941      1176623 + LOC113042680         ras-related C3 botulinum toxin substrate 3-like
+     1177236      1184625 + LOC113042688         COP9 signalosome complex subunit 1
+     1205607      1224579 + LOC113042704         granulins-like
+     1225231      1231504 + LOC113042720         RUN domain-containing protein 1-like
+     1233766      1236023 + LOC113042734         60S ribosomal protein L27
+     1242266      1251456 + LOC113042760         solute carrier family 25 member 39-like
+     1252692      1257337 + LOC113042745         60S ribosomal protein L3
+     1256120      1256217 + LOC113056086         small nucleolar RNA U83B
+     1257002      1257136 + LOC113056075         small nucleolar RNA SNORA54
+     1272038      1341423 - LOC113042773         voltage-dependent calcium channel gamma-2 subunit-like
+     1349846      1351368 - LOC113042787         uncharacterized LOC113042787
+     1366568      1378272 + apol                 apolipoprotein L
+     1381138      1383748 + sult3st1             sulfotransferase family 3, cytosolic sulfotransferase 1
+     1387805      1396103 - LOC113042836         eukaryotic translation initiation factor 3 subunit D
+     1412498      1427104 - LOC113042845         somatostatin receptor type 5-like
+
+=== P3_Caur_chr28 (25 genes) ===
+    16680090     16693939 + LOC113047007         ras-related C3 botulinum toxin substrate 2
+    16698517     16718023 + LOC113047008         somatostatin receptor type 5
+    16729090     16736490 + LOC113047009         eukaryotic translation initiation factor 3 subunit D-like
+    16743614     16747033 + LOC113047010         GTPase IMAP family member 4
+    16756876     16758029 - LOC113047366         apolipoprotein L2-like
+    16777658     16849561 + LOC113047012         voltage-dependent calcium channel gamma-2 subunit
+    16870810     16874845 - LOC113047013         60S ribosomal protein L3
+    16871000     16871134 - LOC113047688         small nucleolar RNA SNORA54
+    16872039     16872134 - LOC113047690         small nucleolar RNA U83B
+    16876201     16885811 - slc25a39             solute carrier family 25 member 39
+    16887448     16892200 - LOC113047015         60S ribosomal protein L27
+    16892929     16899424 - rundc1               RUN domain containing 1
+    16899971     16932834 - grna                 granulin a
+    16933750     16937177 + LOC113047022         interferon-induced 35 kDa protein homolog
+    16937592     16946644 - LOC113047021         branched-chain-amino-acid aminotransferase, cytosolic-like
+    16947759     16950139 - LOC113047023         17-beta-hydroxysteroid dehydrogenase 14-like
+    16951625     16959470 + LOC113047020         potassium voltage-gated channel subfamily A member 7-like
+    16959825     16963502 - LOC113047024         fibroblast growth factor 21-like
+    16964207     16982971 - LOC113047017         excitatory amino acid transporter 2-like
+    16996690     17007948 + LOC113047027         uncharacterized LOC113047027
+    17010376     17052106 - LOC113047025         liprin-alpha-3-like
+    17055849     17061668 - LOC113047028         nucleobindin-1-like
+    17062149     17065349 - LOC113047643         G1/S-specific cyclin-D1-like
+    17069698     17079979 - LOC113047029         TBC1 domain family member 17-like
+    17081170     17086658 + LOC113047030         uncharacterized LOC113047030
+
+=== P3_Zf (27 genes) ===
+    28412481     28420364 + LOC798736            uncharacterized LOC798736
+    28422405     28436626 - apol                 apolipoprotein L
+    28428506     28429204 + LOC110437798         uncharacterized LOC110437798
+    28435631     28458391 + LOC101886115         uncharacterized LOC101886115
+    28460854     28611836 - LOC141381214         uncharacterized LOC141381214
+    28462062     28593483 + cacng2a              calcium channel, voltage-dependent, gamma subunit 2a
+    28615450     28619573 - rpl3                 ribosomal protein L3
+    28615635     28615771 - LOC137490811         small nucleolar RNA SNORA54
+    28616867     28616964 - LOC137490813         small nucleolar RNA U83B
+    28621043     28639448 - slc25a39             solute carrier family 25 member 39
+    28641950     28647462 - rpl27                ribosomal protein L27
+    28648975     28658690 - rundc1               RUN domain containing 1
+    28661396     28688522 - grna                 granulin a
+    28661413     28662326 + grnaas               granulin a antisense
+    28681929     28696055 + ifi35                interferon-induced protein 35
+    28697084     28716754 - bcat2                branched chain amino-acid transaminase 2, mitochondrial
+    28716596     28832105 - slc1a9               solute carrier family 1 member 9
+    28717849     28724145 - hsd17b14             hydroxysteroid (17-beta) dehydrogenase 14
+    28727278     28746669 + kcna7                potassium voltage-gated channel, shaker-related subfamily, m
+    28746726     28750992 - fgf21                fibroblast growth factor 21
+    28816259     28836128 + ntf4                 neurotrophin 4
+    28836787     28921221 - ppfia3               PTPRF interacting protein alpha 3
+    28935300     28939062 - LOC141381215         uncharacterized LOC141381215
+    28939198     28949943 - nucb1                nucleobindin 1
+    28950667     28955120 - ccndx                cyclin Dx
+    28952505     28955779 + LOC141381216         uncharacterized LOC141381216
+    28963794     28978541 - tbc1d17              TBC1 domain family, member 17
+
+=== P5_Cgib_B5 (25 genes) ===
+     5212562      5261749 + LOC127958680         taperin
+     5262196      5265500 - LOC127958719         microtubule nucleation factor SSNA1-like
+     5265795      5279313 + LOC127957625         anaphase-promoting complex subunit 2-like
+     5297302      5299449 - LOC127958685         taperin-like
+     5301454      5303000 - LOC127958716         transmembrane protein 203-like
+     5329040      5336840 + LOC127958732         uncharacterized LOC127958732
+     5372782      5403411 - LOC127958721         uncharacterized LOC127958721
+     5405993      5415930 + LOC127958688         uncharacterized LOC127958688
+     5419732      5429650 - LOC127958690         uncharacterized LOC127958690
+     5432256      5436722 + LOC127958724         uncharacterized LOC127958724
+     5476912      5478458 - LOC127958714         transmembrane protein 203-like
+     5478973      5498495 + LOC127958704         delta-aminolevulinic acid dehydratase-like
+     5525471      5526910 + LOC127958712         progranulin-like
+     5527330      5529736 + LOC127958710         calaxin-like
+     5529594      5532685 - LOC127958700         RNA-binding protein 48-like
+     5535492      5542145 - LOC127958684         zinc finger MYM-type protein 4
+     5568136      5569223 - LOC127958711         cytosolic phospholipase A2 zeta
+     5672968      5674514 - LOC127958713         transmembrane protein 203-like
+     5675029      5693177 + LOC127958705         delta-aminolevulinic acid dehydratase-like
+     5718344      5762672 + LOC127958068         taperin-like
+     5763119      5766423 - LOC127958070         microtubule nucleation factor SSNA1-like
+     5766718      5769153 + LOC127958069         anaphase-promoting complex subunit 2-like
+     5775054      5823568 - LOC127957733         CAP-Gly domain-containing linker protein 1
+     5849355      5852794 + LOC127958399         T-cell-specific surface glycoprotein CD28-like
+     5854430      5857947 + LOC127958252         uncharacterized LOC127958252
+
+=== P19_Cgib_A19_8253024-8328740 (28 genes) ===
+     7993368      8006010 + LOC127935871         GTP-binding protein Rit1-like
+     8007147      8010656 + pex11b               peroxisomal biogenesis factor 11 beta
+     8036282      8038321 - zgc:64022            Ras-related and estrogen-regulated growth inhibitor-like pro
+     8040640      8045535 - LOC127935575         uncharacterized LOC127935575
+     8075289      8077612 - LOC127935579         perforin-1
+     8098803      8101135 - LOC127935576         perforin-1-like
+     8127079      8129143 - LOC127935580         uncharacterized LOC127935580
+     8155458      8157563 - LOC127935577         perforin-1-like
+     8176526      8178566 - LOC127935578         perforin-1-like
+     8184975      8186730 - LOC127935581         uncharacterized LOC127935581
+     8217272      8221064 - LOC127935584         protein S100-A14-like
+     8222919      8228179 + LOC127935586         uncharacterized LOC127935586
+     8253024      8254358 - LOC127935583         progranulin-like
+     8277662      8380316 - LOC127935585         protein S100-A14
+     8307263      8309955 - LOC127935587         uncharacterized LOC127935587
+     8327255      8328740 - LOC127935582         progranulin
+     8405123      8417891 - LOC127935008         immunoglobulin kappa light chain-like
+     8418305      8460899 + LOC127935433         semaphorin-4A-like
+     8462129      8475876 + LOC127935003         high affinity immunoglobulin epsilon receptor subunit beta-l
+     8481161      8484722 - LOC127934917         uncharacterized LOC127934917
+     8493003      8496881 + LOC127935009         DNA-directed RNA polymerase III subunit RPC7-like
+     8529475      8532974 - LOC127935194         thioredoxin-interacting protein-like
+     8538892      8543163 - LOC127934952         uncharacterized LOC127934952
+     8553447      8573559 + LOC127935629         thrombospondin-3b-like
+     8575797      8579614 + LOC127934945         cyclin-dependent kinase 5 activator 1-like
+     8590044      8592107 + LOC127935870         uncharacterized LOC127935870
+     8602212      8665952 - LOC127935268         unconventional myosin-Ig
+     8666920      8671592 - LOC127934839         uncharacterized LOC127934839
+
+=== P19_Cgib_A19_16278794-16280576 (25 genes) ===
+    15862139     15863722 + LOC127935253         uncharacterized LOC127935253
+    16058307     16064580 + LOC127935255         uncharacterized LOC127935255
+    16066635     16070790 - LOC127935254         uncharacterized LOC127935254
+    16072904     16077020 + LOC127934965         uncharacterized LOC127934965
+    16085317     16100583 - LOC127935259         uncharacterized LOC127935259
+    16175104     16183804 - LOC127935258         uncharacterized LOC127935258
+    16182661     16212499 + sfpq                 splicing factor proline/glutamine-rich
+    16212836     16215240 + LOC127935252         uncharacterized LOC127935252
+    16217036     16235527 + LOC127935249         zinc finger MYM-type protein 4
+    16236877     16270277 + LOC127935248         zinc finger MYM-type protein 4
+    16255485     16259130 - LOC127935257         uncharacterized LOC127935257
+    16273908     16276399 + rbm48                RNA binding motif protein 48
+    16278794     16280576 - LOC127935891         progranulin
+    16288364     16289314 - LOC127935717         uncharacterized LOC127935717
+    16324094     16356843 + LOC127935432         cyclin-dependent kinase 6
+    16360023     16365267 + fam133b              family with sequence similarity 133 member B
+    16365410     16379870 + hepacam2             HEPACAM family member 2
+    16381384     16487836 + vps50                VPS50 EARP/GARPII complex subunit
+    16504210     16550873 - calcr                calcitonin receptor
+    16563838     16566135 - tfpi2                tissue factor pathway inhibitor 2
+    16566343     16567623 + LOC127934910         uncharacterized LOC127934910
+    16572013     16574520 + LOC127934911         uncharacterized LOC127934911
+    16576584     16577579 + gngt1                guanine nucleotide binding protein (G protein), gamma transd
+    16595325     16600488 - bet1                 Bet1 golgi vesicular membrane trafficking protein
+    16634156     16647330 + col1a2               collagen, type I, alpha 2
+
+=== P19_Cgib_B19 (26 genes) ===
+    21097983     21372728 - LOC127979355         adhesion G protein-coupled receptor B2
+    21351484     21352573 + LOC127979396         uncharacterized LOC127979396
+    21352657     21354259 + LOC127979394         uncharacterized LOC127979394
+    21732864     21734674 - LOC127979373         zinc finger BED domain-containing protein 4-like
+    21810669     21821138 + LOC127979366         splicing factor, proline- and glutamine-rich
+    21828072     21840745 + LOC127979390         uncharacterized LOC127979390
+    21850005     21851528 - LOC127979397         uncharacterized LOC127979397
+    21854514     21891275 + LOC127979354         zinc finger MYM-type protein 4
+    21894453     21895847 + LOC127979391         uncharacterized LOC127979391
+    21902508     21922532 + LOC127979357         zinc finger MYM-type protein 4
+    21925433     21928710 + LOC127979375         RNA-binding protein 48
+    21928528     21933890 - LOC127979381         calaxin
+    21934031     21935495 - LOC127979384         progranulin
+    21961322     21963327 - LOC127979383         progranulin-like
+    21971730     21977361 + LOC127979399         uncharacterized LOC127979399
+    21988063     22024097 + LOC127979376         cyclin-dependent kinase 6
+    22028937     22030064 + LOC127979392         uncharacterized LOC127979392
+    22030748     22043050 + LOC127979369         HEPACAM family member 2-like
+    22044308     22171737 + LOC127979359         syndetin
+    22185961     22232072 - LOC127979367         calcitonin gene-related peptide type 1 receptor-like
+    22238713     22241136 - LOC127979379         tissue factor pathway inhibitor 2
+    22242074     22242887 + LOC127979387         guanine nucleotide-binding protein G(T) subunit gamma-T1-lik
+    22243034     22255887 + zgc:85777            uncharacterized protein LOC405871 homolog
+    22256075     22259720 - LOC127979386         BET1 homolog
+    22294481     22313751 + LOC127979389         collagen alpha-2(I) chain
+    22317756     22327635 + LOC127979361         N-acetylneuraminate 9-O-acetyltransferase
+
+=== P19_Ccar_A19 (26 genes) ===
+    19780897     19838578 - LOC122148825         collagen alpha-2(VIII) chain-like, transcript variant X5
+    19902750     19909271 - LOC109111647         trafficking protein particle complex subunit 3-like
+    19940102     19962086 + LOC109112244         angiopoietin-2-like
+    20074127     20347128 - LOC109107572         CUB and sushi domain-containing protein 2-like, transcript v
+    20465419     20469835 + LOC122148856         histone-lysine N-methyltransferase EHMT2-like
+    20673376     20684541 + LOC109051057         splicing factor, proline- and glutamine-rich-like
+    20700563     20706681 + LOC109051377         uncharacterized LOC109051377
+    20713407     20714462 - LOC109051591         putative nuclease HARBI1
+    20738081     20773446 + LOC109060269         zinc finger MYM-type protein 4-like, transcript variant X1
+    20738228     20739012 - LOC122148826         
+    20776236     20806031 + LOC109111767         zinc finger MYM-type protein 4-like, transcript variant X1
+    20807194     20811935 + LOC109060268         RNA-binding protein 48-like, transcript variant X2
+    20819327     20821100 - LOC109060267         progranulin-like
+    20839948     20841681 - LOC109112498         progranulin-like
+    20872362     20906640 + LOC109111769         cyclin-dependent kinase 6-like
+    20912312     20917352 + fam133b              family with sequence similarity 133 member B
+    20915900     20926962 + LOC109111772         HEPACAM family member 2-like, transcript variant X1
+    20928714     21053261 + vps50                VPS50 EARP/GARPII complex subunit, transcript variant X3
+    21066847     21108898 - LOC109111774         calcitonin gene-related peptide type 1 receptor-like, transc
+    21117860     21120125 - LOC109048182         tissue factor pathway inhibitor 2-like
+    21121074     21122017 + gngt1                guanine nucleotide binding protein (G protein), gamma transd
+    21133950     21138340 - LOC109111776         BET1 homolog
+    21169968     21187058 + col1a2               collagen, type I, alpha 2
+    21170215     21172160 - LOC109111777         
+    21188902     21196619 + casd1                CAS1 domain containing 1
+    21197460     21210828 - sgce                 sarcoglycan, epsilon, transcript variant X4
+
+=== P19_Ccar_B19 (27 genes) ===
+    13186963     13188124 - LOC122140676         
+    13191093     13193996 - LOC122140675         collagen alpha-1(XVI) chain-like
+    13194526     13221913 - LOC109091985         collagen alpha-1(XVI) chain-like
+    13265662     13266580 - LOC122140781         
+    13267857     13523355 - adgrb2               adhesion G protein-coupled receptor B2
+    13932163     13933358 - LOC109051068         
+    13933696     13962761 + sfpq                 splicing factor proline/glutamine-rich, transcript variant X
+    13969490     14001219 + zmym4.1              zinc finger MYM-type containing 4, tandem duplicate 1, trans
+    13981522     13985711 + LOC122140728         piggyBac transposable element-derived protein 4-like
+    14005384     14026173 + LOC109050951         zinc finger MYM-type protein 4-like, transcript variant X2
+    14030684     14036327 + LOC109045882         RNA-binding protein 48-like
+    14036225     14038646 - efcab1               EF-hand calcium binding domain 1, transcript variant X1
+    14038637     14039430 + LOC122140606         
+    14039204     14040670 - LOC109051021         progranulin-like, transcript variant X2
+    14064476     14066319 - LOC109068459         progranulin-like
+    14094164     14130127 + cdk6                 cyclin-dependent kinase 6, transcript variant X1
+    14130715     14134304 + LOC109110951         
+    14134878     14143654 + LOC109110949         HEPACAM family member 2-like
+    14144962     14220864 + LOC109110952         syndetin-like
+    14324232     14366081 + LOC109111197         syndetin-like, transcript variant X2
+    14381565     14428120 - LOC109083203         calcitonin gene-related peptide type 1 receptor-like, transc
+    14435429     14437953 - LOC109066313         tissue factor pathway inhibitor 2-like
+    14440043     14441349 + LOC109047088         guanine nucleotide-binding protein G(T) subunit gamma-T1
+    14443567     14456456 + LOC109046952         probable acyl-CoA dehydrogenase 6
+    14456901     14458898 - LOC109046615         BET1 homolog
+    14496114     14514931 + LOC109063376         collagen alpha-2(I) chain-like, transcript variant X1
+    14519983     14538284 - LOC122140618         
+
+=== P19_Caur_chr44 (25 genes) ===
+        6425        19668 + LOC113062029         protein starmaker-like
+       24902        30339 + LOC113062028         P17/29C-like protein DDB_G0287399
+       30660        39821 + LOC113062030         uncharacterized LOC113062030
+       40129        60432 - LOC113062031         heat shock factor protein 1-like
+       60725       133227 + LOC113062032         ribosome biogenesis protein bop1
+       89316        96299 - LOC113062034         basic helix-loop-helix transcription factor scleraxis
+      154066       427337 - LOC113062035         adhesion G protein-coupled receptor B2
+      523111       550434 - LOC113062036         uncharacterized LOC113062036
+      809340       838597 + LOC113062037         splicing factor, proline- and glutamine-rich-like
+      843341       860752 + LOC113062040         zinc finger MYM-type protein 4-like
+      874199       892191 + LOC113062038         zinc finger MYM-type protein 4-like
+      895539       897869 + LOC113062042         uncharacterized LOC113062042
+      897736       899493 - LOC113062041         granulins
+      933217       935261 - LOC113061969         uncharacterized LOC113061969
+      940956       979799 + LOC113062043         cyclin-dependent kinase 6-like
+      981325       986554 + fam133b              family with sequence similarity 133 member B
+      986826       996906 + LOC113062044         HEPACAM family member 2-like
+      997710      1105947 + LOC113062046         syndetin-like
+     1119592      1175842 - LOC113062047         calcitonin gene-related peptide type 1 receptor-like
+     1184541      1185899 + LOC113061923         zinc finger BED domain-containing protein 4-like
+     1187755      1189910 - LOC113062048         tissue factor pathway inhibitor 2-like
+     1192119      1193069 + LOC113062049         guanine nucleotide-binding protein G(T) subunit gamma-T1-lik
+     1210386      1213803 - bet1                 Bet1 golgi vesicular membrane trafficking protein
+     1244301      1260269 + col1a2               collagen, type I, alpha 2
+     1272494      1283386 + casd1                CAS1 domain containing 1
+
+=== P19_Caur_chr19 (26 genes) ===
+     8837823      8888068 - LOC113119365         neurabin-1-like
+     8885131      8897122 + LOC113119368         epsilon-sarcoglycan-like
+     8897635      8907989 - LOC113119366         N-acetylneuraminate 9-O-acetyltransferase
+     8914813      8934129 - LOC113119369         collagen alpha-2(I) chain-like
+     8964534      8968196 + LOC113119373         BET1 homolog
+     8968384      8980578 - LOC113119371         probable acyl-CoA dehydrogenase 6
+     8981167      8982136 - gngt1                guanine nucleotide binding protein (G protein), gamma transd
+     8983167      8985608 + tfpi2                tissue factor pathway inhibitor 2
+     8992094      9039143 + calcr                calcitonin receptor
+     9053847      9177547 - LOC113119375         syndetin-like
+     9178713      9194112 - hepacam2             HEPACAM family member 2
+     9198636      9234794 - cdk6                 cyclin dependent kinase 6
+     9256881      9258852 + LOC113119378         granulins-like
+     9276770      9278146 + LOC113119383         granulins-like
+     9278276      9280863 + clxn                 calaxin
+     9280760      9285446 - rbm48                RNA binding motif protein 48
+     9286962      9307192 - LOC113119379         zinc finger MYM-type protein 4
+     9310870      9349730 - zmym4.1              zinc finger MYM-type containing 4, tandem duplicate 1
+     9356969      9390251 - sfpq                 splicing factor proline/glutamine-rich
+     9528497      9545665 - LOC113119386         zinc finger protein 883-like
+     9743137      9998064 + adgrb2               adhesion G protein-coupled receptor B2
+    10012224     10043078 - LOC113119391         uncharacterized LOC113119391
+    10043168     10106578 + col16a1              collagen, type XVI, alpha 1
+    10109023     10130165 - col9a2               procollagen, type IX, alpha 2
+    10131345     10148896 + LOC113119393         stromal membrane-associated protein 2-like
+    10165645     10254006 - LOC113119394         PHD finger protein 14-like
+
+=== P19_Zf (27 genes) ===
+    42380673     42387325 - LOC101887160         uncharacterized LOC101887160
+    42455969     42466248 - LOC101882039         uncharacterized LOC101882039
+    42555122     42574800 + LOC141379167         uncharacterized LOC141379167
+    42561771     42566785 - LOC137488546         uncharacterized LOC137488546
+    42653967     42683352 + sfpq                 splicing factor proline/glutamine-rich
+    42685712     42694592 + LOC137488547         uncharacterized LOC137488547
+    42697496     42742178 + zmym4.1              zinc finger MYM-type containing 4, tandem duplicate 1
+    42744147     42746638 - LOC141379170         uncharacterized LOC141379170
+    42744209     42794430 + zmym4.2              zinc finger MYM-type containing 4, tandem duplicate 2
+    42795994     42804404 - illr4                immune-related, lectin-like receptor 4
+    42805874     42811272 + rbm48                RNA binding motif protein 48
+    42811271     42814944 - clxn                 calaxin
+    42815015     42834208 + grnas                granulin antisense
+    42815307     42820798 - grna.1               granulin a, tandem duplicate 1
+    42823662     42827888 - grna.2               granulin a, tandem duplicate 2
+    42832195     42843768 - LOC141379171         uncharacterized LOC141379171
+    42877569     42957411 + cdk6                 cyclin dependent kinase 6
+    42966624     42977049 + fam133b              family with sequence similarity 133 member B
+    42979629     43003532 + hepacam2             HEPACAM family member 2
+    43008859     43316652 + vps50                VPS50 subunit of EARP/GARPII complex
+    43336105     43455316 - calcr                calcitonin receptor
+    43410592     43410695 - mir489               microRNA 489
+    43461913     43464376 + si:ch211-120e1.1     si:ch211-120e1.1
+    43477529     43484509 - tfpi2                tissue factor pathway inhibitor 2
+    43486215     43488947 + gngt1                guanine nucleotide binding protein (G protein), gamma transd
+    43491377     43528086 + zgc:85777            zgc:85777
+    43529411     43535659 - bet1                 Bet1 golgi vesicular membrane trafficking protein
+
+=== P24_Cgib_A24 (25 genes) ===
+     2929142      2943304 - LOC127945943         C1q-related factor-like
+     2943988      2946616 + LOC127945932         UDP-glucuronosyltransferase 2A2
+     2947291      2949949 - LOC127945952         receptor activity-modifying protein 3
+     2950085      3034567 + LOC127945920         formin-like protein 1
+     2955825      2960984 + LOC127945940         C-C chemokine receptor type 7
+     2962273      2987135 - LOC127945938         potassium voltage-gated channel subfamily C member 1
+     2965676      2971124 - LOC127945951         uncharacterized LOC127945951
+     2996219      2999201 - LOC127945939         potassium voltage-gated channel subfamily C member 1-like
+     3034666      3085075 - LOC127945918         SRC kinase signaling inhibitor 1-like
+     3087411      3097925 - LOC127945933         growth factor receptor-bound protein 7-like
+     3101265      3106429 - LOC127945953         ADP-ribosylation factor 1-like
+     3106524      3115797 - LOC127945919         mitogen-activated protein kinase kinase kinase 14-like
+     3115936      3125419 - LOC127945929         progranulin
+     3125905      3130122 + si:ch211-40k21.9     THAP domain-containing protein
+     3133667      3139324 + LOC127945930         bifunctional coenzyme A synthase-like
+     3139286      3148658 - LOC127945926         myosin light chain kinase, smooth muscle
+     3142280      3144903 + LOC127945948         uncharacterized LOC127945948
+     3148438      3148863 + LOC127945956         uncharacterized LOC127945956
+     3151665      3159126 - LOC127945934         serine/threonine-protein kinase RIO3-like
+     3159697      3164625 + LOC127945945         transmembrane protein 241
+     3165848      3174948 + LOC127945921         N-acetyltransferase ESCO1
+     3178785      3180023 + tmem14cb             transmembrane protein 14Cb
+     3181203      3204989 + LOC127945935         guanine nucleotide-binding protein G(olf) subunit alpha
+     3205029      3260068 - LOC127945916         obscurin-like
+     3261965      3267905 - abcd4                ATP-binding cassette, sub-family D (ALD), member 4
+
+=== P24_Cgib_B24 (25 genes) ===
+     3520595      3523467 + dcakd                dephospho-CoA kinase domain containing
+     3538847      3544020 - LOC128012944         C1q-related factor-like
+     3546071      3549740 - LOC128012945         uncharacterized LOC128012945
+     3550691      3551795 + LOC128013481         uncharacterized LOC128013481
+     3552633      3582600 - LOC128013343         receptor activity-modifying protein 1
+     3565340      3570491 + LOC128013342         C-C chemokine receptor type 7
+     3646167      3667997 + fmnl1b               formin-like 1b
+     3676179      3720268 - srcin1b              SRC kinase signaling inhibitor 1b
+     3722472      3732372 - LOC128013226         growth factor receptor-bound protein 7
+     3733852      3738651 - LOC128013227         ADP-ribosylation factor 1
+     3740973      3744050 - LOC128013474         uncharacterized LOC128013474
+     3745044      3747569 - LOC128013492         uncharacterized LOC128013492
+     3748625      3754212 - grnb                 granulin b
+     3754809      3759390 - pus3                 pseudouridylate synthase 3
+     3759513      3767331 + naglu                N-acetylglucosaminidase, alpha
+     3767729      3772835 + coasy                CoA synthase
+     3772795      3787275 - LOC128013246         myosin light chain kinase, smooth muscle-like
+     3777772      3782778 + si:ch211-40k21.5     uncharacterized protein LOC100332117 homolog
+     3790176      3796524 - LOC128013249         serine/threonine-protein kinase RIO3
+     3797618      3805159 - rbbp8                retinoblastoma binding protein 8
+     3805520      3813984 + esco1                establishment of sister chromatid cohesion N-acetyltransfera
+     3814448      3819913 + pak1ip1              PAK1 interacting protein 1
+     3820938      3844403 + gnal2                guanine nucleotide binding protein (G protein), alpha activa
+     3844104      3904157 - LOC128013242         obscurin-like
+     3893636      3900767 + LOC128013244         uncharacterized LOC128013244
+
+=== P24_Ccar_A24 (25 genes) ===
+    21831346     21844911 - LOC122135400         
+    21854121     21884692 - LOC109079578         guanine nucleotide-binding protein G(olf) subunit alpha-like
+    21892093     21916223 - LOC109049202         guanine nucleotide-binding protein G(olf) subunit alpha, tra
+    21920083     21925740 - LOC109049461         p21-activated protein kinase-interacting protein 1-like
+    21926121     21933921 - LOC109049462         N-acetyltransferase ESCO1-like, transcript variant X3
+    21935105     21940671 - LOC109049203         transmembrane protein 241
+    21940404     21947630 + LOC109049200         RIO kinase 3 (yeast), transcript variant X1
+    21951915     21962956 + LOC109049205         myosin light chain kinase, smooth muscle-like
+    21955518     21958214 - LOC109049206         uncharacterized LOC109049206
+    21962943     21968891 - LOC109049463         bifunctional coenzyme A synthase-like
+    21969978     21974278 + LOC109049464         tRNA pseudouridine(38/39) synthase-like
+    21973126     21977373 - si:ch211-40k21.9     THAP domain-containing protein
+    21977617     21987451 + grnb                 granulin b, transcript variant X1
+    21988278     21997432 + LOC109049465         uncharacterized LOC109049465, transcript variant X2
+    21997529     22001301 + LOC109049209         ADP-ribosylation factor 1-like
+    22002633     22012547 + grb7                 growth factor receptor bound protein 7
+    22015297     22065981 + LOC109069209         SRC kinase signaling inhibitor 1-like, transcript variant X2
+    22068101     22097744 - LOC109107665         formin-like protein 1
+    22081293     22082921 - LOC122135402         
+    22102867     22105629 + LOC109107666         potassium voltage-gated channel subfamily C member 3
+    22107946     22114583 - LOC109107667         C-C chemokine receptor type 7-like
+    22112072     22126978 + LOC109091503         receptor activity-modifying protein 3-like
+    22127833     22130458 - LOC109091501         UDP-glucuronosyltransferase 2A2-like
+    22132302     22143831 + LOC109108603         C1q-related factor-like, transcript variant X3
+    22158038     22165716 - LOC109107988         protein FAM171A2-like
+
+=== P24_Ccar_B24 (25 genes) ===
+    20355193     20359132 - pak1ip1              PAK1 interacting protein 1
+    20359030     20367914 - esco1                establishment of sister chromatid cohesion N-acetyltransfera
+    20368479     20375460 + rbbp8                retinoblastoma binding protein 8
+    20376542     20379589 + LOC109092861         CDK5 and ABL1 enzyme substrate 2-like
+    20381184     20389535 + LOC109094849         serine/threonine-protein kinase RIO3-like
+    20391548     20407337 + LOC109052990         myosin light chain kinase, smooth muscle-like
+    20393333     20396615 - LOC122142226         
+    20396833     20405220 - si:ch211-40k21.5     uncharacterized protein LOC100332117 homolog, transcript var
+    20407492     20413896 - LOC109075411         bifunctional coenzyme A synthase-like
+    20414380     20423359 - naglu                N-acetylglucosaminidase, alpha
+    20423945     20428179 + pus3                 pseudouridylate synthase 3, transcript variant X2
+    20428784     20432496 + LOC122142309         
+    20432670     20437619 + LOC109075413         progranulin-like
+    20437945     20443123 + LOC122142308         uncharacterized LOC122142308
+    20443116     20448888 + LOC109075409         mitogen-activated protein kinase kinase kinase 14-like
+    20448998     20454823 + arf2b                ADP-ribosylation factor 2b
+    20459128     20465870 + LOC109108219         growth factor receptor-bound protein 7-like
+    20468493     20525159 + LOC109108502         SRC kinase signaling inhibitor 1-like, transcript variant X1
+    20533525     20537657 + LOC122142220         
+    20549375     20555631 + LOC122142275         
+    20565829     20567983 - LOC109048234         uncharacterized LOC109048234
+    20572764     20578180 - LOC109048233         C-C chemokine receptor type 7-like
+    20584830     20585767 - LOC122142215         
+    20585848     20591154 + LOC109048232         receptor activity-modifying protein 3-like
+    20599836     20606361 + LOC122142252         C1q-related factor-like
+
+=== P24_Caur_chr24 (25 genes) ===
+    20698194     20700503 + LOC113042706         obscurin
+    20700501     20716086 + LOC113042571         obscurin-like
+    20716326     20739568 - LOC113042594         guanine nucleotide-binding protein G(olf) subunit alpha-like
+    20742534     20746142 - LOC113042595         p21-activated protein kinase-interacting protein 1-like
+    20746619     20755248 - LOC113042574         N-acetyltransferase ESCO1-like
+    20755663     20763313 + LOC113042584         DNA endonuclease RBBP8-like
+    20764408     20770782 + LOC113042591         serine/threonine-protein kinase RIO3-like
+    20773664     20790247 + LOC113042580         myosin light chain kinase, smooth muscle-like
+    20778256     20788916 - LOC113042599         uncharacterized LOC113042599
+    20790652     20795429 - LOC113042587         bifunctional coenzyme A synthase-like
+    20795662     20803590 - LOC113042577         alpha-N-acetylglucosaminidase-like
+    20804489     20808574 + LOC113042592         tRNA pseudouridine(38/39) synthase-like
+    20809187     20814846 + LOC113042585         granulins-like
+    20819393     20819954 + LOC113042608         uncharacterized LOC113042608
+    20822411     20827034 + LOC113042603         ADP-ribosylation factor 1
+    20828781     20838672 + LOC113042590         growth factor receptor-bound protein 7-like
+    20840928     20887111 + LOC113042572         SRC kinase signaling inhibitor 1-like
+    20895717     20905676 - LOC113042579         formin-like protein 1
+    20921037     20945171 + LOC113042589         gamma-1-syntrophin-like
+    20946909     20961541 - LOC113042597         protein-L-isoaspartate O-methyltransferase domain-containing
+    20959074     20963457 + LOC113042607         uncharacterized LOC113042607
+    20964790     20967401 - LOC113042605         suppression of tumorigenicity 18 protein-like
+    21020334     21021374 + LOC113042635         immunoglobulin kappa variable 4-1-like
+    21023848     21046268 - LOC113042625         nuclear receptor-binding protein 2-like
+    21058939     21098364 - LOC113042610         anion exchange protein 2
+
+=== P24_Zf (25 genes) ===
+    39774286     39857187 - gnal2                guanine nucleotide binding protein (G protein), alpha activa
+    39870583     39878089 - tmem14cb             transmembrane protein 14Cb
+    39894500     39917336 - pak1ip1              PAK1 interacting protein 1
+    39919399     39938018 - esco1                establishment of sister chromatid cohesion N-acetyltransfera
+    39946244     39966228 + rbbp8                retinoblastoma binding protein 8
+    39968017     39981332 - tmem241              transmembrane protein 241
+    39980892     39994058 + riok3                RIO kinase 3 (yeast)
+    40001987     40012201 - si:ch211-40k21.5     si:ch211-40k21.5
+    40016964     40042787 - coasy                CoA synthase
+    40045565     40058577 - naglu                N-acetylglucosaminidase, alpha
+    40053751     40073636 + pus3                 pseudouridylate synthase 3
+    40075049     40081068 - si:ch211-40k21.9     si:ch211-40k21.9
+    40083051     40110583 + grnb                 granulin b
+    40112368     40137802 + map3k14b             mitogen-activated protein kinase kinase kinase 14b
+    40137921     40145018 + arf2b                ARF GTPase 2b
+    40150303     40191254 + grb7                 growth factor receptor bound protein 7
+    40198833     40332354 + srcin1b              SRC kinase signaling inhibitor 1b
+    40325977     40379819 - fmnl1b               formin-like 1b
+    40380266     40387088 + si:ch73-334d15.4     si:ch73-334d15.4
+    40388878     40390540 + LOC103909772         uncharacterized LOC103909772
+    40393954     40467182 + LOC137489268         receptor activity-modifying protein 2
+    40420041     40426635 - ccr10                chemokine (C-C motif) receptor 10
+    40477261     40519979 + c1ql1l               complement component 1, q subcomponent-like 1-like
+    40549832     40556601 - dcakd                dephospho-CoA kinase domain containing
+    40565001     40579311 - fam171a2b            family with sequence similarity 171 member A2b
+
+=== P25_Cgib_A25 (24 genes) ===
+    19944229     19963896 + LOC127946923         anoctamin-1
+    19976742     19978673 - rpl27a               ribosomal protein L27a
+    19979111     19982065 + ric3b                RIC3 acetylcholine receptor chaperone b
+    19988460     19992455 - psma1                proteasome 20S subunit alpha 1
+    19995203     19997593 + LOC127947413         calcitonin gene-related peptide-like
+    19999963     20053835 + LOC127947396         protein inscuteable homolog
+    20063339     20125011 + trim44               tripartite motif containing 44
+    20149785     20151012 + LOC127946762         uncharacterized LOC127946762
+    20151086     20152697 + LOC127946761         uncharacterized LOC127946761
+    20248337     20258420 + LOC127946924         zinc finger MYM-type protein 4-like
+    20261232     20264318 + LOC127947057         RNA-binding protein 48-like
+    20264176     20266582 - LOC127947058         calaxin-like
+    20267002     20268441 - LOC127947060         progranulin-like
+    20272613     20274593 - LOC127947059         progranulin-like
+    20288243     20294835 - LOC127946802         complement C3-like
+    20299358     20301186 - LOC127946731         recQ-mediated genome instability protein 2-like
+    20303627     20319595 - LOC127946925         uncharacterized LOC127946925
+    20321055     20336628 - LOC127946926         lipid droplet-associated hydrolase-like
+    20343801     20362123 - LOC127946736         protein MTSS 2-like
+    20366695     20370754 - LOC127946670         protein phosphatase 1 regulatory subunit 14A-like
+    20370834     20376200 - LOC127946669         delta-like protein B
+    20381755     20388784 - LOC127946640         uncharacterized LOC127946640
+    20453481     20456340 + LOC127946681         zinc finger protein 271-like
+    20464173     20466016 - LOC127946672         transcription factor HES-4-B-like
+

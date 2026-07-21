@@ -1,0 +1,52 @@
+# Granulin family gene inventory
+# Source: granulin_genes_all_species.tsv
+# Config: see examples/granulin_in_carp/granulin_config_as_run_2026-07-21.yaml
+#
+# COLUMN GROUPS:
+#   Cols 1-16:  Core identity + structure (incl. NCBI gene_biotype,
+#               cds_exons = representative-isoform CDS-exon count,
+#               transcript_variants = # coding transcripts)
+#   Cols 17-18: Annotation confidence (identity)
+#   Cols 19-20: Gene model quality (from NCBI annotation flags)
+#   Cols 21-23: Assembly artefact flags
+#   Cols 24-28: Curation status (fill during manual review)
+#
+# CDS_EXONS: coding-exon count of the longest isoform (per isoform, not summed across variants)
+# CONFIDENCE (identity): high (named, consistent) / medium (LOC or minor identity issue) / low (known confusion locus)
+# MODEL STATUS (NCBI flags): ok / pseudogene / partial / low_quality / flagged (exception)
+# CURATION: unreviewed / in_progress / reviewed / flagged
+#
+species	gene_id	ncbi_annotation_name	ncbi_gene_id	chromosome_accession	chromosome_label	subgenome	homeolog_pair	start	end	strand	gene_length_bp	cds_exons	transcript_variants	description	gene_biotype	annotation_confidence	confidence_reasons	model_status	model_quality_notes	on_unplaced_scaffold	possible_haplotig	assembly_artefact_notes	curation_status	proposed_identity	curation_notes	reviewed_by	review_date
+Carassius_gibelio	LOC127949015	LOC127949015	127949015	NC_068373.1	A3	A	3	16132752	16140396	-	7645	12	1	progranulin	protein_coding	medium	LOC identifier (automated annotation, no curated gene symbol)	ok		no	no		unreviewed				
+Carassius_gibelio	LOC127935583	LOC127935583	127935583	NC_068389.1	A19	A	19	8253024	8254358	-	1335	4	1	progranulin-like	protein_coding	medium	LOC identifier (automated annotation, no curated gene symbol)	ok		no	no		unreviewed				
+Carassius_gibelio	LOC127935582	LOC127935582	127935582	NC_068389.1	A19	A	19	8327255	8328740	-	1486	4	1	progranulin	protein_coding	medium	LOC identifier (automated annotation, no curated gene symbol)	ok		no	no		unreviewed				
+Carassius_gibelio	LOC127935891	LOC127935891	127935891	NC_068389.1	A19	A	19	16278794	16280576	-	1783	5	1	progranulin	protein_coding	medium	LOC identifier (automated annotation, no curated gene symbol)	ok		no	no		unreviewed				
+Carassius_gibelio	LOC127945929	LOC127945929	127945929	NC_068394.1	A24	A	24	3115936	3125419	-	9484	13	1	progranulin	protein_coding	medium	LOC identifier (automated annotation, no curated gene symbol)	ok		no	no		unreviewed				
+Carassius_gibelio	LOC127947060	LOC127947060	127947060	NC_068395.1	A25	A	25	20267002	20268441	-	1440	4	1	progranulin-like	protein_coding	medium	LOC identifier (automated annotation, no curated gene symbol)	ok		no	no		unreviewed				
+Carassius_gibelio	LOC127947059	LOC127947059	127947059	NC_068395.1	A25	A	25	20272613	20274593	-	1981	4	1	progranulin-like	protein_coding	medium	LOC identifier (automated annotation, no curated gene symbol)	ok		no	no		unreviewed				
+Carassius_gibelio	grna	grna	127952478	NC_068398.1	B3	B	3	21589437	21617448	-	28012	33	22	granulin a	protein_coding	high	named gene with consistent annotation	ok		no	no		unreviewed				
+Carassius_gibelio	LOC127958712	LOC127958712	127958712	NC_068400.1	B5	B	5	5525471	5526910	+	1440	4	1	progranulin-like	protein_coding	medium	LOC identifier (automated annotation, no curated gene symbol)	ok		no	no		unreviewed				
+Carassius_gibelio	LOC127979384	LOC127979384	127979384	NC_068414.1	B19	B	19	21934031	21935495	-	1465	4	2	progranulin	protein_coding	medium	LOC identifier (automated annotation, no curated gene symbol)	ok		no	no		unreviewed				
+Carassius_gibelio	LOC127979383	LOC127979383	127979383	NC_068414.1	B19	B	19	21961322	21963327	-	2006	4	1	progranulin-like	protein_coding	medium	LOC identifier (automated annotation, no curated gene symbol)	ok		no	no		unreviewed				
+Carassius_gibelio	grnb	grnb	128013240	NC_068419.1	B24	B	24	3748625	3754212	-	5588	13	1	granulin b	protein_coding	high	named gene with consistent annotation	ok		no	no		unreviewed				
+Cyprinus_carpio	LOC109064429	LOC109064429	109064429	NC_056574.1	A3	A	3	23902732	23911860	+	9129	15	4	progranulin-like, transcript variant X2	protein_coding	medium	LOC identifier (automated annotation, no curated gene symbol)	ok		no	no		unreviewed				
+Cyprinus_carpio	LOC109060267	LOC109060267	109060267	NC_056590.1	A19	A	19	20819327	20821100	-	1774	5	1	progranulin-like	protein_coding	medium	LOC identifier (automated annotation, no curated gene symbol)	ok		no	no		unreviewed				
+Cyprinus_carpio	LOC109112498	LOC109112498	109112498	NC_056590.1	A19	A	19	20839948	20841681	-	1734	5	1	progranulin-like	protein_coding	medium	LOC identifier (automated annotation, no curated gene symbol)	ok		no	no		unreviewed				
+Cyprinus_carpio	grnb	grnb	109049208	NC_056595.1	A24	A	24	21977617	21987451	+	9835	15	1	granulin b, transcript variant X1	protein_coding	high	named gene with consistent annotation	ok		no	no		unreviewed				
+Cyprinus_carpio	LOC109051021	LOC109051021	109051021	NC_056615.1	B19	B	19	14039204	14040670	-	1467	4	2	progranulin-like, transcript variant X2	protein_coding	medium	LOC identifier (automated annotation, no curated gene symbol)	ok		no	no		unreviewed				
+Cyprinus_carpio	LOC109068459	LOC109068459	109068459	NC_056615.1	B19	B	19	14064476	14066319	-	1844	4	1	progranulin-like	protein_coding	medium	LOC identifier (automated annotation, no curated gene symbol)	ok		no	no		unreviewed				
+Cyprinus_carpio	LOC109075413	LOC109075413	109075413	NC_056620.1	B24	B	24	20432670	20437619	+	4950	11	1	progranulin-like	protein_coding	medium	LOC identifier (automated annotation, no curated gene symbol)	partial	NCBI partial=true (model incomplete / runs off a contig end)	no	no		unreviewed				
+Carassius_auratus	LOC113042704	LOC113042704	113042704	NC_039245.1	chr3	A	3	1205607	1224579	+	18973	14	2	granulins-like	protein_coding	medium	LOC identifier (automated annotation, no curated gene symbol)	ok		no	no		unreviewed				
+Carassius_auratus	LOC113062041	LOC113062041	113062041	NC_039286.1	chr44	A	19	897736	899493	-	1758	5	1	granulins	protein_coding	medium	LOC identifier (automated annotation, no curated gene symbol)	ok		no	no		unreviewed				
+Carassius_auratus	grna	grna	113047016	NC_039270.1	chr28	B	3	16899971	16932834	-	32864	33	3	granulin a	protein_coding	high	named gene with consistent annotation	ok		no	no		unreviewed				
+Carassius_auratus	LOC113119378	LOC113119378	113119378	NC_039261.1	chr19	B	19	9256881	9258852	+	1972	4	1	granulins-like	protein_coding	medium	LOC identifier (automated annotation, no curated gene symbol)	ok		no	no		unreviewed				
+Carassius_auratus	LOC113119383	LOC113119383	113119383	NC_039261.1	chr19	B	19	9276770	9278146	+	1377	4	2	granulins-like	protein_coding	medium	LOC identifier (automated annotation, no curated gene symbol)	ok		no	no		unreviewed				
+Carassius_auratus	LOC113042585	LOC113042585	113042585	NC_039266.1	chr24	B	24	20809187	20814846	+	5660	13	1	granulins-like	protein_coding	medium	LOC identifier (automated annotation, no curated gene symbol)	ok		no	no		unreviewed				
+Carassius_auratus	LOC113084855	LOC113084855	113084855	NW_020526607.1	unplaced	unknown		64744	70192	+	5449	13	1	granulins	protein_coding	medium	LOC identifier (automated annotation, no curated gene symbol)	ok		yes	no	gene on unplaced scaffold	unreviewed				
+Carassius_auratus	LOC113068251	LOC113068251	113068251	NC_039298.1	NC_039298.1	unknown		397736	399205	+	1470	4	1	granulins-like	protein_coding	medium	LOC identifier (automated annotation, no curated gene symbol)	ok		no	no		unreviewed				
+Carassius_auratus	LOC113068216	LOC113068216	113068216	NC_039298.1	NC_039298.1	unknown		489986	491353	+	1368	4	1	granulins-like	protein_coding	medium	LOC identifier (automated annotation, no curated gene symbol)	ok		no	no		unreviewed				
+Carassius_auratus	grnb	grnb	113092754	NW_020527778.1	unplaced	unknown		1399628	1410702	-	11075	13	2	granulin b	protein_coding	high	named gene with consistent annotation	ok		yes	no	gene on unplaced scaffold	unreviewed				
+Danio_rerio	grna	grna	791524	NC_133178.1	chr3	diploid	3	28661396	28688522	-	27127	23	16	granulin a	protein_coding	high	named gene with consistent annotation	flagged	NCBI exception: annotated by transcript or proteomic data	no	no		unreviewed				
+Danio_rerio	grna.1	grna.1	553977	NC_133194.1	chr19	diploid	19	42815307	42820798	-	5492	4	1	granulin a, tandem duplicate 1	protein_coding	high	named gene with consistent annotation	ok		no	no		unreviewed				
+Danio_rerio	grna.2	grna.2	336575	NC_133194.1	chr19	diploid	19	42823662	42827888	-	4227	5	2	granulin a, tandem duplicate 2	protein_coding	high	named gene with consistent annotation	ok		no	no		unreviewed				
+Danio_rerio	grnb	grnb	335453	NC_133199.1	chr24	diploid	24	40083051	40110583	+	27533	14	6	granulin b	protein_coding	high	named gene with consistent annotation	flagged	NCBI exception: annotated by transcript or proteomic data	no	no		unreviewed				

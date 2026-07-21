@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Granulin family hierarchy explorer — Cyprinus carpio</title>
+<style>
+:root {
+  --bg: #fafafa;
+  --panel: #ffffff;
+  --fg: #1a1a1a;
+  --muted: #666;
+  --border: #e0e0e0;
+  --has: #4a7c59;
+  --no: #d8d8d8;
+  --partial: #c9a227;
+  --loss: #c44536;
+  --pseudo: #d97757;
+  --artefact: #c9a227;
+  --nonfunc: #9a6dbf;
+  --conf-high: #4a7c59;
+  --conf-medium: #c9a227;
+  --conf-low: #c44536;
+  /* Category colors are applied inline via JS from the CATEGORY_PALETTE */
+}
+* { box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  line-height: 1.55;
+}
+header { margin-bottom: 1rem; }
+h1 { font-size: 1.4rem; margin: 0 0 0.25rem 0; font-weight: 600; }
+.subtitle { color: var(--muted); font-size: 0.92rem; }
+.tabs {
+  display: flex;
+  gap: 0.3rem;
+  margin: 1.2rem 0 1.5rem 0;
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+.tab {
+  padding: 0.55rem 0.9rem;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: var(--muted);
+  font-size: 0.9rem;
+  border-bottom: 2px solid transparent;
+  transition: all 0.15s;
+  font-family: inherit;
+  margin-bottom: -1px;
+}
+.tab.active { color: var(--fg); border-bottom-color: var(--has); }
+.tab:hover:not(.active) { color: var(--fg); }
+.layer-title { font-size: 1.1rem; margin: 0 0 0.3rem 0; font-weight: 600; }
+.layer-blurb { color: var(--muted); margin: 0 0 1.2rem 0; max-width: 72ch; font-size: 0.93rem; }
+.legend {
+  display: flex; gap: 1.2rem; flex-wrap: wrap;
+  font-size: 0.8rem; margin: 0.6rem 0 1.2rem 0;
+  color: var(--muted);
+}
+.legend span { display: inline-flex; align-items: center; gap: 0.35rem; }
+.swatch { width: 12px; height: 12px; border-radius: 2px; display: inline-block; }
+.metrics {
+  display: flex; gap: 1.5rem; margin: 1rem 0;
+  padding: 0.7rem 1rem; background: var(--panel);
+  border: 1px solid var(--border); border-radius: 4px;
+  font-size: 0.85rem; flex-wrap: wrap;
+}
+.metric-num { font-size: 1.3rem; font-weight: 600; color: var(--has); display: block; }
+.metric-label { color: var(--muted); }
+.metric-num.warn { color: var(--artefact); }
+.metric-num.loss { color: var(--loss); }
+.metric-num.partial { color: var(--partial); }
+
+/* Layer 1: chromosome grid */
+.chr-grid { display: grid; gap: 0.5rem; margin-top: 0.5rem; }
+.chr-row {
+  display: grid;
+  grid-template-columns: 24px repeat(25, 1fr);
+  gap: 4px;
+  align-items: center;
+}
+.chr-label { font-size: 0.78rem; color: var(--muted); font-weight: 600; }
+.chr-cell {
+  aspect-ratio: 0.55;
+  border-radius: 3px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.7rem; font-weight: 500;
+  transition: all 0.15s;
+  position: relative;
+  user-select: none;
+}
+.chr-cell.has { background: var(--has); color: white; cursor: pointer; }
+.chr-cell.no { background: var(--no); color: var(--muted); }
+.chr-cell.full-loss {
+  background: repeating-linear-gradient(45deg, var(--has) 0, var(--has) 4px, #faf0ed 4px, #faf0ed 8px);
+  color: white; cursor: pointer;
+  border: 1px solid var(--loss);
+}
+.chr-cell.partial-loss {
+  background: var(--has); color: white; cursor: pointer;
+  border: 1.5px dashed var(--partial);
+}
+.chr-cell.partial-loss::after {
+  content: '!';
+  position: absolute; top: -3px; right: -3px;
+  background: var(--partial); color: white;
+  font-size: 0.55rem; font-weight: 700;
+  width: 10px; height: 10px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  line-height: 1;
+}
+.chr-cell.has:hover, .chr-cell.full-loss:hover, .chr-cell.partial-loss:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+}
+
+/* Layer 2: pair view */
+.pair-list { display: flex; flex-direction: column; gap: 0.55rem; }
+.pair-row {
+  display: grid;
+  grid-template-columns: 65px 1fr 28px 1fr 100px;
+  gap: 0.5rem;
+  align-items: center;
+  padding: 0.55rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--panel);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.pair-row:hover { box-shadow: 0 2px 6px rgba(0,0,0,0.08); border-color: var(--has); }
+.pair-label { font-weight: 600; font-size: 0.93rem; }
+.chrom-bar {
+  display: flex; gap: 4px; align-items: center;
+  padding: 0.4rem 0.55rem; border-radius: 3px;
+  background: #f0f5f3;
+  font-size: 0.78rem;
+  min-height: 30px;
+  flex-wrap: wrap;
+}
+.chrom-bar.A { justify-content: flex-end; }
+.chrom-bar.B { justify-content: flex-start; }
+.chrom-bar.empty {
+  background: #faf0ed; color: var(--loss); justify-content: center;
+  font-style: italic; font-size: 0.78rem;
+}
+.gene-chip {
+  display: inline-block;
+  padding: 0.18rem 0.45rem;
+  border-radius: 10px;
+  font-size: 0.72rem;
+  background: white;
+  border: 1px solid var(--border);
+  white-space: nowrap;
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  /* category color applied inline */
+}
+.gene-chip.pseudo {
+  background: #faf0ed; border-color: var(--pseudo); color: var(--pseudo);
+}
+.gene-chip.candidate_nonfunctional {
+  background: #f6f0fa; border-color: var(--nonfunc); color: var(--nonfunc);
+  text-decoration: line-through;
+}
+.gene-chip.artefact {
+  background: #faf6e8; border-color: var(--artefact); color: #997010;
+  text-decoration: line-through;
+}
+.pair-mid { text-align: center; font-size: 0.95rem; color: var(--muted); }
+.pair-zf-info {
+  font-size: 0.78rem; color: var(--muted);
+  padding: 0.25rem 0 0.25rem 65px;
+}
+.pair-status-tag {
+  font-size: 0.72rem; padding: 0.15rem 0.4rem;
+  border-radius: 8px; text-align: center;
+  white-space: nowrap;
+}
+.pair-status-tag.complete { background: #e8f0eb; color: var(--conf-high); }
+.pair-status-tag.partial { background: #faf6e8; color: #997010; }
+.pair-status-tag.full-loss { background: #faf0ed; color: var(--loss); }
+
+/* Layer 3 */
+.func-grid {
+  display: grid;
+  gap: 1rem;
+}
+@media (max-width: 800px) { .func-grid { grid-template-columns: 1fr; } }
+.func-col {
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 0.85rem;
+  background: var(--panel);
+}
+.func-col h3 {
+  margin: 0 0 0.7rem 0; font-size: 0.95rem; padding-bottom: 0.5rem;
+  border-bottom: 2px solid;
+  /* color and border-color applied inline */
+}
+.func-pair {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0.4rem 0; font-size: 0.85rem;
+  border-bottom: 1px dotted #eee;
+  cursor: pointer;
+}
+.func-pair:hover { background: #fafafa; }
+.func-pair:last-child { border: none; }
+.func-pair-label { flex: 1; }
+.func-pair-count {
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.78rem; color: var(--muted);
+  padding: 0.05rem 0.35rem;
+  background: #f0f0f0; border-radius: 8px;
+}
+
+/* Layer 4: homeolog slot grid */
+.pair-detail {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 1rem 1.1rem;
+  margin-bottom: 0.9rem;
+}
+.pair-detail h3 { margin: 0 0 0.3rem 0; font-size: 1rem; }
+.pair-detail .pair-detail-note {
+  font-size: 0.85rem; color: var(--muted);
+  font-style: italic; margin-bottom: 0.8rem;
+}
+.slot-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-top: 0.4rem;
+}
+.slot-table th {
+  text-align: left;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--muted);
+  padding: 0.4rem 0.6rem 0.4rem 0;
+  border-bottom: 1px solid var(--border);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.slot-table th.col-a, .slot-table th.col-b {
+  width: 35%;
+  text-align: center;
+}
+.slot-table td {
+  padding: 0.55rem 0.6rem 0.55rem 0;
+  border-bottom: 1px solid #f0f0f0;
+  vertical-align: top;
+}
+.slot-table tr:last-child td { border-bottom: none; }
+.slot-table tr.excluded-row { background: #faf6e8; }
+.slot-table tr.ambiguous-row { background: #fbf9f1; }
+.slot-label-cell {
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+.slot-label-cell .slot-sub {
+  font-size: 0.78rem; color: var(--muted); font-weight: normal;
+  margin-top: 0.15rem;
+}
+.slot-badge {
+  display: inline-block;
+  font-size: 0.68rem;
+  padding: 0.05rem 0.4rem;
+  border-radius: 8px;
+  margin-left: 0.4rem;
+  font-weight: 500;
+  vertical-align: middle;
+}
+.slot-badge.ambiguous { background: #fbf2d4; color: #856404; }
+.slot-badge.excluded { background: #fbf2d4; color: #856404; }
+.slot-cell {
+  border-left: 1px solid #f0f0f0;
+  padding-left: 0.7rem !important;
+  text-align: center;
+}
+.slot-cell.empty { color: var(--muted); font-style: italic; font-size: 0.85rem; }
+.slot-cell.empty .loss-marker::before { content: '∅ '; font-weight: bold; opacity: 0.6; }
+.slot-cell.empty.confirmed-loss { color: var(--loss); }
+.slot-cell.empty.confirmed-loss .loss-marker::before { content: '✗ '; opacity: 1; }
+.slot-cell.empty.confirmed-loss .loss-confirmed-tag {
+  display: inline-block; margin-top: 0.2rem;
+  padding: 0.05rem 0.4rem; border-radius: 8px;
+  background: #faf0ed; color: var(--loss);
+  font-size: 0.68rem; font-weight: 500; font-style: normal;
+}
+.slot-cell.excluded-empty { color: #c8c8c8; font-size: 0.95rem; }
+.slot-genes {
+  display: flex; flex-direction: column; gap: 0.4rem;
+  align-items: stretch;
+}
+.gene-card {
+  padding: 0.5rem 0.65rem;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--border);
+  border-radius: 3px;
+  background: #fcfcfc;
+  font-size: 0.83rem;
+  text-align: left;
+  /* category border-left-color applied inline */
+}
+.gene-card.pseudo { border-left-color: var(--pseudo); background: #fdf6f3; }
+.gene-card.artefact { border-left-color: var(--artefact); background: #fdfaf0; }
+.gene-card.candidate_nonfunctional { border-left-color: var(--nonfunc); background: #faf7fc; }
+.gene-card .role { font-weight: 500; color: var(--fg); }
+.gene-card .meta {
+  color: var(--muted); font-size: 0.75rem; margin-top: 0.2rem;
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  word-break: break-all;
+}
+.gene-card .ncbi-name {
+  display: inline-block; padding: 0.05rem 0.3rem;
+  background: #f0f0f0; border-radius: 3px;
+  font-size: 0.7rem; margin-top: 0.15rem;
+}
+.confidence-pill {
+  display: inline-block;
+  padding: 0.05rem 0.4rem;
+  border-radius: 8px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  margin-left: 0.3rem;
+}
+.confidence-pill.high { background: #e8f0eb; color: var(--conf-high); }
+.confidence-pill.medium { background: #faf6e8; color: #997010; }
+.confidence-pill.low { background: #faf0ed; color: var(--conf-low); }
+.confidence-pill.artefact { background: #faf6e8; color: #997010; }
+.confidence-pill[title] { cursor: help; }
+
+/* Definition block (intro to layer 4) */
+.defn-block {
+  background: #f7faf8; border: 1px solid var(--border);
+  border-left: 3px solid var(--has);
+  border-radius: 4px; padding: 0.85rem 1rem;
+  margin-bottom: 1.2rem; font-size: 0.85rem;
+}
+.defn-title { font-weight: 600; margin-bottom: 0.3rem; }
+.defn-list { margin: 0.2rem 0 0 0; padding-left: 1.2rem; }
+.defn-list li { margin-bottom: 0.3rem; }
+
+/* Layer 5 */
+.zf-table {
+  width: 100%; border-collapse: collapse;
+  font-size: 0.88rem; background: var(--panel);
+  border: 1px solid var(--border); border-radius: 5px; overflow: hidden;
+}
+.zf-table th {
+  background: #f4f4f4; text-align: left; padding: 0.55rem 0.75rem;
+  font-weight: 600; font-size: 0.85rem;
+}
+.zf-table td { padding: 0.55rem 0.75rem; border-top: 1px solid #eee; vertical-align: top; }
+.zf-table tr:hover { background: #fafafa; cursor: pointer; }
+.retention-tag {
+  display: inline-block; padding: 0.1rem 0.45rem; border-radius: 8px;
+  font-size: 0.75rem; font-weight: 500; margin-right: 0.3rem;
+}
+.retention-tag.full { background: #e8f0eb; color: var(--conf-high); }
+.retention-tag.partial { background: #faf6e8; color: #997010; }
+.retention-tag.zero { background: #faf0ed; color: var(--loss); }
+.retention-detail {
+  font-size: 0.78rem; color: var(--muted); font-style: italic;
+  margin-top: 0.2rem;
+}
+
+/* Modal */
+.modal-bg {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.4);
+  display: none; align-items: center; justify-content: center;
+  z-index: 100; padding: 1rem;
+}
+.modal-bg.show { display: flex; }
+.modal {
+  background: white; border-radius: 6px; padding: 1.3rem;
+  max-width: 800px; max-height: 85vh; overflow-y: auto;
+  width: 100%; position: relative;
+}
+.modal-close {
+  position: absolute; top: 0.7rem; right: 0.9rem;
+  background: none; border: none; cursor: pointer;
+  font-size: 1.5rem; color: var(--muted); line-height: 1;
+}
+.modal-close:hover { color: var(--fg); }
+
+footer {
+  margin-top: 2.5rem; padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.8rem; color: var(--muted);
+  max-width: 80ch;
+}
+footer p { margin: 0.4rem 0; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Granulin family in <i>Cyprinus carpio</i></h1>
+  <div class="subtitle">A nested view of the curated <i>Cyprinus carpio</i> Granulin family inventory, organised around <b>homeolog slots</b> — the ancestral pre-allopolyploidization positions whose A and B copies should match.</div>
+</header>
+
+<nav class="tabs">
+  <button class="tab active" data-layer="1">1 · Chromosome map</button>
+  <button class="tab" data-layer="2">2 · Granulin family-bearing pairs</button>
+  <button class="tab" data-layer="3">3 · Functional categories</button>
+  <button class="tab" data-layer="4">4 · Per-pair detail (slot grid)</button>
+  <button class="tab" data-layer="5">5 · Zebrafish reference</button>
+</nav>
+
+<main id="view"></main>
+
+<div class="modal-bg" id="modal-bg" onclick="closeModal(event)">
+  <div class="modal" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeModal()">&times;</button>
+    <div id="modal-content"></div>
+  </div>
+</div>
+
+<footer>
+  <p><strong>Source:</strong> <code>results/granulin/identification/Ccar_granulin_curation_data.json</code> (AI-assisted, synteny-based curation).</p>
+  <p><strong>Homeolog slots:</strong> each homeolog pair is broken into a list of "slots" — one per ancestral pre-allopolyploidization gene at that locus. Each slot shows what the A and B subgenomes have retained at that position. An empty cell labelled <i>absent — no specific search done</i> means the gene is not in the annotation but the locus has not been actively investigated; <i>candidate loss · annotation-level</i> is the strongest claim made anywhere in this view, reserved for cases where the curation actively searched the GFF for any group-related feature in the syntenic region and found none. Sequence-level loss confirmation is treated as a downstream side project beyond the core workflow scope.</p>
+  <p><strong>Standard of evidence:</strong> bring clarity but maintain humility. Show what the annotation-level data supports; do not claim more.</p>
+  <p><strong>Identity convention:</strong> where NCBI's gene name conflicts with the synteny-derived identity, the synteny call is shown as the role and the NCBI name appears in metadata.</p>
+</footer>
+
+<script>
+// ============================================================
+// DATA
+// ============================================================
+const PAIRS = {
+  "3": {
+    "zf_chr": 3,
+    "zf_locus": "grna / progranulin",
+    "note": "A3 retains a progranulin-like copy at the zebrafish grna syntenic locus; B3 is a CP3-assessed candidate loss with a partially preserved block.",
+    "slots": [
+      {
+        "label": "grna / progranulin",
+        "sub": "multi-repeat precursor locus",
+        "category": "progranulin",
+        "badge": "B3 candidate loss",
+        "A": [
+          {
+            "id": "LOC109064429",
+            "role": "grna / progranulin-like (A3)",
+            "aa": 783,
+            "ncbi": "LOC109064429; progranulin-like",
+            "category": "progranulin",
+            "confidence": "medium",
+            "status": "ok"
+          }
+        ],
+        "B": [],
+        "B_loss": "searched"
+      }
+    ]
+  },
+  "19": {
+    "zf_chr": 19,
+    "zf_locus": "grna.1 / grna.2 small-granulin tandem locus",
+    "note": "A19 and B19 each retain two short progranulin-like copies in the conserved chr19 tandem cluster; 1:1 within-cluster identities are unresolved by synteny alone.",
+    "slots": [
+      {
+        "label": "grna.1 / grna.2",
+        "sub": "small-granulin tandem cluster",
+        "category": "small_granulin",
+        "ambiguous": true,
+        "badge": "identity unresolved",
+        "A": [
+          {
+            "id": "LOC109060267",
+            "role": "pair-19 small granulin (A19 copy 1)",
+            "aa": 188,
+            "ncbi": "LOC109060267; progranulin-like",
+            "category": "small_granulin",
+            "confidence": "low",
+            "status": "ok"
+          },
+          {
+            "id": "LOC109112498",
+            "role": "pair-19 small granulin (A19 copy 2)",
+            "aa": 188,
+            "ncbi": "LOC109112498; progranulin-like",
+            "category": "small_granulin",
+            "confidence": "low",
+            "status": "ok"
+          }
+        ],
+        "B": [
+          {
+            "id": "LOC109051021",
+            "role": "pair-19 small granulin (B19 copy 1)",
+            "aa": 147,
+            "ncbi": "LOC109051021; progranulin-like",
+            "category": "small_granulin",
+            "confidence": "low",
+            "status": "ok"
+          },
+          {
+            "id": "LOC109068459",
+            "role": "pair-19 small granulin (B19 copy 2)",
+            "aa": 154,
+            "ncbi": "LOC109068459; progranulin-like",
+            "category": "small_granulin",
+            "confidence": "low",
+            "status": "ok"
+          }
+        ]
+      }
+    ]
+  },
+  "24": {
+    "zf_chr": 24,
+    "zf_locus": "grnb",
+    "note": "A24 carries a full-length named grnb; B24 carries a syntenic partial progranulin-like model assigned as the B homeolog with low model confidence.",
+    "slots": [
+      {
+        "label": "grnb",
+        "sub": "multi-repeat precursor locus",
+        "category": "progranulin",
+        "A": [
+          {
+            "id": "grnb",
+            "role": "grnb (A24)",
+            "aa": 737,
+            "ncbi": "grnb",
+            "category": "progranulin",
+            "confidence": "high",
+            "status": "ok"
+          }
+        ],
+        "B": [
+          {
+            "id": "LOC109075413",
+            "role": "grnb (B24)",
+            "aa": 516,
+            "ncbi": "LOC109075413; progranulin-like; partial=true",
+            "category": "progranulin",
+            "confidence": "low",
+            "status": "ok"
+          }
+        ]
+      }
+    ]
+  }
+};
+const ALL_PAIR_NUMBERS = Array.from({length: 25}, (_, i) => i + 1);
+const GENE_SET_PAIRS = [3, 19, 24];
+const GENE_SET_DISPLAY = 'Granulin family';
+
+// ============================================================
+// CATEGORY COLOURS — derived dynamically from data
+// Default palette cycles through 6 colours; config-supplied
+// categories override per key.
+// ============================================================
+const CONFIG_CATEGORIES = [
+  {
+    "key": "progranulin",
+    "label": "Progranulin",
+    "color": "#4a7c59",
+    "description": "Canonical multi-granulin precursor genes."
+  },
+  {
+    "key": "small_granulin",
+    "label": "Small granulin",
+    "color": "#4682b4",
+    "description": "Canonical small granulin genes encoding an unmodified peptide."
+  }
+];
+
+const DEFAULT_PALETTE = [
+  '#4a7c59', '#4682b4', '#b5651d', '#7b5ea7', '#c44536', '#2b7a78'
+];
+
+// Build category→color map: first from config, then from palette
+const _catColorMap = {};
+CONFIG_CATEGORIES.forEach((c, i) => {
+  _catColorMap[c.key] = c.color || DEFAULT_PALETTE[i % DEFAULT_PALETTE.length];
+});
+
+function categoryColor(cat) {
+  if (!cat) return '#888';
+  if (_catColorMap[cat]) return _catColorMap[cat];
+  // Auto-assign from palette for categories not in config
+  const keys = Object.keys(_catColorMap);
+  if (!keys.includes(cat)) {
+    _catColorMap[cat] = DEFAULT_PALETTE[keys.length % DEFAULT_PALETTE.length];
+  }
+  return _catColorMap[cat];
+}
+
+// Collect all unique categories present in the data
+function allCategories() {
+  const seen = new Set();
+  GENE_SET_PAIRS.forEach(p => {
+    (PAIRS[p]?.slots || []).forEach(s => {
+      [...(s.A || []), ...(s.B || [])].forEach(g => {
+        if (g.category) seen.add(g.category);
+      });
+    });
+  });
+  return [...seen];
+}
+
+function categoryLabel(cat) {
+  const cfg = CONFIG_CATEGORIES.find(c => c.key === cat);
+  return cfg ? cfg.label : cat.charAt(0).toUpperCase() + cat.slice(1);
+}
+
+function categoryDescription(cat) {
+  const cfg = CONFIG_CATEGORIES.find(c => c.key === cat);
+  return cfg ? cfg.description : '';
+}
+
+// ============================================================
+// HELPERS
+// ============================================================
+
+function genesOn(p, side) {
+  const out = [];
+  PAIRS[p].slots.forEach(s => {
+    if (s.excluded) return;
+    (s[side] || []).forEach(g => out.push(g));
+  });
+  return out;
+}
+
+function allChipsOn(p, side) {
+  const out = [];
+  PAIRS[p].slots.forEach(s => {
+    (s[side] || []).forEach(g => out.push({ ...g, _excluded: !!s.excluded }));
+  });
+  return out;
+}
+
+function pairRetention(p) {
+  const slots = PAIRS[p].slots.filter(s => !s.excluded);
+  let a_confirmed = 0, b_confirmed = 0, a_absent = 0, b_absent = 0;
+  let group_a_short = 0, group_b_short = 0;
+  let a_total = 0, b_total = 0, slot_total = 0;
+  slots.forEach(s => {
+    const aN = (s.A || []).length;
+    const bN = (s.B || []).length;
+    const slotMax = Math.max(aN, bN, 1);
+    slot_total += slotMax;
+    a_total += aN;
+    b_total += bN;
+    if (s.ambiguous) {
+      if (aN < bN) group_a_short += (bN - aN);
+      if (bN < aN) group_b_short += (aN - bN);
+    } else {
+      if (aN === 0) {
+        // 'searched' is the canonical value; 'confirmed' is a kept alias.
+        if (s.A_loss === 'searched' || s.A_loss === 'confirmed') a_confirmed++;
+        else a_absent++;
+      }
+      if (bN === 0) {
+        if (s.B_loss === 'searched' || s.B_loss === 'confirmed') b_confirmed++;
+        else b_absent++;
+      }
+    }
+  });
+  return {
+    slots: slots.length,
+    a_confirmed, b_confirmed, a_absent, b_absent,
+    group_a_short, group_b_short,
+    a_total, b_total, slot_total
+  };
+}
+
+function pairHasPartialLossA(p) {
+  const r = pairRetention(p);
+  const a = genesOn(p, 'A').length;
+  return a > 0 && (r.a_confirmed > 0 || r.a_absent > 0 || r.group_a_short > 0);
+}
+function pairHasPartialLossB(p) {
+  const r = pairRetention(p);
+  const b = genesOn(p, 'B').length;
+  return b > 0 && (r.b_confirmed > 0 || r.b_absent > 0 || r.group_b_short > 0);
+}
+function pairHasFullLossA(p) { return genesOn(p, 'A').length === 0; }
+function pairHasFullLossB(p) { return genesOn(p, 'B').length === 0; }
+
+// ============================================================
+// RENDERERS
+// ============================================================
+const view = document.getElementById('view');
+const tabs = document.querySelectorAll('.tab');
+tabs.forEach(t => t.addEventListener('click', () => switchLayer(t.dataset.layer)));
+
+function switchLayer(n) {
+  tabs.forEach(t => t.classList.toggle('active', t.dataset.layer === n));
+  view.innerHTML = LAYERS[n]();
+}
+const LAYERS = { '1': layer1, '2': layer2, '3': layer3, '4': layer4, '5': layer5 };
+
+function layer1() {
+  const cellsA = ALL_PAIR_NUMBERS.map(n => chrCell('A', n)).join('');
+  const cellsB = ALL_PAIR_NUMBERS.map(n => chrCell('B', n)).join('');
+  let fullCount = 0, partialCount = 0, fullLossCount = 0;
+  GENE_SET_PAIRS.forEach(p => {
+    ['A', 'B'].forEach(side => {
+      const fl = side === 'A' ? pairHasFullLossA(p) : pairHasFullLossB(p);
+      const pl = side === 'A' ? pairHasPartialLossA(p) : pairHasPartialLossB(p);
+      if (fl) fullLossCount++;
+      else if (pl) partialCount++;
+      else fullCount++;
+    });
+  });
+  const totalCarrying = fullCount + partialCount;
+  const totalChrPairs = 25;
+  const geneFreeCount = (totalChrPairs * 2) - totalCarrying - fullLossCount;
+  return `
+    <div class="layer-title">Layer 1 — chromosome map</div>
+    <div class="layer-blurb">Of the 50 chromosomes (25 A + 25 B), ${totalCarrying} carry ${GENE_SET_DISPLAY} genes. ${fullLossCount} chromosome${fullLossCount !== 1 ? 's' : ''} ${fullLossCount !== 1 ? 'carry' : 'carries'} no group member though the homeolog does — candidate losses with annotation-level evidence. Click any green or marked cell to drill in.</div>
+    <div class="metrics">
+      <div><span class="metric-num">${fullCount}</span><span class="metric-label">complete (no losses)</span></div>
+      <div><span class="metric-num partial">${partialCount}</span><span class="metric-label">partial (some members lost)</span></div>
+      <div><span class="metric-num loss">${fullLossCount}</span><span class="metric-label">full loss (homeolog has gene)</span></div>
+      <div><span class="metric-num" style="color: var(--no);">${geneFreeCount}</span><span class="metric-label">${GENE_SET_DISPLAY}-free</span></div>
+    </div>
+    <div class="legend">
+      <span><span class="swatch" style="background: var(--has);"></span>complete</span>
+      <span><span class="swatch" style="background: var(--has); border: 1.5px dashed var(--partial);"></span>partial loss</span>
+      <span><span class="swatch" style="background: repeating-linear-gradient(45deg, var(--has) 0, var(--has) 4px, #faf0ed 4px, #faf0ed 8px); border: 1px solid var(--loss);"></span>full loss</span>
+      <span><span class="swatch" style="background: var(--no);"></span>${GENE_SET_DISPLAY}-free</span>
+    </div>
+    <div class="chr-grid">
+      <div class="chr-row"><div class="chr-label">A</div>${cellsA}</div>
+      <div class="chr-row"><div class="chr-label">B</div>${cellsB}</div>
+    </div>
+  `;
+}
+
+function chrCell(side, n) {
+  const has = GENE_SET_PAIRS.includes(n);
+  if (!has) return `<div class="chr-cell no" title="${side}${n} — no ${GENE_SET_DISPLAY} gene">${n}</div>`;
+  const fullLoss = side === 'A' ? pairHasFullLossA(n) : pairHasFullLossB(n);
+  const partialLoss = side === 'A' ? pairHasPartialLossA(n) : pairHasPartialLossB(n);
+  if (fullLoss)
+    return `<div class="chr-cell full-loss" onclick="showPairDetail(${n})" title="${side}${n} — gene lost from this subgenome (homeolog has it)">${n}</div>`;
+  if (partialLoss)
+    return `<div class="chr-cell partial-loss" onclick="showPairDetail(${n})" title="${side}${n} — has genes but missing at least one member retained on the homeolog">${n}</div>`;
+  return `<div class="chr-cell has" onclick="showPairDetail(${n})" title="${side}${n} — full homeolog complement">${n}</div>`;
+}
+
+function layer2() {
+  const rows = GENE_SET_PAIRS.map(p => {
+    const d = PAIRS[p];
+    const aChips = allChipsOn(p, 'A');
+    const bChips = allChipsOn(p, 'B');
+    const aBar = aChips.length === 0
+      ? `<div class="chrom-bar empty">gene lost from A</div>`
+      : `<div class="chrom-bar A">${aChips.map(geneChip).join('')}</div>`;
+    const bBar = bChips.length === 0
+      ? `<div class="chrom-bar empty">gene lost from B</div>`
+      : `<div class="chrom-bar B">${bChips.map(geneChip).join('')}</div>`;
+    const status = pairStatusTag(p);
+    return `
+      <div>
+        <div class="pair-row" onclick="showPairDetail(${p})">
+          <div class="pair-label">Pair ${p}<div style="font-size: 0.72rem; font-weight: normal; color: var(--muted);">A${p} ↔ B${p}</div></div>
+          ${aBar}
+          <div class="pair-mid">↔</div>
+          ${bBar}
+          ${status}
+        </div>
+        <div class="pair-zf-info">${escapeHtml(d.zf_locus)} — zebrafish chr${d.zf_chr}</div>
+      </div>
+    `;
+  }).join('');
+
+  let pseudoCount = 0, artefactCount = 0, nonfuncCount = 0;
+  let partialPairs = 0, fullLossPairs = 0;
+  GENE_SET_PAIRS.forEach(p => {
+    PAIRS[p].slots.forEach(s => {
+      (s.A || []).concat(s.B || []).forEach(g => {
+        if (g.status === 'pseudo') pseudoCount++;
+        if (g.status === 'artefact') artefactCount++;
+        if (g.status === 'candidate_nonfunctional') nonfuncCount++;
+      });
+    });
+    if (pairHasFullLossA(p) || pairHasFullLossB(p)) fullLossPairs++;
+    else if (pairHasPartialLossA(p) || pairHasPartialLossB(p)) partialPairs++;
+  });
+
+  // Build category legend from data
+  const cats = allCategories();
+  const catLegend = cats.map(c => {
+    const col = categoryColor(c);
+    return `<span><span class="swatch" style="background: white; border: 1px solid ${col};"></span>${escapeHtml(categoryLabel(c))}</span>`;
+  }).join('');
+
+  return `
+    <div class="layer-title">Layer 2 — ${GENE_SET_DISPLAY}-bearing homeologous pairs</div>
+    <div class="layer-blurb">The ${GENE_SET_PAIRS.length} homeolog pairs that carry ${GENE_SET_DISPLAY} genes. The status tag summarises the homeolog complement (complete / partial / full loss). Annotation artefacts and pseudogenes are visible here so they're not forgotten, but filtered out at deeper layers.</div>
+    <div class="metrics">
+      <div><span class="metric-num">${GENE_SET_PAIRS.length}</span><span class="metric-label">${GENE_SET_DISPLAY}-bearing pairs</span></div>
+      <div><span class="metric-num partial">${partialPairs}</span><span class="metric-label">with partial losses</span></div>
+      <div><span class="metric-num loss">${fullLossPairs}</span><span class="metric-label">with full homeolog loss</span></div>
+      <div><span class="metric-num warn">${pseudoCount}</span><span class="metric-label">pseudogenes</span></div>
+      <div><span class="metric-num warn">${artefactCount}</span><span class="metric-label">assembly artefacts</span></div>
+      <div><span class="metric-num" style="color: var(--nonfunc);">${nonfuncCount}</span><span class="metric-label">candidate non-functional</span></div>
+    </div>
+    <div class="legend">
+      ${catLegend}
+      <span><span class="swatch" style="background: #faf0ed; border: 1px solid var(--pseudo);"></span>pseudogene</span>
+      <span><span class="swatch" style="background: #faf6e8; border: 1px solid var(--artefact);"></span>artefact</span>
+      <span><span class="swatch" style="background: #f6f0fa; border: 1px solid var(--nonfunc);"></span>candidate non-functional</span>
+    </div>
+    <div class="pair-list">${rows}</div>
+  `;
+}
+
+function pairStatusTag(p) {
+  if (pairHasFullLossA(p) || pairHasFullLossB(p)) {
+    const side = pairHasFullLossA(p) ? 'A' : 'B';
+    return `<div class="pair-status-tag full-loss" title="One subgenome has lost this gene entirely">${side} lost</div>`;
+  }
+  if (pairHasPartialLossA(p) || pairHasPartialLossB(p)) {
+    const side = pairHasPartialLossA(p) ? 'A' : 'B';
+    return `<div class="pair-status-tag partial" title="Asymmetric homeolog complement; some members missing">${side} short</div>`;
+  }
+  return `<div class="pair-status-tag complete" title="Full homeolog complement on both subgenomes">complete</div>`;
+}
+
+function geneChip(g) {
+  if (g.status === 'pseudo')
+    return `<span class="gene-chip pseudo" title="LOC${g.id} — ${escapeHtml(g.role)}">${g.id.slice(-4)}</span>`;
+  if (g.status === 'artefact')
+    return `<span class="gene-chip artefact" title="LOC${g.id} — ${escapeHtml(g.role)}">${g.id.slice(-4)}</span>`;
+  if (g.status === 'candidate_nonfunctional')
+    return `<span class="gene-chip candidate_nonfunctional" title="LOC${g.id} — ${escapeHtml(g.role)} (candidate non-functional)">${g.id.slice(-4)}</span>`;
+  const col = categoryColor(g.category);
+  return `<span class="gene-chip" style="border-color: ${col}; color: ${col};" title="LOC${g.id} — ${escapeHtml(g.role)}">${g.id.slice(-4)}</span>`;
+}
+
+function layer3() {
+  // Derive categories dynamically from data
+  const cats = allCategories();
+  const catData = {};
+  cats.forEach(c => { catData[c] = []; });
+
+  GENE_SET_PAIRS.forEach(p => {
+    const d = PAIRS[p];
+    d.slots.forEach(s => {
+      if (s.excluded) return;
+      [...(s.A || []), ...(s.B || [])].forEach(g => {
+        if (g.status === 'artefact' || g.status === 'pseudo'
+            || g.status === 'candidate_nonfunctional') return;
+        if (!catData[g.category]) catData[g.category] = [];
+        let entry = catData[g.category].find(x => x.pair === p);
+        if (!entry) {
+          entry = { pair: p, count: 0, zf_locus: d.zf_locus };
+          catData[g.category].push(entry);
+        }
+        entry.count++;
+      });
+    });
+  });
+
+  const colCount = cats.length || 1;
+  const cols = cats.map(cat => {
+    const items = catData[cat].sort((a, b) => a.pair - b.pair).map(it =>
+      `<div class="func-pair" onclick="showPairDetail(${it.pair})">
+         <span class="func-pair-label">Pair ${it.pair} <span style="color: var(--muted); font-size: 0.78rem;">(A${it.pair}↔B${it.pair})</span> — ${escapeHtml(it.zf_locus)}</span>
+         <span class="func-pair-count">${it.count}</span>
+       </div>`
+    ).join('');
+    const total = catData[cat].reduce((s, x) => s + x.count, 0);
+    const col = categoryColor(cat);
+    const desc = categoryDescription(cat);
+    return `
+      <div class="func-col">
+        <h3 style="color: ${col}; border-color: ${col};">${escapeHtml(categoryLabel(cat))} <span style="color: var(--muted); font-weight: normal; font-size: 0.85rem;">(${total} genes)</span></h3>
+        ${desc ? `<div style="font-size: 0.78rem; color: var(--muted); margin-bottom: 0.6rem;">${escapeHtml(desc)}</div>` : ''}
+        ${items || '<div style="color: var(--muted); font-size: 0.85rem;">none</div>'}
+      </div>
+    `;
+  }).join('');
+
+  return `
+    <div class="layer-title">Layer 3 — functional categories</div>
+    <div class="layer-blurb">${GENE_SET_DISPLAY} genes sorted by functional category. Pseudogenes and assembly artefacts are excluded from these counts (flagged at layer 2). Genes in mixed-category pairs appear in more than one column.</div>
+    <div class="func-grid" style="grid-template-columns: repeat(${colCount}, 1fr);">
+      ${cols}
+    </div>
+  `;
+}
+
+function layer4() {
+  const cards = GENE_SET_PAIRS.map(p => renderPairDetail(p)).join('');
+  return `
+    <div class="layer-title">Layer 4 — per-pair detail (homeolog slot grid)</div>
+    <div class="layer-blurb">Each pair is broken into <b>homeolog slots</b> — one row per ancestral pre-allopolyploidization gene at that locus. Each row shows what the A and B subgenomes have retained. Ambiguous slots group multiple genes together where 1:1 pairing cannot be settled by synteny alone.</div>
+    <div class="defn-block">
+      <div class="defn-title">Empty-cell language (deliberately hedged)</div>
+      <ul class="defn-list">
+        <li><b>absent on An/Bn — no specific search done</b> (default): the gene is not in the annotation at the expected position, but no specific search has been undertaken.</li>
+        <li><b>absent on An/Bn — candidate loss (annotation-level)</b>: the curation searched the GFF for any group-related feature in the syntenic region and found none. The gene is present on the homeolog and in zebrafish, supporting a real evolutionary loss — but this is annotation-level evidence, not sequence-level confirmation.</li>
+        <li><b>—</b> (in artefact rows): the slot is excluded from analysis; there is no missing homeolog to flag.</li>
+      </ul>
+      <div class="defn-title" style="margin-top: 0.7rem;">Confidence pills</div>
+      <ul class="defn-list">
+        <li><b><span class="confidence-pill high">high</span></b> — confidence in the synteny-derived identity is high.</li>
+        <li><b><span class="confidence-pill medium">medium</span></b> — identity is likely correct but worth verifying (typically a LOC identifier or minor annotation inconsistencies).</li>
+        <li><b><span class="confidence-pill low">low</span></b> — identity is uncertain (known naming confusion or structurally suspect gene model).</li>
+      </ul>
+    </div>
+    ${cards}
+  `;
+}
+
+function renderPairDetail(p) {
+  const d = PAIRS[p];
+  const slotRows = d.slots.map(s => renderSlotRow(s, p)).join('');
+  return `
+    <div class="pair-detail">
+      <h3>Pair ${p} <span style="font-weight: normal; color: var(--muted); font-size: 0.85rem;">(chromosomes A${p} ↔ B${p})</span> — ${escapeHtml(d.zf_locus)} (zebrafish chr${d.zf_chr})</h3>
+      <div class="pair-detail-note">${escapeHtml(d.note)}</div>
+      <table class="slot-table">
+        <thead>
+          <tr>
+            <th>Homeolog slot</th>
+            <th class="col-a">chromosome A${p}</th>
+            <th class="col-b">chromosome B${p}</th>
+          </tr>
+        </thead>
+        <tbody>${slotRows}</tbody>
+      </table>
+    </div>
+  `;
+}
+
+function renderSlotRow(s, p) {
+  let trClass = '';
+  if (s.excluded) trClass = 'excluded-row';
+  else if (s.ambiguous) trClass = 'ambiguous-row';
+  const badge = s.badge
+    ? `<span class="slot-badge ${s.excluded ? 'excluded' : 'ambiguous'}">${escapeHtml(s.badge)}</span>`
+    : '';
+  const sub = s.sub ? `<div class="slot-sub">${escapeHtml(s.sub)}</div>` : '';
+  const innerNote = s.note ? `<div class="slot-sub" style="margin-top: 0.25rem;">${escapeHtml(s.note)}</div>` : '';
+  return `
+    <tr class="${trClass}">
+      <td class="slot-label-cell">
+        ${escapeHtml(s.label)}${badge}
+        ${sub}
+        ${innerNote}
+      </td>
+      ${renderSlotSide(s.A || [], 'A', p, s, 'A_loss')}
+      ${renderSlotSide(s.B || [], 'B', p, s, 'B_loss')}
+    </tr>
+  `;
+}
+
+function renderSlotSide(genes, side, p, slot, lossKey) {
+  if (genes.length === 0) {
+    const lossStatus = slot[lossKey];
+    if (lossStatus === 'na')
+      return `<td class="slot-cell excluded-empty">—</td>`;
+    if (lossStatus === 'searched' || lossStatus === 'confirmed') {
+      return `<td class="slot-cell empty confirmed-loss">
+        <div class="loss-marker">absent on ${side}${p}</div>
+        <div class="loss-confirmed-tag" title="Candidate loss with annotation-level evidence. Sequence-level confirmation is a downstream side project.">candidate loss · annotation-level</div>
+      </td>`;
+    }
+    return `<td class="slot-cell empty">
+      <div class="loss-marker">absent on ${side}${p}</div>
+      <div style="font-size: 0.7rem; margin-top: 0.15rem; opacity: 0.85;">no specific search done</div>
+    </td>`;
+  }
+  const cards = genes.map(g => geneCard(g)).join('');
+  return `<td class="slot-cell"><div class="slot-genes">${cards}</div></td>`;
+}
+
+const CONFIDENCE_TIPS = {
+  high: 'High confidence in the synteny-derived identity — named gene with consistent annotation across homeologs and species.',
+  medium: 'Medium confidence — identity likely correct but worth verifying. Typically a LOC identifier or minor annotation inconsistencies.',
+  low: 'Low confidence — identity uncertain. Known naming confusion at this locus, or the gene model is structurally suspect.',
+  artefact: 'Excluded from the analysis as an assembly artefact.'
+};
+
+function geneCard(g) {
+  let cls = '';
+  let borderColor = '';
+  if (g.status === 'pseudo') {
+    cls = 'pseudo';
+  } else if (g.status === 'artefact') {
+    cls = 'artefact';
+  } else if (g.status === 'candidate_nonfunctional') {
+    cls = 'candidate_nonfunctional';
+  } else {
+    borderColor = categoryColor(g.category);
+  }
+  const tip = CONFIDENCE_TIPS[g.confidence] || '';
+  const style = borderColor ? `style="border-left-color: ${borderColor};"` : '';
+  return `
+    <div class="gene-card ${cls}" ${style}>
+      <div class="role">${escapeHtml(g.role)} <span class="confidence-pill ${g.confidence}" title="${escapeHtml(tip)}">${g.confidence}</span></div>
+      <div class="meta">${g.aa ? g.aa + ' aa · ' : ''}LOC${g.id}</div>
+      <div class="ncbi-name">NCBI: ${escapeHtml(g.ncbi)}</div>
+    </div>
+  `;
+}
+
+function layer5() {
+  const rows = GENE_SET_PAIRS.map(p => {
+    const d = PAIRS[p];
+    const r = pairRetention(p);
+    const slotsCount = d.slots.filter(s => !s.excluded).length;
+
+    let aFrac = `${r.a_total}/${r.slot_total}`;
+    let bFrac = `${r.b_total}/${r.slot_total}`;
+    let aTag = retentionTag(r.a_total, r.slot_total);
+    let bTag = retentionTag(r.b_total, r.slot_total);
+
+    let detailParts = [];
+    if (r.a_confirmed > 0) detailParts.push(`A: ${r.a_confirmed} candidate loss (annotation-level)`);
+    if (r.b_confirmed > 0) detailParts.push(`B: ${r.b_confirmed} candidate loss (annotation-level)`);
+    if (r.a_absent > 0) detailParts.push(`A: ${r.a_absent} slot${r.a_absent > 1 ? 's' : ''} absent (no search)`);
+    if (r.b_absent > 0) detailParts.push(`B: ${r.b_absent} slot${r.b_absent > 1 ? 's' : ''} absent (no search)`);
+    if (r.group_a_short > 0) detailParts.push(`A short by ${r.group_a_short} in ambiguous group`);
+    if (r.group_b_short > 0) detailParts.push(`B short by ${r.group_b_short} in ambiguous group`);
+    const detail = detailParts.length > 0
+      ? `<div class="retention-detail">${detailParts.join('; ')}</div>` : '';
+
+    return `
+      <tr onclick="showPairDetail(${p})">
+        <td><strong>Pair ${p}</strong><div style="font-size: 0.75rem; color: var(--muted);">A${p} ↔ B${p}</div></td>
+        <td>chr${d.zf_chr}</td>
+        <td>${escapeHtml(d.zf_locus)}</td>
+        <td>${slotsCount}</td>
+        <td>${aTag} ${aFrac}</td>
+        <td>${bTag} ${bFrac}</td>
+        <td>${detail || '<span style="color: var(--muted); font-size: 0.78rem;">complete</span>'}</td>
+      </tr>
+    `;
+  }).join('');
+  return `
+    <div class="layer-title">Layer 5 — zebrafish reference framework</div>
+    <div class="layer-blurb">Each homeologous pair maps to an ancestral zebrafish chromosome and locus. Retention is shown as a fraction of homeolog slots — how many of the ancestral gene positions are retained on each subgenome.</div>
+    <table class="zf-table">
+      <thead>
+        <tr>
+          <th>Pair (chrs)</th>
+          <th>Zf chr</th>
+          <th>Locus</th>
+          <th>Slots</th>
+          <th>A retention</th>
+          <th>B retention</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>${rows}</tbody>
+    </table>
+  `;
+}
+
+function retentionTag(have, total) {
+  if (have === 0) return '<span class="retention-tag zero">0/' + total + '</span>';
+  if (have === total) return '<span class="retention-tag full">full</span>';
+  return '<span class="retention-tag partial">partial</span>';
+}
+
+function showPairDetail(p) {
+  const d = PAIRS[p];
+  if (!d) return;
+  document.getElementById('modal-content').innerHTML = renderPairDetail(p);
+  document.getElementById('modal-bg').classList.add('show');
+}
+
+function closeModal(e) {
+  if (e && e.type === 'click' && e.target.id !== 'modal-bg' && !e.target.classList.contains('modal-close')) return;
+  document.getElementById('modal-bg').classList.remove('show');
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+// Initial render
+switchLayer('1');
+</script>
+</body>
+</html>

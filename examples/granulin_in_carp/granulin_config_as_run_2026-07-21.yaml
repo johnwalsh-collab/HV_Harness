@@ -1,0 +1,113 @@
+# Granulin family — gene-set configuration.
+#
+# Drafted from Checkpoint 1 conversation:
+# - focus on canonical granulin/progranulin family members
+# - include progranulins and small granulin genes that produce
+#   unmodified granulin peptides
+# - no known false positives supplied for the first pass
+
+gene_set:
+  name: granulin
+  display_name: "Granulin family"
+
+# ---------------------------------------------------------------------------
+# Stage 2: identify gene-set members from GFF annotations
+# ---------------------------------------------------------------------------
+identification:
+  inclusion:
+    # Match against the gene Name field. The broad grn-prefix rule is
+    # intended to catch compact fish-style names such as grn, grna,
+    # grnb, grn1, or grn2 while keeping the search in the canonical
+    # granulin/progranulin naming space.
+    name_patterns:
+      - '^grn[a-z0-9]*(?:\.[0-9]+)?$'
+
+    # Match against description / mRNA product fields. These catch
+    # LOC-named genes and records named by product aliases.
+    description_keywords:
+      - granulin
+      - progranulin
+      - epithelin
+      - acrogranin
+
+  exclusion:
+    gene_names:
+      - grnaas
+      - grnas
+    description_patterns:
+      - antisense
+
+# ---------------------------------------------------------------------------
+# Stage 3c: classify each gene into a canonical type
+# ---------------------------------------------------------------------------
+classification:
+  # Ordered list. First match wins. The specific grn suffixes come
+  # before the generic granulin/progranulin bucket.
+  type_rules:
+    - type: grna
+      matches: [grna, "granulin a", "progranulin a"]
+    - type: grnb
+      matches: [grnb, "granulin b", "progranulin b"]
+    - type: grn1
+      matches: [grn1, "granulin 1", "progranulin 1"]
+    - type: grn2
+      matches: [grn2, "granulin 2", "progranulin 2"]
+    - type: grn
+      matches: [grn, granulin, progranulin, epithelin, acrogranin]
+
+  homeolog_pairs: [3, 19, 24]
+  pair_expected:
+    3: "grna / progranulin"
+    19: "grna.1 / grna.2 small-granulin cluster"
+    24: "grnb"
+  confusion_pairs: {}
+
+# ---------------------------------------------------------------------------
+# Stage 3c: inventory special cases
+# ---------------------------------------------------------------------------
+inventory:
+  manual_additions: []
+
+# ---------------------------------------------------------------------------
+# Chromosome overrides — unplaced-scaffold placement
+# ---------------------------------------------------------------------------
+chromosome_overrides: {}
+
+# ---------------------------------------------------------------------------
+# Stage 5: visualization parameters
+# ---------------------------------------------------------------------------
+visualization:
+  colors:
+    confident: "#2E7D32"
+    worth_reviewing: "#F9A825"
+    annotation_concern: "#D84315"
+    assembly_concern: "#1565C0"
+    missing: "#C62828"
+
+  markers:
+    confident:           {marker: "^", size: 55}
+    worth_reviewing:     {marker: "^", size: 55}
+    annotation_concern:  {marker: "^", size: 55}
+    assembly_concern:    {marker: "s", size: 50}
+    missing:             {marker: "D", size: 45, filled: false, linewidth: 1.5}
+
+  pair_labels:
+    3: "grna / progranulin"
+    19: "grna.1 / grna.2"
+    24: "grnb"
+
+  categories:
+    - key: progranulin
+      label: "Progranulin"
+      color: "#4a7c59"
+      description: "Canonical multi-granulin precursor genes."
+    - key: small_granulin
+      label: "Small granulin"
+      color: "#4682b4"
+      description: "Canonical small granulin genes encoding an unmodified peptide."
+
+  known_missing:
+    Cyprinus_carpio:
+      - {subgenome: B, pair: 3, label: "grna / progranulin"}
+    Carassius_gibelio: []
+    Carassius_auratus: []

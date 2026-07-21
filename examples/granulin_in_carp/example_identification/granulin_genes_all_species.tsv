@@ -1,0 +1,34 @@
+species	gene_id	gene_name	chromosome	start	end	strand	description	ncbi_gene_id	match_reason	gene_biotype	feature_type	partial	exception	protein_id
+Carassius_auratus	LOC113042704	LOC113042704	NC_039245.1	1205607	1224579	+	granulins-like	113042704	description match	protein_coding	gene			XP_026057515.1;XP_026057517.1
+Carassius_auratus	LOC113119378	LOC113119378	NC_039261.1	9256881	9258852	+	granulins-like	113119378	description match	protein_coding	gene			XP_026144595.1
+Carassius_auratus	LOC113119383	LOC113119383	NC_039261.1	9276770	9278146	+	granulins-like	113119383	description match	protein_coding	gene			XP_026144606.1;XP_026144605.1
+Carassius_auratus	LOC113042585	LOC113042585	NC_039266.1	20809187	20814846	+	granulins-like	113042585	description match	protein_coding	gene			XP_026057331.1
+Carassius_auratus	grna	grna	NC_039270.1	16899971	16932834	-	granulin a	113047016	name match	protein_coding	gene			XP_026064027.1;XP_026064028.1;XP_026064026.1
+Carassius_auratus	LOC113062041	LOC113062041	NC_039286.1	897736	899493	-	granulins	113062041	description match	protein_coding	gene			XP_026087334.1
+Carassius_auratus	LOC113068251	LOC113068251	NC_039298.1	397736	399205	+	granulins-like	113068251	description match	protein_coding	gene			XP_026096699.1
+Carassius_auratus	LOC113068216	LOC113068216	NC_039298.1	489986	491353	+	granulins-like	113068216	description match	protein_coding	gene			XP_026096662.1
+Carassius_auratus	LOC113084855	LOC113084855	NW_020526607.1	64744	70192	+	granulins	113084855	description match	protein_coding	gene			XP_026110771.1
+Carassius_auratus	grnb	grnb	NW_020527778.1	1399628	1410702	-	granulin b	113092754	name match	protein_coding	gene			XP_026114265.1;XP_026114266.1
+Carassius_gibelio	LOC127949015	LOC127949015	NC_068373.1	16132752	16140396	-	progranulin	127949015	description match	protein_coding	gene			XP_052401889.1
+Carassius_gibelio	LOC127935583	LOC127935583	NC_068389.1	8253024	8254358	-	progranulin-like	127935583	description match	protein_coding	gene			XP_052389546.1
+Carassius_gibelio	LOC127935582	LOC127935582	NC_068389.1	8327255	8328740	-	progranulin	127935582	description match	protein_coding	gene			XP_052389545.1
+Carassius_gibelio	LOC127935891	LOC127935891	NC_068389.1	16278794	16280576	-	progranulin	127935891	description match	protein_coding	gene			XP_052390064.1
+Carassius_gibelio	LOC127945929	LOC127945929	NC_068394.1	3115936	3125419	-	progranulin	127945929	description match	protein_coding	gene			XP_052398087.1
+Carassius_gibelio	LOC127947060	LOC127947060	NC_068395.1	20267002	20268441	-	progranulin-like	127947060	description match	protein_coding	gene			XP_052399931.1
+Carassius_gibelio	LOC127947059	LOC127947059	NC_068395.1	20272613	20274593	-	progranulin-like	127947059	description match	protein_coding	gene			XP_052399930.1
+Carassius_gibelio	grna	grna	NC_068398.1	21589437	21617448	-	granulin a	127952478	name match	protein_coding	gene			XP_052406894.1;XP_052406906.1;XP_052406911.1;XP_052406910.1;XP_052406905.1;XP_052406909.1;XP_052406904.1;XP_052406901.1;XP_052406889.1;XP_052406903.1;XP_052406900.1;XP_052406899.1;XP_052406898.1;XP_052406890.1;XP_052406902.1;XP_052406912.1;XP_052406897.1;XP_052406892.1;XP_052406891.1;XP_052406893.1;XP_052406888.1;XP_052406895.1
+Carassius_gibelio	LOC127958712	LOC127958712	NC_068400.1	5525471	5526910	+	progranulin-like	127958712	description match	protein_coding	gene			XP_052413646.1
+Carassius_gibelio	LOC127979384	LOC127979384	NC_068414.1	21934031	21935495	-	progranulin	127979384	description match	protein_coding	gene			XP_052440766.1;XP_052440765.1
+Carassius_gibelio	LOC127979383	LOC127979383	NC_068414.1	21961322	21963327	-	progranulin-like	127979383	description match	protein_coding	gene			XP_052440763.1
+Carassius_gibelio	grnb	grnb	NC_068419.1	3748625	3754212	-	granulin b	128013240	name match	protein_coding	gene			XP_052452021.1
+Cyprinus_carpio	LOC109064429	LOC109064429	NC_056574.1	23902732	23911860	+	progranulin-like, transcript variant X2	109064429	product match	protein_coding	gene			XP_042581193.1;XP_042581202.1;XP_042581187.1;XP_042581209.1
+Cyprinus_carpio	LOC109060267	LOC109060267	NC_056590.1	20819327	20821100	-	progranulin-like	109060267	product match	protein_coding	gene			XP_042632893.1
+Cyprinus_carpio	LOC109112498	LOC109112498	NC_056590.1	20839948	20841681	-	progranulin-like	109112498	product match	protein_coding	gene			XP_042632894.1
+Cyprinus_carpio	grnb	grnb	NC_056595.1	21977617	21987451	+	granulin b, transcript variant X1	109049208	name match	protein_coding	gene			XP_042570624.1
+Cyprinus_carpio	LOC109051021	LOC109051021	NC_056615.1	14039204	14040670	-	progranulin-like, transcript variant X2	109051021	product match	protein_coding	gene			XP_042600697.1;XP_042600696.1
+Cyprinus_carpio	LOC109068459	LOC109068459	NC_056615.1	14064476	14066319	-	progranulin-like	109068459	product match	protein_coding	gene			XP_042600695.1
+Cyprinus_carpio	LOC109075413	LOC109075413	NC_056620.1	20432670	20437619	+	progranulin-like	109075413	product match	protein_coding	gene	true		XP_042608155.1
+Danio_rerio	grna	grna	NC_133178.1	28661396	28688522	-	granulin a	791524	name match	protein_coding	gene		annotated by transcript or proteomic data	NP_001001949.3;NP_001348163.1;XP_005164023.2;XP_073799713.1;XP_073799707.1;XP_073799712.1;XP_073799706.1;XP_073799710.1;XP_073799711.1;XP_005164021.2;XP_073799715.1;XP_073799708.1;XP_073799716.1;XP_073799714.1;XP_005164026.2;XP_009297752.2
+Danio_rerio	grna.1	grna.1	NC_133194.1	42815307	42820798	-	granulin a, tandem duplicate 1	553977	name match	protein_coding	gene			NP_001018638.2
+Danio_rerio	grna.2	grna.2	NC_133194.1	42823662	42827888	-	granulin a, tandem duplicate 2	336575	name match	protein_coding	gene			XP_073786693.1;NP_997921.1
+Danio_rerio	grnb	grnb	NC_133199.1	40083051	40110583	+	granulin b	335453	name match	protein_coding	gene		annotated by transcript or proteomic data	XP_073796166.1;XP_021325789.2;XP_073796165.1;XP_073796162.1;XP_073796163.1;NP_997903.1
