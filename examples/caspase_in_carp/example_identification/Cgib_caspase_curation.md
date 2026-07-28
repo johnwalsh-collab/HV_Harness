@@ -711,7 +711,7 @@ clearest NCBI-naming override.
 *End of curation. Checkpoint 3 (empty-slots deep dive) and Checkpoint 4
 (curation sign-off) are complete; Checkpoint 5 (interpretive layer:
 Executioner / Initiator / Inflammatory) was agreed and the hierarchy
-explorer was built at `results/explorers/Cgib_caspase_hierarchy.html`.
+explorer was built at `../example_explorers/Cgib_caspase_hierarchy.html`.
 The four candidate losses below were assessed and signed off at CP3 — see
 the "Empty slots — assessed" table above. The `[NEEDS REVIEW]` flags and
 the `[EMPTY-SLOT → CP3]` markers in the per-pair sections are retained as

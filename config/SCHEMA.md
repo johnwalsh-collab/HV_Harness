@@ -1,8 +1,8 @@
-# Gene-set config schema (proposal)
+# Gene-set config schema
 
-Status: **draft for review, 2026-05-15**. Not yet consumed by any
-script. Once approved, this becomes the contract the decaspasified
-scripts (Tier B.1 of `docs/FINALIZATION_PLAN.md`) read.
+Status: **current**. This is the contract the pipeline scripts read.
+`config/template.yaml` is the annotated starting point for a new gene
+set; `config/caspase_example.yaml` is the worked example as run.
 
 The schema separates two kinds of parameter:
 
@@ -62,8 +62,7 @@ gene_set:
 
 ### 2. `identification` — Stage 2 search
 
-What goes into `identify_gene_set.py` (renamed from
-`identify_caspases.py`). All four lists are user-supplied; **no
+What goes into `identify_gene_set.py`. All four lists are user-supplied; **no
 defaults**. A new user, in conversation with the AI assistant at
 Checkpoint 1 of the playbook, builds these by considering likely
 false-positive *and* false-negative risks, both before and after

@@ -1664,9 +1664,20 @@ Cc and Ca, supporting a pre-divergence loss. Sweep result:
 `negative`. Upgraded to `absent on A5 — candidate loss
 (annotation-level)`.
 
-*[Placeholder: candidate non-functional locus example to be added
-when a pseudogene-biotyped or LOW QUALITY PROTEIN case surfaces in
-a future curation.]*
+*Sweep returns a degraded model — candidate non-functional locus.*
+Ca (goldfish) pair 9 A9. Zebrafish chr9 carries `casp10`; B9 of the
+same assembly retains a clean `casp10` homeolog (520 aa). The
+in-region sweep of A9 does not come back empty: LOC113053832 sits at
+the A9 syntenic position with `gene_biotype=pseudogene` (NCBI
+description "caspase-8-like"). The flanking-gene block on A9 is
+clearly present. Because a feature *is* annotated at the expected
+position but carries a pseudogene biotype, the slot resolves to
+`candidate non-functional locus on A9`, not to candidate loss — the
+locus is present but degraded. Note the contrast with the same slot
+in Cgib, where the sweep is negative and the call is a clean
+candidate loss: the two outcomes differ in kind, and the sweep result
+is what separates them. (Worked record:
+`examples/caspase_in_carp/example_identification/Caur_caspase_curation.md`.)
 
 #### 5.4.3 Ambiguity flagging
 

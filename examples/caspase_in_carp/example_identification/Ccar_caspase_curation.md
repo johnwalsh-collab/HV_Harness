@@ -27,7 +27,7 @@ side projects.
    off-framework B22 casp23-like gene) are confirmed as logged to side
    projects, not unresolved contradictions. CP5 grouping (Executioner /
    Initiator / Inflammatory) agreed; explorer built at
-   `results/explorers/Ccar_caspase_hierarchy.html`.
+   `../example_explorers/Ccar_caspase_hierarchy.html`.
 
 ## Standard of evidence (summary)
 

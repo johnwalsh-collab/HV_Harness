@@ -24,7 +24,7 @@ Zebrafish is the only diploid comparator (losses hedged accordingly).
    relabel confirmed**; [NEEDS REVIEW] items (B14 near-identical casp3b
    pair, casp2/A16 LOW QUALITY PROTEIN, the 6 unplaced caspases) confirmed
    as logged to side projects. CP5 grouping agreed; explorer built at
-   `results/explorers/Caur_caspase_hierarchy.html`.
+   `../example_explorers/Caur_caspase_hierarchy.html`.
 
 ## Headline
 
