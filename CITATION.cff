@@ -1,0 +1,67 @@
+# This file tells GitHub and citation tools (Zotero, Zenodo, etc.) how to
+# cite HV_Harness. GitHub renders a "Cite this repository" button from it.
+#
+# It describes TWO things:
+#   1. The software itself (the top-level fields below) — the tool a user ran.
+#   2. The manuscript that describes it (the `preferred-citation` block) —
+#      what you'd actually like people to cite in a paper.
+#
+# ┌─────────────────────────────────────────────────────────────────────┐
+# │ ONE VALUE STILL TO FILL IN, marked FILL-ME below:                   │
+# │                                                                     │
+# │   The preferred-citation DOI, once the preprint is posted.          │
+# │   bioRxiv issues a DOI at the moment of posting, so this can be     │
+# │   completed the same day. Change `journal` and add volume/pages     │
+# │   if and when the paper is accepted at a journal.                   │
+# └─────────────────────────────────────────────────────────────────────┘
+
+cff-version: 1.2.0
+message: "If you use HV_Harness, please cite both the software and the paper below."
+title: "HV_Harness: a human-AI workflow for synteny-grounded gene-family curation in allotetraploid carp genomes"
+abstract: >-
+  A structured human-AI collaboration protocol (a curation playbook plus
+  supporting scripts) for building a synteny-grounded inventory and interactive
+  hierarchy explorer of any gene group across the cyprinid Cs4R allotetraploid
+  genomes (common carp, Prussian carp, goldfish), using zebrafish as a diploid
+  comparator and publicly available NCBI-style annotation files only.
+type: software
+authors:
+  - given-names: John G.
+    family-names: Walsh
+    email: john.walsh@concordia.ab.ca
+    affiliation: >-
+      Department of Biological and Public Health Sciences, Concordia
+      University of Edmonton, Edmonton, Alberta, Canada
+    orcid: "https://orcid.org/0009-0003-7165-9398"
+version: "1.0.0"
+date-released: "2026-07-28"
+license: MIT
+repository-code: "https://github.com/johnwalsh-collab/HV_Harness"
+url: "https://github.com/johnwalsh-collab/HV_Harness"
+keywords:
+  - allopolyploidy
+  - allotetraploid
+  - synteny
+  - gene family
+  - genome annotation
+  - homeolog
+  - Cyprinidae
+  - common carp
+  - goldfish
+  - human-AI collaboration
+  - bioinformatics
+
+# The paper describing the workflow. Citation tools surface THIS as the
+# preferred way to cite the method.
+preferred-citation:
+  type: article
+  title: >-
+    Synteny over similarity: a human-AI workflow for resolving gene
+    families in allopolyploid genomes
+  authors:
+    - given-names: John G.
+      family-names: Walsh
+      orcid: "https://orcid.org/0009-0003-7165-9398"
+  year: 2026
+  journal: "bioRxiv"
+  # doi: "10.1101/FILL-ME"      # <-- bioRxiv DOI, available on posting

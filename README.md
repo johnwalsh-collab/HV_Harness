@@ -90,3 +90,17 @@ It is not designed for diploid genomes, scaffold-only assemblies, or automated c
 The caspase gene family, curated independently in all three focal carp species (*Cyprinus carpio*, *Carassius gibelio*, *Carassius auratus*), is the primary validation case. The full curation record — per-pair curation documents, curation-data JSON, gene inventory, synteny evidence, and interactive hierarchy explorers — ships in this repo under `examples/caspase_in_carp/`. See `examples/caspase_in_carp/README.md` for a guide to those files.
 
 A second, smaller example — the granulin gene family in common carp only — ships under `examples/granulin_in_carp/`. It exists to demonstrate that the harness generalizes beyond caspases, including a run with a different AI agent; it's a deliberately narrower, partial-coverage curation rather than a second comprehensive worked example. See `examples/granulin_in_carp/README.md`.
+
+## What the workflow does and does not claim
+
+Every inference here is **annotation-level**: each claim is supportable from the GFF and protein-FASTA inputs alone. No sequence-level analysis (tBLASTn against unannotated regions, whole-genome alignment, phylogenetic reconstruction) is performed. The practical consequence is that an absent gene is reported as a **candidate loss with annotation-level evidence**, never a confirmed loss — the workflow can say where a slot is and that nothing is annotated in it, not what occupies it. Questions needing sequence-level evidence are logged to a side-projects list rather than answered.
+
+The output is not a definitive gene list. It is a disambiguated starting representation, with confidence and ambiguity recorded per call, from which downstream work can proceed.
+
+## Citing this work
+
+If you use HV_Harness, please cite both the software and the paper describing it. `CITATION.cff` in this repository carries both records, and GitHub renders a "Cite this repository" button from it.
+
+## License
+
+MIT — see `LICENSE`. The genome annotations the workflow consumes are public NCBI RefSeq data and are not redistributed here; `GETTING_STARTED.md` explains how to fetch them, and `docs/data_provenance.md` records the accessions used for the worked example.
