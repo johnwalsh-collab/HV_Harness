@@ -144,10 +144,13 @@ HV_Harness/
 │   └── goldfish_subgenome_lookup.tsv  ← pre-built goldfish A/B labels (Stage 3a input)
 ├── data/
 │   ├── genome_config.yaml     ← species list + chromosome-mapping rules
-│   ├── annotations/           ← downloaded GFF + protein FASTA (gitignored)
-│   └── sequences/             ← extracted protein FASTAs (generated)
+│   └── annotations/           ← downloaded GFF + protein FASTA (gitignored)
+│                                (extracted protein FASTAs are written to
+│                                 data/sequences/ at run time — generated,
+│                                 not shipped)
 ├── examples/
-│   └── caspase_in_carp/       ← the caspase worked example
+│   ├── caspase_in_carp/       ← the full caspase worked example (3 focal species)
+│   └── granulin_in_carp/      ← second, smaller example — proof of generality
 ├── tests/                     ← dependency-free invariant tests
 └── results/<gene_set>/        ← run outputs (generated, namespaced per gene set)
 ```

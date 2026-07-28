@@ -69,11 +69,9 @@ def main() -> None:
     print(f"Cleaning and deduplicating {gene_set} protein sequences")
     print("=" * 70)
 
-    # Load gene info (prefer dedup file if available; fall back to raw)
-    dedup_file = RESULTS_DIR / f"{gene_set}_genes_all_species_dedup.tsv"
-    raw_file = RESULTS_DIR / f"{gene_set}_genes_all_species.tsv"
-    src = dedup_file if dedup_file.exists() else raw_file
-    genes_df = pd.read_csv(src, sep="\t")
+    # Load the gene list produced by identify_gene_set.py.
+    genes_file = RESULTS_DIR / f"{gene_set}_genes_all_species.tsv"
+    genes_df = pd.read_csv(genes_file, sep="\t")
     genes_df["ncbi_gene_id"] = genes_df["ncbi_gene_id"].astype(str)
 
     gene_info = {}

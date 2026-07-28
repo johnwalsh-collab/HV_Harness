@@ -224,8 +224,12 @@ def assess_model_quality(gene_biotype: str, feature_type: str, partial: str,
 def assess_assembly_artefacts(acc: str) -> tuple[str, str, str]:
     # Placed/unplaced redundancy (a gene annotated on both a chromosome and an
     # unplaced scaffold) is removed upstream in the dedup step, so any unplaced
-    # gene reaching here has no placed counterpart. possible_haplotig is kept
-    # (always "no") for output-column stability.
+    # gene reaching here has no placed counterpart. possible_haplotig therefore
+    # always emits "no". The column is retained deliberately (not dropped) to
+    # keep the inventory schema stable: it is pinned by OUTPUT_COLUMNS / the
+    # test_inventory.py schema test and by the shipped worked-example
+    # inventories (examples/*/…_gene_inventory.tsv, 28 columns). Removing it
+    # would desync a fresh run from those committed reference outputs.
     on_unplaced = "yes" if is_unplaced(acc) else "no"
     notes = ["gene on unplaced scaffold"] if is_unplaced(acc) else []
     return on_unplaced, "no", "; ".join(notes)

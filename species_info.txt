@@ -1,5 +1,8 @@
-# Target Species for Caspase Family Characterization
-# Core species share the Cs4R allotetraploidization event (~12 MYA)
+# Reference genomes for HV_Harness — the focal allotetraploid carps and
+# their diploid comparators. This list is gene-set-agnostic; it is the same
+# regardless of which gene group you curate. (The caspase family was the
+# original worked example; see examples/caspase_in_carp/.)
+# Core species share the Cs4R allotetraploidization event (~12 MYA).
 
 # Core Species (Allotetraploid)
 Species	Common_Name	NCBI_Assembly	Ploidy	Group
