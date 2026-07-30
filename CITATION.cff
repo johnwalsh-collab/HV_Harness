@@ -7,13 +7,15 @@
 #      what you'd actually like people to cite in a paper.
 #
 # ┌─────────────────────────────────────────────────────────────────────┐
-# │ ONE VALUE STILL TO FILL IN, marked FILL-ME below:                   │
-# │                                                                     │
-# │   The preferred-citation DOI, once the preprint is posted.          │
-# │   bioRxiv issues a DOI at the moment of posting, so this can be     │
-# │   completed the same day. Change `journal` and add volume/pages     │
-# │   if and when the paper is accepted at a journal.                   │
+# │ Nothing is outstanding in this file. If the paper is accepted at a  │
+# │ journal, replace the `preferred-citation` block with the journal    │
+# │ citation (add `journal`, volume, pages; swap in the journal DOI).   │
 # └─────────────────────────────────────────────────────────────────────┘
+#
+# NOTE: there are THREE DOIs in play, all distinct.
+#   - The two under `identifiers` below archive the SOFTWARE.
+#   - The one under `preferred-citation` archives the MANUSCRIPT, which is
+#     a separate Zenodo record. Don't cite the software DOI for the paper.
 #
 # The two Zenodo DOIs under `identifiers` are not interchangeable:
 #   - the CONCEPT DOI always resolves to the newest archived version;
@@ -83,5 +85,12 @@ preferred-citation:
       family-names: Walsh
       orcid: "https://orcid.org/0009-0003-7165-9398"
   year: 2026
-  journal: "bioRxiv"
-  # doi: "10.1101/FILL-ME"      # <-- bioRxiv DOI, available on posting
+  publisher:
+    name: Zenodo
+  doi: "10.5281/zenodo.21708807"
+  url: "https://doi.org/10.5281/zenodo.21708807"
+  notes: >-
+    Preprint; not peer reviewed. The DOI above is the Zenodo CONCEPT DOI
+    for the manuscript and always resolves to its most recent version.
+    (The v1 version DOI is 10.5281/zenodo.21708808.) If the paper is later
+    accepted at a journal, replace this block with the journal citation.

@@ -107,7 +107,11 @@ If you use HV_Harness, please cite both the software and the paper describing it
 
 To pin the exact snapshot behind a published result, cite the version DOI instead: v1.0.1 is [10.5281/zenodo.21654548](https://doi.org/10.5281/zenodo.21654548).
 
-**Paper.** Walsh, J.G. (2026) *Synteny over similarity: human–AI curation of the caspase family in allopolyploid carp genomes.* bioRxiv. <!-- DOI pending — fill on posting -->
+**Paper.** A preprint describing the workflow and the caspase worked example:
+
+> Walsh, J.G. (2026) *Synteny over similarity: human–AI curation of the caspase family in allopolyploid carp genomes.* Zenodo. https://doi.org/10.5281/zenodo.21708807
+
+Not peer reviewed. That DOI resolves to the latest version of the manuscript.
 
 The manuscript's worked example is the caspase curation under `examples/caspase_in_carp/`, including the interactive hierarchy explorers that Figures 2 and 3 are rendered from.
 
