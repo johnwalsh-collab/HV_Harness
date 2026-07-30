@@ -14,6 +14,13 @@
 # │   completed the same day. Change `journal` and add volume/pages     │
 # │   if and when the paper is accepted at a journal.                   │
 # └─────────────────────────────────────────────────────────────────────┘
+#
+# The two Zenodo DOIs under `identifiers` are not interchangeable:
+#   - the CONCEPT DOI always resolves to the newest archived version;
+#   - the VERSION DOI is pinned to this release and never moves.
+# Cite the concept DOI for "the software"; cite the version DOI to pin
+# the exact snapshot behind a result. When you tag a new release, add a
+# new version-DOI entry and leave the concept DOI untouched.
 
 cff-version: 1.2.0
 message: "If you use HV_Harness, please cite both the software and the paper below."
@@ -33,11 +40,22 @@ authors:
       Department of Biological and Public Health Sciences, Concordia
       University of Edmonton, Edmonton, Alberta, Canada
     orcid: "https://orcid.org/0009-0003-7165-9398"
-version: "1.0.0"
+version: "1.0.1"
 date-released: "2026-07-28"
 license: MIT
 repository-code: "https://github.com/johnwalsh-collab/HV_Harness"
 url: "https://github.com/johnwalsh-collab/HV_Harness"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.21654547"
+    description: >-
+      Zenodo concept DOI — resolves to the latest archived version of
+      HV_Harness. Use this to cite the software in general.
+  - type: doi
+    value: "10.5281/zenodo.21654548"
+    description: >-
+      Zenodo version DOI — pinned to HV_Harness v1.0.1, the release
+      archived alongside the manuscript.
 keywords:
   - allopolyploidy
   - allotetraploid
@@ -55,9 +73,11 @@ keywords:
 # preferred way to cite the method.
 preferred-citation:
   type: article
+  # Must match the posted title character-for-character (note the en dash
+  # in "human–AI") so reference managers match it to the preprint record.
   title: >-
-    Synteny over similarity: a human-AI workflow for resolving gene
-    families in allopolyploid genomes
+    Synteny over similarity: human–AI curation of the caspase family
+    in allopolyploid carp genomes
   authors:
     - given-names: John G.
       family-names: Walsh

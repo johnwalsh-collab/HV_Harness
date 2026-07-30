@@ -101,6 +101,16 @@ The output is not a definitive gene list. It is a disambiguated starting represe
 
 If you use HV_Harness, please cite both the software and the paper describing it. `CITATION.cff` in this repository carries both records, and GitHub renders a "Cite this repository" button from it.
 
+**Software.** Archived on Zenodo. Cite the concept DOI — it always resolves to the latest release:
+
+> Walsh, J.G. HV_Harness: a human–AI workflow for synteny-grounded gene-family curation in allotetraploid carp genomes. https://doi.org/10.5281/zenodo.21654547
+
+To pin the exact snapshot behind a published result, cite the version DOI instead: v1.0.1 is [10.5281/zenodo.21654548](https://doi.org/10.5281/zenodo.21654548).
+
+**Paper.** Walsh, J.G. (2026) *Synteny over similarity: human–AI curation of the caspase family in allopolyploid carp genomes.* bioRxiv. <!-- DOI pending — fill on posting -->
+
+The manuscript's worked example is the caspase curation under `examples/caspase_in_carp/`, including the interactive hierarchy explorers that Figures 2 and 3 are rendered from.
+
 ## License
 
 MIT — see `LICENSE`. The genome annotations the workflow consumes are public NCBI RefSeq data and are not redistributed here; `GETTING_STARTED.md` explains how to fetch them, and `docs/data_provenance.md` records the accessions used for the worked example.
